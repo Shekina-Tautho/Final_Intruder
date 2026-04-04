@@ -712,6 +712,7 @@ GameObject:
   - component: {fileID: 826018871}
   - component: {fileID: 826018870}
   - component: {fileID: 826018873}
+  - component: {fileID: 826018874}
   m_Layer: 0
   m_Name: XR Origin (VR)
   m_TagString: Untagged
@@ -791,7 +792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Mediator: {fileID: 826018871}
   m_TransformationPriority: 0
-  m_MoveSpeed: 1
+  m_MoveSpeed: 2
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 0
@@ -895,6 +896,43 @@ MonoBehaviour:
     m_InputActionReference: {fileID: -6493913391331992944, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualValue: {x: 0, y: 0}
+--- !u!114 &826018874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826018864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722821e5cc5b11145b2a4dc4d82d2a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  verticalSpeed: 2
+  moveUpAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Move Up
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 40261c1e-11ff-48e5-87fa-867c2315284c
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  moveDownAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Move Down
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3559439d-05d1-4ac2-8c2b-ef53f7cae641
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &828590306
 GameObject:
   m_ObjectHideFlags: 0
