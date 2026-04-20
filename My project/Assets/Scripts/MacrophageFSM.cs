@@ -23,11 +23,7 @@ public class MacrophageFSM : MonoBehaviour
     public float detectionRange = 8f;
     public float attackRange = 1.5f;
 
-    [Header("Settings")]
-    public float waitAtPoint = 1f;
-
     private int patrolIndex = 0;
-    private float waitTimer;
 
     void Start()
     {
@@ -62,15 +58,10 @@ public class MacrophageFSM : MonoBehaviour
 
         MoveTo(target.position, patrolSpeed);
 
-        if (Vector3.Distance(transform.position, target.position) < 0.3f)
+        // Switch immediately to next point (no stopping)
+        if (Vector3.Distance(transform.position, target.position) < 0.8f)
         {
-            waitTimer += Time.deltaTime;
-
-            if (waitTimer >= waitAtPoint)
-            {
-                patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
-                waitTimer = 0;
-            }
+            patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
         }
 
         if (distance <= detectionRange)
