@@ -458,9 +458,13 @@ MonoBehaviour:
   - {fileID: 34356844}
   - {fileID: 237231446}
   patrolSpeed: 8
-  chaseSpeed: 10
-  detectionRange: 8
+  chaseSpeed: 6
+  returnSpeed: 8
+  detectionRange: 10
   attackRange: 1.5
+  patrolRadius: 12
+  alertDuration: 0.5
+  shakeIntensity: 0.1
 --- !u!195 &64579065
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3504,9 +3508,13 @@ MonoBehaviour:
   - {fileID: 205564821}
   - {fileID: 433762651}
   patrolSpeed: 8
-  chaseSpeed: 10
-  detectionRange: 8
+  chaseSpeed: 6
+  returnSpeed: 8
+  detectionRange: 10
   attackRange: 1.5
+  patrolRadius: 12
+  alertDuration: 0.5
+  shakeIntensity: 0.1
 --- !u!195 &578107775
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5381,7 +5389,7 @@ Transform:
   m_GameObject: {fileID: 826018864}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -0.00038355583, y: 0, z: 90}
+  m_LocalPosition: {x: 6.9996166, y: 0, z: 90.00004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8183,9 +8191,13 @@ MonoBehaviour:
   - {fileID: 390625613}
   - {fileID: 256430879}
   patrolSpeed: 8
-  chaseSpeed: 10
-  detectionRange: 8
+  chaseSpeed: 6
+  returnSpeed: 8
+  detectionRange: 10
   attackRange: 1.5
+  patrolRadius: 12
+  alertDuration: 0.7
+  shakeIntensity: 0.1
 --- !u!1 &1324639224
 GameObject:
   m_ObjectHideFlags: 0
@@ -10438,9 +10450,13 @@ MonoBehaviour:
   - {fileID: 1346095830}
   - {fileID: 71204687}
   patrolSpeed: 8
-  chaseSpeed: 10
-  detectionRange: 8
+  chaseSpeed: 6
+  returnSpeed: 8
+  detectionRange: 10
   attackRange: 1.5
+  patrolRadius: 12
+  alertDuration: 0.5
+  shakeIntensity: 0.1
 --- !u!195 &1591334836
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -10642,9 +10658,13 @@ MonoBehaviour:
   - {fileID: 1528596602}
   - {fileID: 654098028}
   patrolSpeed: 8
-  chaseSpeed: 10
-  detectionRange: 8
+  chaseSpeed: 6
+  returnSpeed: 8
+  detectionRange: 10
   attackRange: 1.5
+  patrolRadius: 12
+  alertDuration: 0.5
+  shakeIntensity: 0.1
 --- !u!195 &1639568578
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11411,9 +11431,13 @@ MonoBehaviour:
   - {fileID: 316566241}
   - {fileID: 546324646}
   patrolSpeed: 8
-  chaseSpeed: 10
-  detectionRange: 8
+  chaseSpeed: 6
+  returnSpeed: 8
+  detectionRange: 10
   attackRange: 1.5
+  patrolRadius: 12
+  alertDuration: 0.5
+  shakeIntensity: 0.1
 --- !u!195 &1776228350
 NavMeshAgent:
   m_ObjectHideFlags: 0
