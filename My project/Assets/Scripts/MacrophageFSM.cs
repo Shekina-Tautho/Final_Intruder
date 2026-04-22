@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MacrophageFSM : MonoBehaviour
 {
+    public PlayerStats playerStats;
+
     public enum State
     {
         Patrol,
@@ -16,6 +18,9 @@ public class MacrophageFSM : MonoBehaviour
     [Header("References")]
     public Transform player;
     public Transform[] patrolPoints;
+
+    [Header("Combat")]
+    public float damagePerSecond = 10f;
 
     [Header("Movement")]
     public float patrolSpeed = 2f;
@@ -51,6 +56,8 @@ public class MacrophageFSM : MonoBehaviour
 
     void Update()
     {
+        if (player == null) return;
+
         float distance = Vector3.Distance(transform.position, player.position);
 
         switch (currentState)
@@ -113,12 +120,11 @@ public class MacrophageFSM : MonoBehaviour
         }
     }
 
-    // ---------------- CHASE (FIXED LEASH SYSTEM) ----------------
+    // ---------------- CHASE ----------------
     void ChaseState(float distance)
     {
         float distanceFromCenter = Vector3.Distance(transform.position, patrolCenter);
 
-        // 🔥 PATROL ZONE LEASH (MAIN FIX)
         if (distanceFromCenter > patrolRadius)
         {
             returnIndex = GetNearestPatrolPointIndex();
@@ -126,7 +132,6 @@ public class MacrophageFSM : MonoBehaviour
             return;
         }
 
-        // 🔥 PLAYER DISENGAGE RULE
         if (distance > detectionRange)
         {
             returnIndex = GetNearestPatrolPointIndex();
@@ -142,10 +147,16 @@ public class MacrophageFSM : MonoBehaviour
         }
     }
 
-    // ---------------- ATTACK (NO STATE LOOP BUG) ----------------
+    // ---------------- ATTACK (FIXED DAMAGE SYSTEM) ----------------
     void AttackState(float distance)
     {
         MoveTo(transform.position, 0f);
+
+        // 🔥 APPLY DAMAGE (frame-safe)
+        if (playerStats != null)
+        {
+            playerStats.TakeDamage(damagePerSecond * Time.deltaTime);
+        }
 
         Debug.Log(gameObject.name + " is attacking!");
 
