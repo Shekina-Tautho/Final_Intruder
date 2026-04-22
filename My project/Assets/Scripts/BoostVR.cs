@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement; // Namespace of ContinuousMoveProvider
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 
 public class BoostVR : MonoBehaviour
 {
+    [Header("References")]
+    public PlayerStats playerStats;
+
     [Header("Input")]
-    public InputActionProperty boostAction; // Assign Right Grip here
+    public InputActionProperty boostAction;
 
     [Header("Speed Settings")]
     public float normalSpeed = 2f;
@@ -17,12 +20,7 @@ public class BoostVR : MonoBehaviour
 
     void Awake()
     {
-        // Find the ContinuousMoveProvider in the scene
         moveProvider = FindObjectOfType<ContinuousMoveProvider>();
-        if (moveProvider == null)
-        {
-            Debug.LogError("No ContinuousMoveProvider found in scene!");
-        }
     }
 
     void Start()
@@ -32,12 +30,23 @@ public class BoostVR : MonoBehaviour
 
     void Update()
     {
-        if (moveProvider == null) return;
+        if (moveProvider == null || playerStats == null) return;
 
         float boostValue = boostAction.action.ReadValue<float>();
-        float targetSpeed = boostValue > 0.1f ? boostSpeed : normalSpeed;
+
+        bool isBoosting = boostValue > 0.1f && playerStats.HasStamina();
+
+        if (isBoosting)
+        {
+            playerStats.UseStamina(playerStats.staminaDrainRate * Time.deltaTime);
+        }
+
+        float targetSpeed = isBoosting ? boostSpeed : normalSpeed;
 
         currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime * smoothTime);
         moveProvider.moveSpeed = currentSpeed;
+
+        Debug.Log("Stamina: " + playerStats.currentStamina);
+        Debug.Log("Has stamina? " + playerStats.HasStamina());
     }
 }
