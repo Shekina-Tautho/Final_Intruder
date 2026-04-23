@@ -5,17 +5,21 @@ public class CellInfect : MonoBehaviour
     public bool playerInRange = false;
     public bool isInfected = false;
 
+    [Header("Visuals")]
+    public Color infectedEmission = Color.red;
     public float inflamedScale = 1.3f;
+
     private Vector3 originalScale;
-
     private Renderer rend;
-
-    public Color infectedEmission = new Color(0.6f, 0.1f, 0.9f);
+    private Material mat;
 
     void Start()
     {
         originalScale = transform.localScale;
         rend = GetComponentInChildren<Renderer>();
+        mat = rend.material;
+
+        mat.EnableKeyword("_EMISSION");
     }
 
     void OnTriggerEnter(Collider other)
@@ -45,22 +49,19 @@ public class CellInfect : MonoBehaviour
     {
         isInfected = true;
 
-        // increase infection count
+        // 🧠 increase infection count
         PlayerStats stats = FindObjectOfType<PlayerStats>();
         if (stats != null)
         {
             stats.infectionCount += 1;
         }
 
-        // inflate cell
+        // 📈 inflate cell
         transform.localScale = originalScale * inflamedScale;
 
-        // change glow
-        if (rend != null)
-        {
-            rend.material.SetColor("_EmissionColor", infectedEmission * 0.8f);
-        }
+        // 🔴 FORCE RED EMISSION (infected state)
+        mat.SetColor("_EmissionColor", infectedEmission * 1.2f);
 
-        Debug.Log("Cell infected via proximity!");
+        Debug.Log("Cell infected → RED STATE");
     }
 }
