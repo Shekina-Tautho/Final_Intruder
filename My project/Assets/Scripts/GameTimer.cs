@@ -7,6 +7,8 @@ public class GameTimer : MonoBehaviour
     public float startTime = 60f;
     private float currentTime;
 
+    private bool dangerMode = false;
+
     [Header("UI")]
     public TextMeshProUGUI timerText;
 
@@ -35,11 +37,12 @@ public class GameTimer : MonoBehaviour
     {
         currentTime -= Time.deltaTime;
 
+        // Trigger wave
         if (currentTime <= 0f)
         {
             SpawnWave();
             currentWave++;
-            currentTime = startTime; // reset timer (looping waves)
+            currentTime = startTime;
         }
 
         UpdateTimerUI();
@@ -49,6 +52,22 @@ public class GameTimer : MonoBehaviour
     {
         int seconds = Mathf.CeilToInt(currentTime);
         timerText.text = seconds.ToString();
+
+        // 🧠 DANGER MODE (last 5 seconds)
+        if (currentTime <= 5f)
+        {
+            if (!dangerMode)
+                dangerMode = true;
+
+            timerText.color = Color.red;
+        }
+        else
+        {
+            if (dangerMode)
+                dangerMode = false;
+
+            timerText.color = Color.white;
+        }
     }
 
     void SpawnWave()
@@ -69,7 +88,7 @@ public class GameTimer : MonoBehaviour
             if (Camera.main != null)
                 fsm.player = Camera.main.transform;
 
-            // Assign PlayerStats (from XR Origin)
+            // Assign PlayerStats (from scene)
             PlayerStats stats = FindObjectOfType<PlayerStats>();
             if (stats != null)
                 fsm.playerStats = stats;
