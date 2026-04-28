@@ -5976,7 +5976,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionColor: {r: 0.19635834, g: 0.0019864433, b: 0.3509434, a: 1}
-  speed: 3
   baseIntensity: 0.18
   pulseStrength: 0.8
   infectedColor: {r: 0.6226415, g: 0, b: 0, a: 1}
@@ -10582,7 +10581,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionColor: {r: 0.19635834, g: 0.0019864433, b: 0.3509434, a: 1}
-  speed: 3
   baseIntensity: 0.18
   pulseStrength: 0.8
   infectedColor: {r: 0.6226415, g: 0, b: 0, a: 1}
@@ -12628,7 +12626,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionColor: {r: 0.19635834, g: 0.0019864433, b: 0.3509434, a: 1}
-  speed: 3
   baseIntensity: 0.18
   pulseStrength: 0.8
   infectedColor: {r: 0.6226415, g: 0, b: 0, a: 1}
@@ -13326,6 +13323,7 @@ GameObject:
   - component: {fileID: 826018875}
   - component: {fileID: 826018876}
   - component: {fileID: 826018877}
+  - component: {fileID: 826018878}
   m_Layer: 0
   m_Name: XR Origin (VR)
   m_TagString: Player
@@ -13619,6 +13617,72 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!114 &826018878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826018864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a414f9af0c67b6e4ba788072707108be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xrCamera: {fileID: 170026614}
+  characterController: {fileID: 826018869}
+  moveAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Move
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: efdeebef-4489-4098-8eeb-9206549c5e66
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -8499096560438304276, guid: 65f799b75dd3ef74f839548b69a20cbb, type: 3}
+  lookAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Look
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f118c55e-5a63-4987-b4a5-d73d7a6ca01c
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 1471494676881024035, guid: 65f799b75dd3ef74f839548b69a20cbb, type: 3}
+  verticalAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Vertical
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 782f0531-62b7-44cb-807e-d28a0c58b802
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -3148078800111103595, guid: 65f799b75dd3ef74f839548b69a20cbb, type: 3}
+  boostAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Boost
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3e7b942d-23cb-4238-8c4f-d5ac45ca0716
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 2251717637716280643, guid: 65f799b75dd3ef74f839548b69a20cbb, type: 3}
+  moveSpeed: 2.5
+  verticalSpeed: 2
+  lookSpeed: 2
+  boostMultiplier: 2
 --- !u!1 &828590306
 GameObject:
   m_ObjectHideFlags: 0
@@ -16391,7 +16455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionColor: {r: 0.19635834, g: 0.0019864433, b: 0.3509434, a: 1}
-  speed: 3
   baseIntensity: 0.18
   pulseStrength: 0.8
   infectedColor: {r: 0.6226415, g: 0, b: 0, a: 1}
@@ -18256,7 +18319,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionColor: {r: 0.19635834, g: 0.0019864433, b: 0.3509434, a: 1}
-  speed: 3
   baseIntensity: 0.18
   pulseStrength: 0.8
   infectedColor: {r: 0.6226415, g: 0, b: 0, a: 1}
@@ -18607,7 +18669,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionColor: {r: 0.19635834, g: 0.0019864433, b: 0.3509434, a: 1}
-  speed: 3
   baseIntensity: 0.18
   pulseStrength: 0.8
   infectedColor: {r: 0.6226415, g: 0, b: 0, a: 1}
@@ -20009,7 +20070,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionColor: {r: 0.19635834, g: 0.0019864433, b: 0.3509434, a: 1}
-  speed: 3
   baseIntensity: 0.18
   pulseStrength: 0.8
   infectedColor: {r: 0.6226415, g: 0, b: 0, a: 1}
@@ -24002,7 +24062,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionColor: {r: 0.19635834, g: 0.0019864433, b: 0.3509434, a: 1}
-  speed: 3
   baseIntensity: 0.18
   pulseStrength: 0.8
   infectedColor: {r: 0.6226415, g: 0, b: 0, a: 1}
@@ -24814,7 +24873,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionColor: {r: 0.19635834, g: 0.0019864433, b: 0.3509434, a: 1}
-  speed: 3
   baseIntensity: 0.18
   pulseStrength: 0.8
   infectedColor: {r: 0.6226415, g: 0, b: 0, a: 1}
@@ -34103,7 +34161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emissionColor: {r: 0.19635834, g: 0.0019864433, b: 0.3509434, a: 1}
-  speed: 3
   baseIntensity: 0.18
   pulseStrength: 0.8
   infectedColor: {r: 0.6226415, g: 0, b: 0, a: 1}
