@@ -16,6 +16,7 @@ public class XRFallbackLocomotion : MonoBehaviour
     public InputActionProperty lookAction;
     public InputActionProperty verticalAction;
     public InputActionProperty boostAction;
+    public InputActionProperty infectAction; // ✅ NEW
 
     [Header("Movement Settings")]
     public float moveSpeed = 2.5f;
@@ -36,6 +37,7 @@ public class XRFallbackLocomotion : MonoBehaviour
         lookAction.action.Enable();
         verticalAction.action.Enable();
         boostAction.action.Enable();
+        infectAction.action.Enable(); // ✅ NEW
     }
 
     void OnDisable()
@@ -44,6 +46,7 @@ public class XRFallbackLocomotion : MonoBehaviour
         lookAction.action.Disable();
         verticalAction.action.Disable();
         boostAction.action.Disable();
+        infectAction.action.Disable(); // ✅ NEW
     }
 
     void Update()
@@ -56,8 +59,10 @@ public class XRFallbackLocomotion : MonoBehaviour
         HandleLook();
         HandleVertical();
         HandleBoost();
+        HandleInfect(); // ✅ NEW
     }
 
+    // ---------------- MOVEMENT ----------------
     void HandleMovement()
     {
         Vector2 input = moveAction.action.ReadValue<Vector2>();
@@ -73,6 +78,7 @@ public class XRFallbackLocomotion : MonoBehaviour
         characterController.Move(move * currentSpeed * Time.deltaTime);
     }
 
+    // ---------------- LOOK ----------------
     void HandleLook()
     {
         Vector2 look = lookAction.action.ReadValue<Vector2>();
@@ -80,6 +86,7 @@ public class XRFallbackLocomotion : MonoBehaviour
         transform.Rotate(Vector3.up * look.x * lookSpeed * Time.deltaTime);
     }
 
+    // ---------------- VERTICAL ----------------
     void HandleVertical()
     {
         float vertical = verticalAction.action.ReadValue<float>();
@@ -89,6 +96,7 @@ public class XRFallbackLocomotion : MonoBehaviour
         characterController.Move(move * Time.deltaTime);
     }
 
+    // ---------------- BOOST ----------------
     void HandleBoost()
     {
         if (playerStats == null)
@@ -109,5 +117,26 @@ public class XRFallbackLocomotion : MonoBehaviour
         float targetSpeed = isBoosting ? moveSpeed * boostMultiplier : moveSpeed;
 
         currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime * 5f);
+    }
+
+    // ---------------- INFECT ----------------
+    void HandleInfect()
+    {
+        if (infectAction.action.WasPressedThisFrame())
+        {
+            Collider[] hits = Physics.OverlapSphere(transform.position, 2f);
+
+            foreach (var hit in hits)
+            {
+                CellInfect cell = hit.GetComponent<CellInfect>();
+
+                if (cell != null)
+                {
+                    cell.TryInfect();
+
+                    Debug.Log("Infect triggered");
+                }
+            }
+        }
     }
 }
