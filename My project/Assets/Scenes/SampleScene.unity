@@ -13631,6 +13631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xrCamera: {fileID: 170026614}
   characterController: {fileID: 826018869}
+  playerStats: {fileID: 826018876}
   moveAction:
     m_UseReference: 1
     m_Action:

@@ -8,6 +8,9 @@ public class XRFallbackLocomotion : MonoBehaviour
     public Transform xrCamera;
     public CharacterController characterController;
 
+    [Header("Player Stats")]
+    public PlayerStats playerStats;
+
     [Header("Input Actions")]
     public InputActionProperty moveAction;
     public InputActionProperty lookAction;
@@ -88,12 +91,23 @@ public class XRFallbackLocomotion : MonoBehaviour
 
     void HandleBoost()
     {
+        if (playerStats == null)
+        {
+            currentSpeed = moveSpeed;
+            return;
+        }
+
         float boost = boostAction.action.ReadValue<float>();
 
-        bool isBoosting = boost > 0.5f;
+        bool isBoosting = boost > 0.5f && playerStats.HasStamina();
 
-        currentSpeed = isBoosting
-            ? moveSpeed * boostMultiplier
-            : moveSpeed;
+        if (isBoosting)
+        {
+            playerStats.UseStamina(playerStats.staminaDrainRate * Time.deltaTime);
+        }
+
+        float targetSpeed = isBoosting ? moveSpeed * boostMultiplier : moveSpeed;
+
+        currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime * 5f);
     }
 }
