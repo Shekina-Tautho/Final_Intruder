@@ -11283,8 +11283,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a756b631f5d882438fb3d51a63294cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 60
+  startTime: 15
   timerText: {fileID: 227639658}
+  macrophagePrefab: {fileID: 3166322273924173499, guid: 46156f72cc0d53d42b7b751a64f1e11e, type: 3}
+  spawnPoints:
+  - {fileID: 1115252112}
+  - {fileID: 1415690489}
+  - {fileID: 205864354}
+  paths:
+  - points:
+    - {fileID: 751262003}
+    - {fileID: 830283834}
+    - {fileID: 207442196}
+  - points:
+    - {fileID: 1020217113}
+    - {fileID: 1013196909}
+    - {fileID: 33000781}
+  - points:
+    - {fileID: 1836825378}
+    - {fileID: 813042604}
+    - {fileID: 741483414}
+  baseSpawnCount: 2
 --- !u!4 &725567709
 Transform:
   m_ObjectHideFlags: 0
