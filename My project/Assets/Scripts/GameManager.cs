@@ -6,6 +6,15 @@ public class GameManager : MonoBehaviour
     public PlayerStats playerStats;
     public ObjectiveManager objectiveManager;
 
+    [Header("Game Flow References")]
+    public GameTimer gameTimer;
+
+    [Header("UI Elements")]
+    public GameObject timerUI;
+    public GameObject infectionUI;
+    public GameObject staminaUI;
+    public GameObject lifeUI;
+
     [Header("Win Condition")]
     public int winTarget = 10;
 
@@ -14,18 +23,28 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Show intro objective at game start
+        // 🔴 LOCK GAMEPLAY AT START
+
         if (objectiveManager != null)
         {
             objectiveManager.ShowIntroObjective();
         }
+
+        if (gameTimer != null)
+        {
+            gameTimer.timerActive = false;
+        }
+
+        // Hide ALL UI at start
+        if (timerUI != null) timerUI.SetActive(false);
+        if (infectionUI != null) infectionUI.SetActive(false);
+        if (staminaUI != null) staminaUI.SetActive(false);
+        if (lifeUI != null) lifeUI.SetActive(false);
     }
 
     void Update()
     {
         if (playerStats == null) return;
-
-        // Stop logic if game already ended
         if (hasWon || hasLost) return;
 
         // ✅ WIN CONDITION
@@ -50,11 +69,9 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("WIN → Epithelial infection spreading");
 
-        // Optional: show win objective screen later
         if (objectiveManager != null)
         {
-            // we will add ShowWin() later in next step
-            // objectiveManager.ShowWin();
+            // objectiveManager.ShowWin(); (future step)
         }
 
         EpithelialInfectVisual[] cells = FindObjectsOfType<EpithelialInfectVisual>();
@@ -73,13 +90,27 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("LOSE → Player died (life reached 0)");
 
-        // Optional: show lose objective screen later
         if (objectiveManager != null)
         {
-            // we will add ShowLose() later in next step
-            // objectiveManager.ShowLose();
+            // objectiveManager.ShowLose(); (future step)
         }
 
         Time.timeScale = 0.5f;
+    }
+
+    // ---------------- GAME START ----------------
+    public void StartGame()
+    {
+        Debug.Log("GAME STARTED");
+
+        if (gameTimer != null)
+        {
+            gameTimer.timerActive = true;
+        }
+
+        if (timerUI != null) timerUI.SetActive(true);
+        if (infectionUI != null) infectionUI.SetActive(true);
+        if (staminaUI != null) staminaUI.SetActive(true);
+        if (lifeUI != null) lifeUI.SetActive(true);
     }
 }

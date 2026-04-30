@@ -8,6 +8,8 @@ public class GameTimer : MonoBehaviour
     public float startTime = 60f;
     private float currentTime;
 
+    public bool timerActive = false; // ✅ ADD THIS
+
     private bool dangerMode = false;
 
     [Header("UI")]
@@ -51,11 +53,14 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
+        // ❗ THIS IS THE FIX THAT WAS MISSING
+        if (!timerActive) return;
+
         currentTime -= Time.deltaTime;
 
         HandleDangerMode();
         HandleBeepWarning();
-        HandleScreenEffects(); // 🔥 VR effects
+        HandleScreenEffects();
 
         if (currentTime <= 0f)
         {
@@ -96,7 +101,6 @@ public class GameTimer : MonoBehaviour
         if (currentTime <= 5f)
         {
             float normalized = currentTime / 5f;
-
             float interval = Mathf.Lerp(0.1f, beepInterval, normalized);
 
             beepTimer -= Time.deltaTime;
@@ -118,7 +122,6 @@ public class GameTimer : MonoBehaviour
     // ---------------- VR SCREEN EFFECTS ----------------
     void HandleScreenEffects()
     {
-        // 🔴 DANGER VIGNETTE (breathing effect)
         if (vignetteImage != null)
         {
             if (currentTime <= 5f)
@@ -137,7 +140,6 @@ public class GameTimer : MonoBehaviour
             }
         }
 
-        // ⚡ SPAWN FLASH
         if (flashValue > 0f)
         {
             flashValue -= Time.deltaTime * 4f;
@@ -156,10 +158,8 @@ public class GameTimer : MonoBehaviour
     {
         int spawnCount = baseSpawnCount + currentWave;
 
-        // ⚡ VR IMMUNE RESPONSE FLASH
         flashValue = 0.2f;
 
-        // 🔊 wave spawn sound
         if (spawnWaveSource != null)
             spawnWaveSource.Play();
 

@@ -12355,6 +12355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTime: 400
+  timerActive: 0
   timerText: {fileID: 227639658}
   vignetteImage: {fileID: 871129319}
   flashImage: {fileID: 2085304152}
@@ -39235,6 +39236,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 826018876}
   objectiveManager: {fileID: 2099246383}
+  gameTimer: {fileID: 725567708}
+  timerUI: {fileID: 227639657}
+  infectionUI: {fileID: 1584918146}
+  staminaUI: {fileID: 1055759823}
+  lifeUI: {fileID: 1663352072}
   winTarget: 1
 --- !u!4 &2099246382
 Transform:
@@ -39266,6 +39272,7 @@ MonoBehaviour:
   objectivePanel: {fileID: 1175245013}
   titleText: {fileID: 1744229235}
   bodyText: {fileID: 1512157522}
+  gameManager: {fileID: 2099246381}
   closePanelAction: {fileID: -3885534370008993427, guid: 65f799b75dd3ef74f839548b69a20cbb, type: 3}
 --- !u!1001 &2113673757
 PrefabInstance:

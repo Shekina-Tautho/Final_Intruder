@@ -9,6 +9,9 @@ public class ObjectiveManager : MonoBehaviour
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI bodyText;
 
+    [Header("Game References")]
+    public GameManager gameManager;
+
     [Header("Input (VR / New Input System)")]
     public InputActionReference closePanelAction;
 
@@ -44,12 +47,11 @@ public class ObjectiveManager : MonoBehaviour
         titleText.text = "Mission Start: Influenza Virus";
 
         bodyText.text =
-            "You are an Influenza Virus entering a human host.\n\n" +
+            "You are a viral particle entering human epithelial tissue. Your goal is to infect host cells and spread by targeting vulnerable tissue clusters. Macrophages and other immune cells patrol this environment to detect and eliminate pathogens.\n\n" +
             "Primary Objective:\n" +
-            "- Infect target cells to increase infection count\n\n" +
+            "Infect epithelial cells and reach the required infection count of 10 to establish successful viral spread.\n\n" +
             "Threat:\n" +
-            "- Macrophages patrol and eliminate viruses\n\n" +
-            "Goal: Spread before immune system destroys you.";
+            "In real influenza infections, viruses target respiratory epithelial cells to replicate.";
     }
 
     // ---------------- CLOSE ----------------
@@ -57,20 +59,26 @@ public class ObjectiveManager : MonoBehaviour
     {
         isPanelActive = false;
         objectivePanel.SetActive(false);
+
+        // 🟢 START GAME FLOW HERE
+        if (gameManager != null)
+        {
+            gameManager.StartGame();
+        }
     }
 
     // ---------------- INPUT ----------------
     bool ShouldClosePanel()
     {
-        // Keyboard (any key)
+        // Keyboard
         if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
             return true;
 
-        // Mouse click (left button)
+        // Mouse
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
             return true;
 
-        // VR / XR Input Action (REAL FIX)
+        // VR / XR Input Action
         if (closePanelAction != null && closePanelAction.action.WasPressedThisFrame())
             return true;
 
