@@ -122,6 +122,22 @@ public class GameManager : MonoBehaviour
         {
             objectiveManager.ShowWinPanel();
         }
+
+        // FREEZE GAME
+        Time.timeScale = 0f;
+    }
+
+    IEnumerator ShowLosePanelDelay()
+    {
+        yield return new WaitForSecondsRealtime(1.5f);
+
+        if (objectiveManager != null)
+        {
+            objectiveManager.ShowLosePanel();
+        }
+
+        // FREEZE GAME
+        Time.timeScale = 0f;
     }
 
     // ---------------- LOSE ----------------
@@ -129,16 +145,23 @@ public class GameManager : MonoBehaviour
     {
         hasLost = true;
 
-        Debug.Log("LOSE → Player died");
+        Debug.Log("LOSE → Infection Contained");
 
-        if (objectiveManager != null)
+        // STOP TIMER
+        if (gameTimer != null)
         {
-            // objectiveManager.ShowLose(); (next step)
+            gameTimer.timerActive = false;
         }
 
-        Time.timeScale = 0.5f;
-    }
+        // HIDE GAMEPLAY UI
+        HideGameplayUI();
 
+        // OPTIONAL slow motion effect
+        Time.timeScale = 0.5f;
+
+        // SHOW PANEL AFTER SHORT DELAY
+        StartCoroutine(ShowLosePanelDelay());
+    }
     // ---------------- GAME START ----------------
     public void StartGame()
     {

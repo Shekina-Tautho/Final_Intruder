@@ -113,6 +113,23 @@ public class ObjectiveManager : MonoBehaviour
         "In real influenza cases, this level of infection typically triggers strong inflammatory responses, including fever, mucus production, and further immune escalation.";
     }
 
+    // ---------------- LOSE PANEL ----------------
+    public void ShowLosePanel()
+    {
+        isPanelActive = true;
+        isIntroPanel = false;
+
+        objectivePanel.SetActive(true);
+
+        titleText.text = "Infection Contained";
+
+        bodyText.text =
+            "The host immune system has successfully limited viral spread. Macrophages and other immune defenses have eliminated infected cells before sufficient replication occurred.\n\n" +
+            "Your infection was unable to reach a sustainable threshold for continued propagation.\n\n" +
+            "What this means:\n" +
+            "Early immune response is often capable of containing influenza before it spreads widely.";
+    }
+
     // ---------------- CLOSE PANEL ----------------
     void HidePanel()
     {
