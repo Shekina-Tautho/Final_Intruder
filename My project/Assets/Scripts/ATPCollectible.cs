@@ -2,28 +2,57 @@ using UnityEngine;
 
 public class ATPCollectible : MonoBehaviour
 {
-    [Header("Stamina Reward")]
     public float staminaRestoreAmount = 30f;
 
-    [Header("VFX (optional)")]
-    public GameObject collectEffect;
+    [Header("VFX")]
+    public GameObject burstVFX;
+
+    private Transform player;
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
 
-        PlayerStats player = other.GetComponentInParent<PlayerStats>();
+        player = other.transform;
 
-        if (player != null)
+        PlayerStats stats = other.GetComponentInParent<PlayerStats>();
+
+        if (stats != null)
         {
-            player.AddStamina(staminaRestoreAmount);
+            stats.AddStamina(staminaRestoreAmount);
         }
 
-        if (collectEffect != null)
-        {
-            Instantiate(collectEffect, transform.position, Quaternion.identity);
-        }
+        PlayBurst();
+        StartCoroutine(AttractParticles());
 
-        Destroy(gameObject);
+        Destroy(gameObject, 0.1f);
+    }
+
+    void PlayBurst()
+    {
+        if (burstVFX != null)
+        {
+            Instantiate(burstVFX, transform.position, Quaternion.identity);
+        }
+    }
+
+    System.Collections.IEnumerator AttractParticles()
+    {
+        float t = 0;
+        float duration = 0.3f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+
+            // pull object slightly toward player (illusion effect)
+            transform.position = Vector3.Lerp(
+                transform.position,
+                player.position,
+                t / duration
+            );
+
+            yield return null;
+        }
     }
 }
