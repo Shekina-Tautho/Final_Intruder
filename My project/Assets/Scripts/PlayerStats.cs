@@ -88,4 +88,12 @@ public class PlayerStats : MonoBehaviour
             currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
         }
     }
+
+    public void AddStamina(float amount)
+    {
+        currentStamina += amount;
+        currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
+
+        regenTimer = staminaRegenDelay;
+    }
 }
