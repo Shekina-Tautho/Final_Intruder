@@ -20,6 +20,9 @@ public class ObjectiveManager : MonoBehaviour
     private bool isIntroPanel = false;
     private bool hasShownMacrophageWarning = false;
 
+    private bool isEndGamePanel = false;
+    private bool isGameplayPausePanel = false;
+
     void OnEnable()
     {
         if (closePanelAction != null)
@@ -53,6 +56,9 @@ public class ObjectiveManager : MonoBehaviour
     {
         isPanelActive = true;
         isIntroPanel = true;
+        
+        isEndGamePanel = false;
+        isGameplayPausePanel = false;
 
         objectivePanel.SetActive(true);
 
@@ -78,6 +84,9 @@ public class ObjectiveManager : MonoBehaviour
         isPanelActive = true;
         isIntroPanel = false;
 
+        isEndGamePanel = false;
+        isGameplayPausePanel = true;
+
         objectivePanel.SetActive(true);
 
         // ⛔ Pause timer
@@ -102,6 +111,9 @@ public class ObjectiveManager : MonoBehaviour
         isPanelActive = true;
         isIntroPanel = false;
 
+        isEndGamePanel = true;
+        isGameplayPausePanel = false;
+
         objectivePanel.SetActive(true);
 
         titleText.text = "Infection Successful";
@@ -118,6 +130,9 @@ public class ObjectiveManager : MonoBehaviour
     {
         isPanelActive = true;
         isIntroPanel = false;
+
+        isEndGamePanel = true;
+        isGameplayPausePanel = false;
 
         objectivePanel.SetActive(true);
 
@@ -136,15 +151,17 @@ public class ObjectiveManager : MonoBehaviour
         isPanelActive = false;
         objectivePanel.SetActive(false);
 
-        // ▶ Resume timer
-        if (gameTimer != null)
-            gameTimer.timerActive = true;
+        // ONLY resume gameplay for intro or warning panels
+        if (!isEndGamePanel)
+        {
+            if (gameTimer != null)
+                gameTimer.timerActive = true;
 
-        // ▶ Show UI again
-        if (gameManager != null)
-            gameManager.ShowGameplayUI();
+            if (gameManager != null)
+                gameManager.ShowGameplayUI();
+        }
 
-        // ▶ Start game ONLY for intro
+        // Start game only once after intro
         if (isIntroPanel && gameManager != null)
         {
             gameManager.StartGame();
