@@ -2,17 +2,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("References")]
     public PlayerStats playerStats;
+    public ObjectiveManager objectiveManager;
+
+    [Header("Win Condition")]
     public int winTarget = 10;
 
     private bool hasWon = false;
     private bool hasLost = false;
 
+    void Start()
+    {
+        // Show intro objective at game start
+        if (objectiveManager != null)
+        {
+            objectiveManager.ShowIntroObjective();
+        }
+    }
+
     void Update()
     {
         if (playerStats == null) return;
 
-        // Stop if game already ended
+        // Stop logic if game already ended
         if (hasWon || hasLost) return;
 
         // ✅ WIN CONDITION
@@ -22,7 +35,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // ✅ LOSE CONDITION (LIFE BASED)
+        // ✅ LOSE CONDITION
         if (playerStats.currentLife <= 0f)
         {
             LoseGame();
@@ -36,6 +49,13 @@ public class GameManager : MonoBehaviour
         hasWon = true;
 
         Debug.Log("WIN → Epithelial infection spreading");
+
+        // Optional: show win objective screen later
+        if (objectiveManager != null)
+        {
+            // we will add ShowWin() later in next step
+            // objectiveManager.ShowWin();
+        }
 
         EpithelialInfectVisual[] cells = FindObjectsOfType<EpithelialInfectVisual>();
 
@@ -53,7 +73,13 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("LOSE → Player died (life reached 0)");
 
-        // Optional: slow motion effect
+        // Optional: show lose objective screen later
+        if (objectiveManager != null)
+        {
+            // we will add ShowLose() later in next step
+            // objectiveManager.ShowLose();
+        }
+
         Time.timeScale = 0.5f;
     }
 }
