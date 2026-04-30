@@ -96,6 +96,23 @@ public class ObjectiveManager : MonoBehaviour
             "The body increases immune presence in infected tissue.";
     }
 
+// ---------------- WIN PANEL ----------------
+    public void ShowWinPanel()
+    {
+        isPanelActive = true;
+        isIntroPanel = false;
+
+        objectivePanel.SetActive(true);
+
+        titleText.text = "Infection Successful";
+
+         bodyText.text =
+        "You have successfully infected a sufficient number of epithelial cells. Viral replication has overcome initial immune resistance in this region.\n\n" +
+        "Infected cells now act as viral production sites, accelerating spread across surrounding tissue.\n\n" +
+        "What happens next:\n" +
+        "In real influenza cases, this level of infection typically triggers strong inflammatory responses, including fever, mucus production, and further immune escalation.";
+    }
+
     // ---------------- CLOSE PANEL ----------------
     void HidePanel()
     {

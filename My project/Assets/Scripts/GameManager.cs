@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -86,17 +87,40 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("WIN → Epithelial infection spreading");
 
-        if (objectiveManager != null)
+        // STOP TIMER
+        if (gameTimer != null)
         {
-            // objectiveManager.ShowWin(); (next step)
+            gameTimer.timerActive = false;
         }
 
+        // HIDE GAMEPLAY UI
+        HideGameplayUI();
+
         EpithelialInfectVisual[] cells = FindObjectsOfType<EpithelialInfectVisual>();
+
+        float longestDelay = 0f;
 
         foreach (EpithelialInfectVisual cell in cells)
         {
             float delay = UnityEngine.Random.Range(0f, 5f);
+
             cell.StartInfection(delay);
+
+            if (delay > longestDelay)
+                longestDelay = delay;
+        }
+
+        // WAIT until infection animation completes
+        StartCoroutine(ShowWinAfterInfection(longestDelay + 2f));
+    }
+
+    IEnumerator ShowWinAfterInfection(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        if (objectiveManager != null)
+        {
+            objectiveManager.ShowWinPanel();
         }
     }
 
