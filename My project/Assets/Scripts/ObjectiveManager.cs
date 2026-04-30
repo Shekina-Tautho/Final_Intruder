@@ -18,6 +18,7 @@ public class ObjectiveManager : MonoBehaviour
 
     private bool isPanelActive = false;
     private bool isIntroPanel = false;
+    private bool hasShownMacrophageWarning = false;
 
     void OnEnable()
     {
@@ -55,6 +56,10 @@ public class ObjectiveManager : MonoBehaviour
 
         objectivePanel.SetActive(true);
 
+        // 🔴 Hide UI
+        if (gameManager != null)
+            gameManager.HideGameplayUI();
+
         titleText.text = "Mission Start: Influenza Virus";
 
         bodyText.text =
@@ -63,43 +68,56 @@ public class ObjectiveManager : MonoBehaviour
             "Avoid macrophages that will attempt to destroy you.";
     }
 
-    // ---------------- WARNING ----------------
+    // ---------------- WARNING (ONLY ONCE) ----------------
     public void ShowMacrophageWarning(int wave)
     {
+        if (hasShownMacrophageWarning) return;
+
+        hasShownMacrophageWarning = true;
+
         isPanelActive = true;
         isIntroPanel = false;
 
         objectivePanel.SetActive(true);
 
+        // ⛔ Pause timer
         if (gameTimer != null)
             gameTimer.timerActive = false;
+
+        // 🔴 Hide UI
+        if (gameManager != null)
+            gameManager.HideGameplayUI();
 
         titleText.text = "Immune Response Increasing";
 
         bodyText.text =
             "Macrophages have been recruited to the infection site. These immune cells detect, engulf, and destroy infected or foreign particles.\n\n" +
             "What this means:\n" +
-            "The body increases immune presence in infected tissue.\n\n" +
-            "Wave: " + wave;
+            "The body increases immune presence in infected tissue.";
     }
 
-    // ---------------- CLOSE ----------------
+    // ---------------- CLOSE PANEL ----------------
     void HidePanel()
     {
         isPanelActive = false;
         objectivePanel.SetActive(false);
 
-        // Resume timer
+        // ▶ Resume timer
         if (gameTimer != null)
             gameTimer.timerActive = true;
 
-        // ONLY start game once (intro)
+        // ▶ Show UI again
+        if (gameManager != null)
+            gameManager.ShowGameplayUI();
+
+        // ▶ Start game ONLY for intro
         if (isIntroPanel && gameManager != null)
         {
             gameManager.StartGame();
         }
     }
 
+    // ---------------- INPUT ----------------
     bool ShouldClosePanel()
     {
         if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)

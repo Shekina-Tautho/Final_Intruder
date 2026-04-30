@@ -24,25 +24,20 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // 🔴 LOCK GAMEPLAY AT START
-
+        // 🔴 Show intro panel
         if (objectiveManager != null)
         {
             objectiveManager.ShowIntroObjective();
         }
 
+        // 🔴 Stop timer at start
         if (gameTimer != null)
         {
             gameTimer.timerActive = false;
         }
-        
 
-        // Hide ALL UI at start
-        if (timerUI != null) timerUI.SetActive(false);
-        if (infectionUI != null) infectionUI.SetActive(false);
-        if (staminaUI != null) staminaUI.SetActive(false);
-        if (lifeUI != null) lifeUI.SetActive(false);
-        if (outlineUI != null) outlineUI.SetActive(false);
+        // 🔴 Hide ALL gameplay UI
+        HideGameplayUI();
     }
 
     void Update()
@@ -65,6 +60,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // ---------------- UI CONTROL ----------------
+    public void ShowGameplayUI()
+    {
+        if (timerUI != null) timerUI.SetActive(true);
+        if (infectionUI != null) infectionUI.SetActive(true);
+        if (staminaUI != null) staminaUI.SetActive(true);
+        if (lifeUI != null) lifeUI.SetActive(true);
+        if (outlineUI != null) outlineUI.SetActive(true);
+    }
+
+    public void HideGameplayUI()
+    {
+        if (timerUI != null) timerUI.SetActive(false);
+        if (infectionUI != null) infectionUI.SetActive(false);
+        if (staminaUI != null) staminaUI.SetActive(false);
+        if (lifeUI != null) lifeUI.SetActive(false);
+        if (outlineUI != null) outlineUI.SetActive(false);
+    }
+
     // ---------------- WIN ----------------
     void WinGame()
     {
@@ -74,7 +88,7 @@ public class GameManager : MonoBehaviour
 
         if (objectiveManager != null)
         {
-            // objectiveManager.ShowWin(); (future step)
+            // objectiveManager.ShowWin(); (next step)
         }
 
         EpithelialInfectVisual[] cells = FindObjectsOfType<EpithelialInfectVisual>();
@@ -91,11 +105,11 @@ public class GameManager : MonoBehaviour
     {
         hasLost = true;
 
-        Debug.Log("LOSE → Player died (life reached 0)");
+        Debug.Log("LOSE → Player died");
 
         if (objectiveManager != null)
         {
-            // objectiveManager.ShowLose(); (future step)
+            // objectiveManager.ShowLose(); (next step)
         }
 
         Time.timeScale = 0.5f;
@@ -111,10 +125,6 @@ public class GameManager : MonoBehaviour
             gameTimer.timerActive = true;
         }
 
-        if (timerUI != null) timerUI.SetActive(true);
-        if (infectionUI != null) infectionUI.SetActive(true);
-        if (staminaUI != null) staminaUI.SetActive(true);
-        if (lifeUI != null) lifeUI.SetActive(true);
-        if (outlineUI != null) outlineUI.SetActive(true);
+        ShowGameplayUI();
     }
 }
