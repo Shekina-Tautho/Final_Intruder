@@ -4,20 +4,21 @@ using TMPro;
 
 public class ObjectiveManager : MonoBehaviour
 {
-    [Header("UI References")]
+    [Header("UI")]
     public GameObject objectivePanel;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI bodyText;
 
-    [Header("Game References")]
+    [Header("References")]
     public GameManager gameManager;
+    public GameTimer gameTimer;
 
-    [Header("Input (VR / New Input System)")]
+    [Header("Input")]
     public InputActionReference closePanelAction;
 
     private bool isPanelActive = false;
+    private bool isIntroPanel = false;
 
-    // ---------------- LIFECYCLE ----------------
     void OnEnable()
     {
         if (closePanelAction != null)
@@ -28,6 +29,14 @@ public class ObjectiveManager : MonoBehaviour
     {
         if (closePanelAction != null)
             closePanelAction.action.Disable();
+    }
+
+    void Start()
+    {
+        if (gameTimer != null)
+        {
+            gameTimer.OnMacrophageWaveSpawn += ShowMacrophageWarning;
+        }
     }
 
     void Update()
@@ -42,16 +51,36 @@ public class ObjectiveManager : MonoBehaviour
     public void ShowIntroObjective()
     {
         isPanelActive = true;
+        isIntroPanel = true;
+
         objectivePanel.SetActive(true);
 
         titleText.text = "Mission Start: Influenza Virus";
 
         bodyText.text =
-            "You are a viral particle entering human epithelial tissue. Your goal is to infect host cells and spread by targeting vulnerable tissue clusters. Macrophages and other immune cells patrol this environment to detect and eliminate pathogens.\n\n" +
-            "Primary Objective:\n" +
-            "Infect epithelial cells and reach the required infection count of 10 to establish successful viral spread.\n\n" +
-            "Threat:\n" +
-            "In real influenza infections, viruses target respiratory epithelial cells to replicate.";
+            "You are a viral particle entering human epithelial tissue.\n\n" +
+            "Objective:\nInfect 10 cells.\n\n" +
+            "Avoid macrophages that will attempt to destroy you.";
+    }
+
+    // ---------------- WARNING ----------------
+    public void ShowMacrophageWarning(int wave)
+    {
+        isPanelActive = true;
+        isIntroPanel = false;
+
+        objectivePanel.SetActive(true);
+
+        if (gameTimer != null)
+            gameTimer.timerActive = false;
+
+        titleText.text = "Immune Response Increasing";
+
+        bodyText.text =
+            "Macrophages have been recruited to the infection site. These immune cells detect, engulf, and destroy infected or foreign particles.\n\n" +
+            "What this means:\n" +
+            "The body increases immune presence in infected tissue.\n\n" +
+            "Wave: " + wave;
     }
 
     // ---------------- CLOSE ----------------
@@ -60,25 +89,25 @@ public class ObjectiveManager : MonoBehaviour
         isPanelActive = false;
         objectivePanel.SetActive(false);
 
-        // 🟢 START GAME FLOW HERE
-        if (gameManager != null)
+        // Resume timer
+        if (gameTimer != null)
+            gameTimer.timerActive = true;
+
+        // ONLY start game once (intro)
+        if (isIntroPanel && gameManager != null)
         {
             gameManager.StartGame();
         }
     }
 
-    // ---------------- INPUT ----------------
     bool ShouldClosePanel()
     {
-        // Keyboard
         if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
             return true;
 
-        // Mouse
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
             return true;
 
-        // VR / XR Input Action
         if (closePanelAction != null && closePanelAction.action.WasPressedThisFrame())
             return true;
 

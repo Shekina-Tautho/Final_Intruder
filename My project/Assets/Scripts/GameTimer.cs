@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class GameTimer : MonoBehaviour
 {
@@ -8,14 +9,14 @@ public class GameTimer : MonoBehaviour
     public float startTime = 60f;
     private float currentTime;
 
-    public bool timerActive = false; // ✅ ADD THIS
+    public bool timerActive = false;
 
     private bool dangerMode = false;
 
     [Header("UI")]
     public TextMeshProUGUI timerText;
 
-    [Header("VR Screen Effects (attach from World Space Canvas)")]
+    [Header("VR Screen Effects")]
     public Image vignetteImage;
     public Image flashImage;
 
@@ -45,6 +46,9 @@ public class GameTimer : MonoBehaviour
     public int baseSpawnCount = 2;
     private int currentWave = 1;
 
+    // ✅ EVENT
+    public Action<int> OnMacrophageWaveSpawn;
+
     void Start()
     {
         currentTime = startTime;
@@ -53,7 +57,6 @@ public class GameTimer : MonoBehaviour
 
     void Update()
     {
-        // ❗ THIS IS THE FIX THAT WAS MISSING
         if (!timerActive) return;
 
         currentTime -= Time.deltaTime;
@@ -73,29 +76,17 @@ public class GameTimer : MonoBehaviour
         UpdateTimerUI();
     }
 
-    // ---------------- TIMER UI ----------------
     void UpdateTimerUI()
     {
         int seconds = Mathf.CeilToInt(currentTime);
         timerText.text = seconds.ToString();
     }
 
-    // ---------------- DANGER MODE ----------------
     void HandleDangerMode()
     {
-        if (currentTime <= 5f)
-        {
-            dangerMode = true;
-            timerText.color = Color.red;
-        }
-        else
-        {
-            dangerMode = false;
-            timerText.color = Color.white;
-        }
+        timerText.color = (currentTime <= 5f) ? Color.red : Color.white;
     }
 
-    // ---------------- BEEP SYSTEM ----------------
     void HandleBeepWarning()
     {
         if (currentTime <= 5f)
@@ -119,25 +110,17 @@ public class GameTimer : MonoBehaviour
         }
     }
 
-    // ---------------- VR SCREEN EFFECTS ----------------
     void HandleScreenEffects()
     {
         if (vignetteImage != null)
         {
-            if (currentTime <= 5f)
-            {
-                float pulse = 0.08f + Mathf.Sin(Time.time * 4f) * 0.04f;
+            float target = (currentTime <= 5f)
+                ? 0.08f + Mathf.Sin(Time.time * 4f) * 0.04f
+                : 0f;
 
-                Color c = vignetteImage.color;
-                c.a = Mathf.Lerp(c.a, pulse, Time.deltaTime * 3f);
-                vignetteImage.color = c;
-            }
-            else
-            {
-                Color c = vignetteImage.color;
-                c.a = Mathf.Lerp(c.a, 0f, Time.deltaTime * 5f);
-                vignetteImage.color = c;
-            }
+            Color c = vignetteImage.color;
+            c.a = Mathf.Lerp(c.a, target, Time.deltaTime * 3f);
+            vignetteImage.color = c;
         }
 
         if (flashValue > 0f)
@@ -153,7 +136,6 @@ public class GameTimer : MonoBehaviour
         }
     }
 
-    // ---------------- SPAWNING ----------------
     void SpawnWave()
     {
         int spawnCount = baseSpawnCount + currentWave;
@@ -165,7 +147,7 @@ public class GameTimer : MonoBehaviour
 
         for (int i = 0; i < spawnCount; i++)
         {
-            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            Transform spawnPoint = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
 
             GameObject obj = Instantiate(macrophagePrefab, spawnPoint.position, Quaternion.identity);
 
@@ -180,11 +162,14 @@ public class GameTimer : MonoBehaviour
 
             if (paths.Length > 0)
             {
-                Transform[] chosenPath = paths[Random.Range(0, paths.Length)].points;
+                Transform[] chosenPath = paths[UnityEngine.Random.Range(0, paths.Length)].points;
                 fsm.patrolPoints = chosenPath;
             }
         }
 
-        Debug.Log("Spawned Wave: " + currentWave + " | Count: " + spawnCount);
+        Debug.Log("Spawned Wave: " + currentWave);
+
+        // ✅ Trigger UI event
+        OnMacrophageWaveSpawn?.Invoke(currentWave);
     }
 }

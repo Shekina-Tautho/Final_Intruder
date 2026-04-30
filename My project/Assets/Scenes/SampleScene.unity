@@ -12354,7 +12354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a756b631f5d882438fb3d51a63294cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 400
+  startTime: 15
   timerActive: 0
   timerText: {fileID: 227639658}
   vignetteImage: {fileID: 871129319}
@@ -19504,7 +19504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1175245014
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39241,6 +39241,7 @@ MonoBehaviour:
   infectionUI: {fileID: 1584918146}
   staminaUI: {fileID: 1055759823}
   lifeUI: {fileID: 1663352072}
+  outlineUI: {fileID: 1890010642}
   winTarget: 1
 --- !u!4 &2099246382
 Transform:
@@ -39273,6 +39274,7 @@ MonoBehaviour:
   titleText: {fileID: 1744229235}
   bodyText: {fileID: 1512157522}
   gameManager: {fileID: 2099246381}
+  gameTimer: {fileID: 725567708}
   closePanelAction: {fileID: -3885534370008993427, guid: 65f799b75dd3ef74f839548b69a20cbb, type: 3}
 --- !u!1001 &2113673757
 PrefabInstance:

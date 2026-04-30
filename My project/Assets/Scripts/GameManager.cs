@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject infectionUI;
     public GameObject staminaUI;
     public GameObject lifeUI;
+    public GameObject outlineUI;
 
     [Header("Win Condition")]
     public int winTarget = 10;
@@ -34,12 +35,14 @@ public class GameManager : MonoBehaviour
         {
             gameTimer.timerActive = false;
         }
+        
 
         // Hide ALL UI at start
         if (timerUI != null) timerUI.SetActive(false);
         if (infectionUI != null) infectionUI.SetActive(false);
         if (staminaUI != null) staminaUI.SetActive(false);
         if (lifeUI != null) lifeUI.SetActive(false);
+        if (outlineUI != null) outlineUI.SetActive(false);
     }
 
     void Update()
@@ -78,7 +81,7 @@ public class GameManager : MonoBehaviour
 
         foreach (EpithelialInfectVisual cell in cells)
         {
-            float delay = Random.Range(0f, 5f);
+            float delay = UnityEngine.Random.Range(0f, 5f);
             cell.StartInfection(delay);
         }
     }
@@ -112,5 +115,6 @@ public class GameManager : MonoBehaviour
         if (infectionUI != null) infectionUI.SetActive(true);
         if (staminaUI != null) staminaUI.SetActive(true);
         if (lifeUI != null) lifeUI.SetActive(true);
+        if (outlineUI != null) outlineUI.SetActive(true);
     }
 }
