@@ -9,16 +9,29 @@ public class ObjectiveManager : MonoBehaviour
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI bodyText;
 
+    [Header("Input (VR / New Input System)")]
+    public InputActionReference closePanelAction;
+
     private bool isPanelActive = false;
+
+    // ---------------- LIFECYCLE ----------------
+    void OnEnable()
+    {
+        if (closePanelAction != null)
+            closePanelAction.action.Enable();
+    }
+
+    void OnDisable()
+    {
+        if (closePanelAction != null)
+            closePanelAction.action.Disable();
+    }
 
     void Update()
     {
-        if (isPanelActive)
+        if (isPanelActive && ShouldClosePanel())
         {
-            if (ShouldClosePanel())
-            {
-                HidePanel();
-            }
+            HidePanel();
         }
     }
 
@@ -49,24 +62,18 @@ public class ObjectiveManager : MonoBehaviour
     // ---------------- INPUT ----------------
     bool ShouldClosePanel()
     {
-        // Keyboard
+        // Keyboard (any key)
         if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
             return true;
 
-        // Mouse
+        // Mouse click (left button)
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
             return true;
 
-        // VR placeholder
-        if (CheckVRInput())
+        // VR / XR Input Action (REAL FIX)
+        if (closePanelAction != null && closePanelAction.action.WasPressedThisFrame())
             return true;
 
-        return false;
-    }
-
-    bool CheckVRInput()
-    {
-        // Future XR integration goes here
         return false;
     }
 }

@@ -39266,6 +39266,7 @@ MonoBehaviour:
   objectivePanel: {fileID: 1175245013}
   titleText: {fileID: 1744229235}
   bodyText: {fileID: 1512157522}
+  closePanelAction: {fileID: -3885534370008993427, guid: 65f799b75dd3ef74f839548b69a20cbb, type: 3}
 --- !u!1001 &2113673757
 PrefabInstance:
   m_ObjectHideFlags: 0
