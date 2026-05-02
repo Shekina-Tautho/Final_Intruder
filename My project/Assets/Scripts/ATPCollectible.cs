@@ -7,7 +7,18 @@ public class ATPCollectible : MonoBehaviour
     [Header("VFX")]
     public GameObject burstVFX;
 
+    [Header("SFX")]
+    public AudioSource audioSource;
+    public AudioClip collectClip;
+
     private Transform player;
+
+    private void Awake()
+    {
+        // auto-assign if not manually set
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,10 +33,34 @@ public class ATPCollectible : MonoBehaviour
             stats.AddStamina(staminaRestoreAmount);
         }
 
+        PlayCollectSound();
         PlayBurst();
-        StartCoroutine(AttractParticles());
 
-        Destroy(gameObject, 0.1f);
+        // delay destroy slightly more safely
+        Destroy(gameObject);
+    }
+
+    void PlayCollectSound()
+    {
+        if (collectClip == null) return;
+
+        // Create temporary audio object (SAFE METHOD)
+        GameObject audioObj = new GameObject("ATP_SFX");
+        audioObj.transform.position = transform.position;
+
+        AudioSource src = audioObj.AddComponent<AudioSource>();
+
+        src.clip = collectClip;
+        src.spatialBlend = 1f; // 3D sound
+        src.minDistance = 1f;
+        src.maxDistance = 15f;
+        src.rolloffMode = AudioRolloffMode.Logarithmic;
+        src.volume = 1f;
+
+        src.Play();
+        Debug.Log("ATP SOUND PLAYED");
+
+        Destroy(audioObj, collectClip.length + 0.1f);
     }
 
     void PlayBurst()
@@ -33,26 +68,6 @@ public class ATPCollectible : MonoBehaviour
         if (burstVFX != null)
         {
             Instantiate(burstVFX, transform.position, Quaternion.identity);
-        }
-    }
-
-    System.Collections.IEnumerator AttractParticles()
-    {
-        float t = 0;
-        float duration = 0.3f;
-
-        while (t < duration)
-        {
-            t += Time.deltaTime;
-
-            // pull object slightly toward player (illusion effect)
-            transform.position = Vector3.Lerp(
-                transform.position,
-                player.position,
-                t / duration
-            );
-
-            yield return null;
         }
     }
 }
