@@ -16,6 +16,10 @@ public class ObjectiveManager : MonoBehaviour
     [Header("Input")]
     public InputActionReference closePanelAction;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip closePanelClip;
+
     private bool isPanelActive = false;
     private bool isIntroPanel = false;
     private bool hasShownMacrophageWarning = false;
@@ -41,14 +45,27 @@ public class ObjectiveManager : MonoBehaviour
         {
             gameTimer.OnMacrophageWaveSpawn += ShowMacrophageWarning;
         }
+
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         if (isPanelActive && ShouldClosePanel())
         {
+            PlayCloseSound();
             HidePanel();
         }
+    }
+
+    // ---------------- AUDIO ----------------
+    void PlayCloseSound()
+    {
+        if (audioSource == null || closePanelClip == null) return;
+
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
+        audioSource.PlayOneShot(closePanelClip);
     }
 
     // ---------------- INTRO ----------------
@@ -56,13 +73,12 @@ public class ObjectiveManager : MonoBehaviour
     {
         isPanelActive = true;
         isIntroPanel = true;
-        
+
         isEndGamePanel = false;
         isGameplayPausePanel = false;
 
         objectivePanel.SetActive(true);
 
-        // 🔴 Hide UI
         if (gameManager != null)
             gameManager.HideGameplayUI();
 
@@ -74,7 +90,7 @@ public class ObjectiveManager : MonoBehaviour
             "Avoid macrophages that will attempt to destroy you.";
     }
 
-    // ---------------- WARNING (ONLY ONCE) ----------------
+    // ---------------- WARNING ----------------
     public void ShowMacrophageWarning(int wave)
     {
         if (hasShownMacrophageWarning) return;
@@ -89,11 +105,9 @@ public class ObjectiveManager : MonoBehaviour
 
         objectivePanel.SetActive(true);
 
-        // ⛔ Pause timer
         if (gameTimer != null)
             gameTimer.timerActive = false;
 
-        // 🔴 Hide UI
         if (gameManager != null)
             gameManager.HideGameplayUI();
 
@@ -105,7 +119,7 @@ public class ObjectiveManager : MonoBehaviour
             "The body increases immune presence in infected tissue.";
     }
 
-// ---------------- WIN PANEL ----------------
+    // ---------------- WIN PANEL ----------------
     public void ShowWinPanel()
     {
         isPanelActive = true;
@@ -118,7 +132,7 @@ public class ObjectiveManager : MonoBehaviour
 
         titleText.text = "Infection Successful";
 
-         bodyText.text =
+        bodyText.text =
         "You have successfully infected a sufficient number of epithelial cells. Viral replication has overcome initial immune resistance in this region.\n\n" +
         "Infected cells now act as viral production sites, accelerating spread across surrounding tissue.\n\n" +
         "What happens next:\n" +
@@ -151,7 +165,6 @@ public class ObjectiveManager : MonoBehaviour
         isPanelActive = false;
         objectivePanel.SetActive(false);
 
-        // ONLY resume gameplay for intro or warning panels
         if (!isEndGamePanel)
         {
             if (gameTimer != null)
@@ -161,7 +174,6 @@ public class ObjectiveManager : MonoBehaviour
                 gameManager.ShowGameplayUI();
         }
 
-        // Start game only once after intro
         if (isIntroPanel && gameManager != null)
         {
             gameManager.StartGame();
