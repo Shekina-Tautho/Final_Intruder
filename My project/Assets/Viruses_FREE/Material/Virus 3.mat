@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Virus 3
   m_Shader: {fileID: -6465566751694194690, guid: a031af290658b214ca54e0862e1290e1, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -17,6 +19,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -80,6 +83,7 @@ Material:
     - _Color_2: {r: 0.41568628, g: 0.058823522, b: 0.23010524, a: 0}
     - _Color_3_Overlay: {r: 0.509434, g: 0.035438888, b: 0, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &8501094180422374758
 MonoBehaviour:
   m_ObjectHideFlags: 11
