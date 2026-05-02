@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour
     public float maxStamina = 100f;
     public float currentStamina;
 
-    public float staminaDrainRate = 25f;   // how fast boost drains
+    public float staminaDrainRate = 10f;   // how fast boost drains
     public float staminaRegenRate = 15f;   // how fast it recovers
     public float staminaRegenDelay = 1.5f; // delay before regen starts
 

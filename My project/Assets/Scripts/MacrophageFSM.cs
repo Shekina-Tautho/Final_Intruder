@@ -159,6 +159,7 @@ public class MacrophageFSM : MonoBehaviour
     {
         StopAttackSound();
 
+        // ✅ FIX: only start if not already playing
         if (!chaseSoundPlaying)
         {
             StartChaseSound();
@@ -188,7 +189,7 @@ public class MacrophageFSM : MonoBehaviour
         }
     }
 
-    // ---------------- ATTACK (FIXED DAMAGE SYSTEM) ----------------
+    // ---------------- ATTACK ----------------
     void AttackState(float distance)
     {
         StopChaseSound();
@@ -200,7 +201,6 @@ public class MacrophageFSM : MonoBehaviour
 
         MoveTo(transform.position, 0f);
 
-        // 🔥 APPLY DAMAGE (frame-safe)
         if (playerStats != null)
         {
             playerStats.TakeDamage(damagePerSecond * Time.deltaTime);
