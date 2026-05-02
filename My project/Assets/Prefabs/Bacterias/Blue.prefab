@@ -326,6 +326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6254741471313370403}
+  - component: {fileID: 5487919790930003375}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Untagged
@@ -354,6 +355,24 @@ Transform:
   - {fileID: 3271330884184688318}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!114 &5487919790930003375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010019756018091435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83bbc8b2f280b05498e3dec54ac4bb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDirection: {x: 0, y: 0, z: -1}
+  resetDistance: 50
+  minSpeed: 0.5
+  maxSpeed: 3
+  driftAmount: 0.05
+  driftSpeed: 0.6
 --- !u!1 &2058920903020402575
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,10 +66,36 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 424940cde8019a34da0272bb4970a032, type: 2}
     - target: {fileID: 919132149155446097, guid: ba197811aa07dd446ae2c854bcfb6a69, type: 3}
       propertyPath: m_Name
-      value: Virus 2
+      value: orange
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ba197811aa07dd446ae2c854bcfb6a69, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -938223689055168491}
   m_SourcePrefab: {fileID: 100100000, guid: ba197811aa07dd446ae2c854bcfb6a69, type: 3}
+--- !u!1 &3241446616378231737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ba197811aa07dd446ae2c854bcfb6a69, type: 3}
+  m_PrefabInstance: {fileID: 2322317369546962664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-938223689055168491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3241446616378231737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83bbc8b2f280b05498e3dec54ac4bb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDirection: {x: 0, y: 0, z: -1}
+  resetDistance: 50
+  minSpeed: 0.4
+  maxSpeed: 1
+  driftAmount: 0.03
+  driftSpeed: 0.5
