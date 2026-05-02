@@ -20,7 +20,7 @@ public class MacrophageFSM : MonoBehaviour
     public Transform[] patrolPoints;
 
     [Header("Combat")]
-    public float damagePerSecond = 10f;
+    public float damagePerSecond = 5f;
 
     [Header("Movement")]
     public float patrolSpeed = 2f;
@@ -39,6 +39,17 @@ public class MacrophageFSM : MonoBehaviour
     public float alertDuration = 0.7f;
     public float shakeIntensity = 0.1f;
 
+    [Header("Spatial Audio")]
+    public AudioSource audioSource;
+
+    public AudioClip alertClip;
+    public AudioClip chaseLoopClip;
+    public AudioClip attackClip;
+
+    private bool chaseSoundPlaying = false;
+    private bool alertSoundPlayed = false;
+    private bool attackSoundPlaying = false;
+
     private float alertTimer;
 
     private int patrolIndex = 0;
@@ -52,6 +63,11 @@ public class MacrophageFSM : MonoBehaviour
         originalPosition = transform.position;
 
         patrolCenter = GetPatrolCenter();
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     void Update()
@@ -87,6 +103,11 @@ public class MacrophageFSM : MonoBehaviour
     // ---------------- PATROL ----------------
     void PatrolState(float distance)
     {
+        StopChaseSound();
+        StopAttackSound();
+
+        alertSoundPlayed = false;
+
         if (patrolPoints.Length == 0) return;
 
         Transform target = patrolPoints[patrolIndex];
@@ -108,6 +129,19 @@ public class MacrophageFSM : MonoBehaviour
     // ---------------- ALERT ----------------
     void AlertState()
     {
+        StopChaseSound();
+        StopAttackSound();
+
+        if (!alertSoundPlayed)
+        {
+            if (audioSource != null && alertClip != null)
+            {
+                audioSource.PlayOneShot(alertClip, 2f);
+            }
+
+            alertSoundPlayed = true;
+        }
+
         alertTimer -= Time.deltaTime;
 
         Vector3 shakeOffset = Random.insideUnitSphere * shakeIntensity;
@@ -123,6 +157,13 @@ public class MacrophageFSM : MonoBehaviour
     // ---------------- CHASE ----------------
     void ChaseState(float distance)
     {
+        StopAttackSound();
+
+        if (!chaseSoundPlaying)
+        {
+            StartChaseSound();
+        }
+
         float distanceFromCenter = Vector3.Distance(transform.position, patrolCenter);
 
         if (distanceFromCenter > patrolRadius)
@@ -150,6 +191,13 @@ public class MacrophageFSM : MonoBehaviour
     // ---------------- ATTACK (FIXED DAMAGE SYSTEM) ----------------
     void AttackState(float distance)
     {
+        StopChaseSound();
+
+        if (!attackSoundPlaying)
+        {
+            StartAttackSound();
+        }
+
         MoveTo(transform.position, 0f);
 
         // 🔥 APPLY DAMAGE (frame-safe)
@@ -162,11 +210,13 @@ public class MacrophageFSM : MonoBehaviour
 
         if (distance > attackRange)
         {
+            StopAttackSound();
             currentState = State.Chase;
         }
 
         if (distance > detectionRange)
         {
+            StopAttackSound();
             returnIndex = GetNearestPatrolPointIndex();
             currentState = State.ReturnToPatrol;
         }
@@ -175,6 +225,11 @@ public class MacrophageFSM : MonoBehaviour
     // ---------------- RETURN ----------------
     void ReturnToPatrolState()
     {
+        StopChaseSound();
+        StopAttackSound();
+
+        alertSoundPlayed = false;
+
         if (patrolPoints.Length == 0) return;
 
         Transform target = patrolPoints[returnIndex];
@@ -185,6 +240,53 @@ public class MacrophageFSM : MonoBehaviour
             patrolIndex = returnIndex;
             currentState = State.Patrol;
         }
+    }
+
+    // ---------------- AUDIO ----------------
+    void StartChaseSound()
+    {
+        if (audioSource == null || chaseLoopClip == null) return;
+
+        audioSource.clip = chaseLoopClip;
+        audioSource.loop = true;
+        audioSource.Play();
+
+        chaseSoundPlaying = true;
+    }
+
+    void StopChaseSound()
+    {
+        if (!chaseSoundPlaying) return;
+
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+        }
+
+        chaseSoundPlaying = false;
+    }
+
+    void StartAttackSound()
+    {
+        if (audioSource == null || attackClip == null) return;
+
+        audioSource.clip = attackClip;
+        audioSource.loop = true;
+        audioSource.Play();
+
+        attackSoundPlaying = true;
+    }
+
+    void StopAttackSound()
+    {
+        if (!attackSoundPlaying) return;
+
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+        }
+
+        attackSoundPlaying = false;
     }
 
     // ---------------- UTIL ----------------
