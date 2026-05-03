@@ -76,6 +76,14 @@ public class MacrophageFSM : MonoBehaviour
     {
         if (player == null) return;
 
+        // ✅ NEW: global stop if player is dead
+        if (playerStats != null && playerStats.isDead)
+        {
+            StopAttackSound();
+            StopChaseSound();
+            return;
+        }
+
         float distance = Vector3.Distance(transform.position, player.position);
 
         switch (currentState)
@@ -198,6 +206,14 @@ public class MacrophageFSM : MonoBehaviour
     // ---------------- ATTACK ----------------
     void AttackState(float distance)
     {
+        // ✅ NEW: stop everything if player is dead
+        if (playerStats != null && playerStats.isDead)
+        {
+            StopAttackSound();
+            currentState = State.ReturnToPatrol;
+            return;
+        }
+
         StopChaseSound();
 
         if (!attackSoundPlaying)
