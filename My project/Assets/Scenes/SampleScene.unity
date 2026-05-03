@@ -102379,6 +102379,7 @@ MonoBehaviour:
   closePanelAction: {fileID: -3885534370008993427, guid: 65f799b75dd3ef74f839548b69a20cbb, type: 3}
   audioSource: {fileID: 2099246384}
   closePanelClip: {fileID: 8300000, guid: bb1b02ff93683304d88897ff999ad1d0, type: 3}
+  openPanelClip: {fileID: 8300000, guid: 546218cff919f6b4c92b8b50e53e5022, type: 3}
 --- !u!82 &2099246384
 AudioSource:
   m_ObjectHideFlags: 0

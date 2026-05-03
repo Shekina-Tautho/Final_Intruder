@@ -20,6 +20,9 @@ public class ObjectiveManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip closePanelClip;
 
+    [Header("Panel Audio")]
+    public AudioClip openPanelClip;
+
     private bool isPanelActive = false;
     private bool isIntroPanel = false;
     private bool hasShownMacrophageWarning = false;
@@ -59,6 +62,14 @@ public class ObjectiveManager : MonoBehaviour
         }
     }
 
+    void PlayOpenSound()
+    {
+        if (audioSource == null || openPanelClip == null) return;
+
+        audioSource.pitch = 1f;
+        audioSource.PlayOneShot(openPanelClip);
+    }
+
     // ---------------- AUDIO ----------------
     void PlayCloseSound()
     {
@@ -85,9 +96,10 @@ public class ObjectiveManager : MonoBehaviour
         titleText.text = "Mission Start: Influenza Virus";
 
         bodyText.text =
-            "You are a viral particle entering human epithelial tissue.\n\n" +
-            "Objective:\nInfect 10 cells.\n\n" +
-            "Avoid macrophages that will attempt to destroy you.";
+            "You are a viral particle entering human epithelial tissue. Your goal is to infect host cells and spread by targeting glowing vulnerable tissue clusters. \n\n" +
+            "Macrophages and other immune cells patrol this environment to detect and eliminate pathogens. \n\n" +
+            "Objective:\nInfect epithelial cells and reach the required infection count of 10 to establish successful viral spread. \n\n" +
+            "In real influenza infections, viruses target respiratory epithelial cells to replicate.";
     }
 
     // ---------------- WARNING ----------------
@@ -130,6 +142,8 @@ public class ObjectiveManager : MonoBehaviour
 
         objectivePanel.SetActive(true);
 
+        PlayOpenSound();
+
         titleText.text = "Infection Successful";
 
         bodyText.text =
@@ -150,6 +164,8 @@ public class ObjectiveManager : MonoBehaviour
 
         objectivePanel.SetActive(true);
 
+        PlayOpenSound();
+
         titleText.text = "Infection Contained";
 
         bodyText.text =
@@ -165,14 +181,22 @@ public class ObjectiveManager : MonoBehaviour
         isPanelActive = false;
         objectivePanel.SetActive(false);
 
-        if (!isEndGamePanel)
+        // ✅ IF END GAME → GO TO MENU
+        if (isEndGamePanel)
         {
-            if (gameTimer != null)
-                gameTimer.timerActive = true;
-
             if (gameManager != null)
-                gameManager.ShowGameplayUI();
+            {
+                gameManager.ExitToMenu();
+            }
+            return;
         }
+
+        // NORMAL GAME FLOW
+        if (gameTimer != null)
+            gameTimer.timerActive = true;
+
+        if (gameManager != null)
+            gameManager.ShowGameplayUI();
 
         if (isIntroPanel && gameManager != null)
         {
