@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 using System.Collections;
 
 public class GameManager : MonoBehaviour
@@ -27,27 +28,35 @@ public class GameManager : MonoBehaviour
     [Header("Return Delay")]
     public float returnToMenuDelay = 5f;
 
+    [Header("Infection Feedback")]
+    public AudioSource infectionAudioSource;
+    public AudioClip squelchClip;
+    public AudioClip pointClip;
+
+    [Header("UI Feedback")]
+    public TextMeshProUGUI infectionText; // ✅ TEXT instead of Image
+    public Color normalColor = Color.white;
+    public Color successColor = Color.yellow;
+
+    private Coroutine infectionFlashRoutine;
+
     private bool hasWon = false;
     private bool hasLost = false;
 
     void Start()
     {
-        // Show intro panel
         if (objectiveManager != null)
         {
             objectiveManager.ShowIntroObjective();
         }
 
-        // Stop timer at start
         if (gameTimer != null)
         {
             gameTimer.timerActive = false;
         }
 
-        // Hide gameplay UI at start
         HideGameplayUI();
 
-        // Safety reset
         Time.timeScale = 1f;
     }
 
@@ -90,6 +99,68 @@ public class GameManager : MonoBehaviour
         if (outlineUI != null) outlineUI.SetActive(false);
     }
 
+    // ---------------- INFECTION FEEDBACK ----------------
+    public void PlayInfectionFeedback()
+    {
+        if (infectionFlashRoutine != null)
+        {
+            StopCoroutine(infectionFlashRoutine);
+        }
+
+        infectionFlashRoutine = StartCoroutine(InfectionSequence());
+    }
+
+    IEnumerator InfectionSequence()
+    {
+        // 1. SQUELCH
+        if (infectionAudioSource != null && squelchClip != null)
+        {
+            infectionAudioSource.PlayOneShot(squelchClip);
+        }
+
+        yield return new WaitForSeconds(0.18f);
+
+        // 2. POINT SOUND
+        if (infectionAudioSource != null && pointClip != null)
+        {
+            infectionAudioSource.PlayOneShot(pointClip);
+        }
+
+        // small delay so it "hits"
+        yield return new WaitForSeconds(0.05f);
+
+        // 3. TEXT COLOR FLASH
+        if (infectionText != null)
+        {
+            yield return StartCoroutine(FlashInfectionText());
+        }
+    }
+
+    IEnumerator FlashInfectionText()
+    {
+        float duration = 0.25f;
+        float timer = 0f;
+
+        // instant yellow
+        infectionText.color = successColor;
+
+        // fade back to white
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+
+            infectionText.color = Color.Lerp(
+                successColor,
+                normalColor,
+                timer / duration
+            );
+
+            yield return null;
+        }
+
+        infectionText.color = normalColor;
+    }
+
     // ---------------- WIN ----------------
     void WinGame()
     {
@@ -97,16 +168,13 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("WIN → Epithelial infection spreading");
 
-        // Stop timer
         if (gameTimer != null)
         {
             gameTimer.timerActive = false;
         }
 
-        // Hide gameplay UI
         HideGameplayUI();
 
-        // Infect all epithelial cells
         EpithelialInfectVisual[] cells = FindObjectsOfType<EpithelialInfectVisual>();
 
         float longestDelay = 0f;
@@ -114,7 +182,6 @@ public class GameManager : MonoBehaviour
         foreach (EpithelialInfectVisual cell in cells)
         {
             float delay = Random.Range(0f, 5f);
-
             cell.StartInfection(delay);
 
             if (delay > longestDelay)
@@ -123,7 +190,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // Wait for infection animation
         StartCoroutine(ShowWinAfterInfection(longestDelay + 2f));
     }
 
@@ -131,19 +197,15 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        // Show panel
         if (objectiveManager != null)
         {
             objectiveManager.ShowWinPanel();
         }
 
-        // Freeze game
         Time.timeScale = 0f;
 
-        // Wait using realtime
         yield return new WaitForSecondsRealtime(returnToMenuDelay);
 
-        // Resume before loading scene
         Time.timeScale = 1f;
 
         SceneManager.LoadScene(mainMenuScene);
@@ -156,40 +218,31 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("LOSE → Infection Contained");
 
-        // Stop timer
         if (gameTimer != null)
         {
             gameTimer.timerActive = false;
         }
 
-        // Hide gameplay UI
         HideGameplayUI();
 
-        // Slow motion effect
         Time.timeScale = 0.5f;
 
-        // Show lose flow
         StartCoroutine(ShowLosePanelDelay());
     }
 
     IEnumerator ShowLosePanelDelay()
     {
-        // Dramatic pause
         yield return new WaitForSecondsRealtime(1.5f);
 
-        // Show lose panel
         if (objectiveManager != null)
         {
             objectiveManager.ShowLosePanel();
         }
 
-        // Freeze game
         Time.timeScale = 0f;
 
-        // Wait before returning to menu
         yield return new WaitForSecondsRealtime(returnToMenuDelay);
 
-        // Restore time before changing scenes
         Time.timeScale = 1f;
 
         SceneManager.LoadScene(mainMenuScene);
