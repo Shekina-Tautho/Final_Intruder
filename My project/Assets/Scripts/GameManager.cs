@@ -25,16 +25,16 @@ public class GameManager : MonoBehaviour
     [Header("Scene Flow")]
     public string mainMenuScene = "MainMenu";
 
-    [Header("Return Delay")]
-    public float returnToMenuDelay = 5f;
-
     [Header("Infection Feedback")]
     public AudioSource infectionAudioSource;
     public AudioClip squelchClip;
     public AudioClip pointClip;
 
+    [Header("Win Audio")]
+    public AudioClip winClip;
+
     [Header("UI Feedback")]
-    public TextMeshProUGUI infectionText; // ✅ TEXT instead of Image
+    public TextMeshProUGUI infectionText;
     public Color normalColor = Color.white;
     public Color successColor = Color.yellow;
 
@@ -42,21 +42,21 @@ public class GameManager : MonoBehaviour
 
     private bool hasWon = false;
     private bool hasLost = false;
+    private bool waitingForPlayerExit = false;
+
+    [Header("External Audio Controllers")]
+    public MusicManager musicManager;
+    public BackgroundHeartbeat heartbeatManager;
 
     void Start()
     {
         if (objectiveManager != null)
-        {
             objectiveManager.ShowIntroObjective();
-        }
 
         if (gameTimer != null)
-        {
             gameTimer.timerActive = false;
-        }
 
         HideGameplayUI();
-
         Time.timeScale = 1f;
     }
 
@@ -65,14 +65,12 @@ public class GameManager : MonoBehaviour
         if (playerStats == null) return;
         if (hasWon || hasLost) return;
 
-        // WIN CONDITION
         if (playerStats.infectionCount >= winTarget)
         {
             WinGame();
             return;
         }
 
-        // LOSE CONDITION
         if (playerStats.currentLife <= 0f)
         {
             LoseGame();
@@ -103,37 +101,25 @@ public class GameManager : MonoBehaviour
     public void PlayInfectionFeedback()
     {
         if (infectionFlashRoutine != null)
-        {
             StopCoroutine(infectionFlashRoutine);
-        }
 
         infectionFlashRoutine = StartCoroutine(InfectionSequence());
     }
 
     IEnumerator InfectionSequence()
     {
-        // 1. SQUELCH
         if (infectionAudioSource != null && squelchClip != null)
-        {
             infectionAudioSource.PlayOneShot(squelchClip);
-        }
 
         yield return new WaitForSeconds(0.18f);
 
-        // 2. POINT SOUND
         if (infectionAudioSource != null && pointClip != null)
-        {
             infectionAudioSource.PlayOneShot(pointClip);
-        }
 
-        // small delay so it "hits"
         yield return new WaitForSeconds(0.05f);
 
-        // 3. TEXT COLOR FLASH
         if (infectionText != null)
-        {
             yield return StartCoroutine(FlashInfectionText());
-        }
     }
 
     IEnumerator FlashInfectionText()
@@ -141,10 +127,8 @@ public class GameManager : MonoBehaviour
         float duration = 0.25f;
         float timer = 0f;
 
-        // instant yellow
         infectionText.color = successColor;
 
-        // fade back to white
         while (timer < duration)
         {
             timer += Time.deltaTime;
@@ -169,46 +153,71 @@ public class GameManager : MonoBehaviour
         Debug.Log("WIN → Epithelial infection spreading");
 
         if (gameTimer != null)
-        {
             gameTimer.timerActive = false;
-        }
 
         HideGameplayUI();
 
-        EpithelialInfectVisual[] cells = FindObjectsOfType<EpithelialInfectVisual>();
+        // STOP MUSIC
+        if (musicManager != null && musicManager.audioSource != null)
+        {
+            musicManager.audioSource.Stop();
+        }
 
-        float longestDelay = 0f;
+        // STOP HEARTBEAT
+        if (heartbeatManager != null && heartbeatManager.audioSource != null)
+        {
+            heartbeatManager.audioSource.Stop();
+            heartbeatManager.StopAllCoroutines();
+        }
+
+        // PLAY VISUAL EFFECTS
+        EpithelialInfectVisual[] cells = FindObjectsOfType<EpithelialInfectVisual>();
 
         foreach (EpithelialInfectVisual cell in cells)
         {
             float delay = Random.Range(0f, 5f);
             cell.StartInfection(delay);
+        }
 
-            if (delay > longestDelay)
+        MacrophageDeath[] macrophages = FindObjectsOfType<MacrophageDeath>();
+
+        foreach (MacrophageDeath m in macrophages)
+        {
+            if (m != null)
             {
-                longestDelay = delay;
+                float delay = Random.Range(0f, 1.2f);
+                m.TriggerDeath(delay);
             }
         }
 
-        StartCoroutine(ShowWinAfterInfection(longestDelay + 2f));
+        // START WIN SEQUENCE (NO DELAY)
+        StartCoroutine(WinSequence());
     }
 
-    IEnumerator ShowWinAfterInfection(float waitTime)
+    IEnumerator WinSequence()
     {
-        yield return new WaitForSeconds(waitTime);
+        // PLAY WIN SOUND IMMEDIATELY
+        if (infectionAudioSource != null && winClip != null)
+        {
+            infectionAudioSource.Stop();
+            infectionAudioSource.clip = winClip;
+            infectionAudioSource.Play();
+        }
 
+        // WAIT FOR SOUND TO FINISH
+        if (winClip != null)
+            yield return new WaitForSeconds(winClip.length);
+
+        // SHOW WIN PANEL
         if (objectiveManager != null)
         {
             objectiveManager.ShowWinPanel();
         }
 
+        // FREEZE GAME
         Time.timeScale = 0f;
 
-        yield return new WaitForSecondsRealtime(returnToMenuDelay);
-
-        Time.timeScale = 1f;
-
-        SceneManager.LoadScene(mainMenuScene);
+        waitingForPlayerExit = true;
     }
 
     // ---------------- LOSE ----------------
@@ -219,18 +228,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("LOSE → Infection Contained");
 
         if (gameTimer != null)
-        {
             gameTimer.timerActive = false;
-        }
 
         HideGameplayUI();
 
         Time.timeScale = 0.5f;
 
-        StartCoroutine(ShowLosePanelDelay());
+        StartCoroutine(LoseSequence());
     }
 
-    IEnumerator ShowLosePanelDelay()
+    IEnumerator LoseSequence()
     {
         yield return new WaitForSecondsRealtime(1.5f);
 
@@ -241,22 +248,23 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0f;
 
-        yield return new WaitForSecondsRealtime(returnToMenuDelay);
+        waitingForPlayerExit = true;
+    }
 
+    // ---------------- EXIT ----------------
+    public void ExitToMenu()
+    {
         Time.timeScale = 1f;
-
         SceneManager.LoadScene(mainMenuScene);
     }
 
-    // ---------------- GAME START ----------------
+    // ---------------- START GAME ----------------
     public void StartGame()
     {
         Debug.Log("GAME STARTED");
 
         if (gameTimer != null)
-        {
             gameTimer.timerActive = true;
-        }
 
         ShowGameplayUI();
     }

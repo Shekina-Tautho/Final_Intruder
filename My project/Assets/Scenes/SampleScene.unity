@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 3561202}
   - component: {fileID: 3561203}
   - component: {fileID: 3561204}
+  - component: {fileID: 3561205}
   m_Layer: 0
   m_Name: Macrophage 3V
   m_TagString: Untagged
@@ -185,6 +186,7 @@ MonoBehaviour:
   alertClip: {fileID: 8300000, guid: fbfe5628c94524747b9e81d152b56cdf, type: 3}
   chaseLoopClip: {fileID: 0}
   attackClip: {fileID: 8300000, guid: f5c886daed14c104a9534c863298ec76, type: 3}
+  isDead: 0
 --- !u!82 &3561204
 AudioSource:
   m_ObjectHideFlags: 0
@@ -282,6 +284,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3561205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3561201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5e97e22428f144a82301caa22bfe6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4811528 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 32d84b0fa74b7f64a89abc7d06469d5e, type: 3}
@@ -2480,6 +2494,7 @@ GameObject:
   - component: {fileID: 161965948}
   - component: {fileID: 161965949}
   - component: {fileID: 161965950}
+  - component: {fileID: 161965951}
   m_Layer: 0
   m_Name: Macrophage 1
   m_TagString: Untagged
@@ -2538,6 +2553,7 @@ MonoBehaviour:
   alertClip: {fileID: 8300000, guid: fbfe5628c94524747b9e81d152b56cdf, type: 3}
   chaseLoopClip: {fileID: 0}
   attackClip: {fileID: 8300000, guid: f5c886daed14c104a9534c863298ec76, type: 3}
+  isDead: 0
 --- !u!82 &161965950
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2635,6 +2651,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &161965951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161965947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5e97e22428f144a82301caa22bfe6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &165896214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 32d84b0fa74b7f64a89abc7d06469d5e, type: 3}
@@ -17074,6 +17102,7 @@ GameObject:
   - component: {fileID: 476558980}
   - component: {fileID: 476558981}
   - component: {fileID: 476558982}
+  - component: {fileID: 476558983}
   m_Layer: 0
   m_Name: Macrophage 2R
   m_TagString: Untagged
@@ -17134,6 +17163,7 @@ MonoBehaviour:
   alertClip: {fileID: 8300000, guid: fbfe5628c94524747b9e81d152b56cdf, type: 3}
   chaseLoopClip: {fileID: 0}
   attackClip: {fileID: 8300000, guid: f5c886daed14c104a9534c863298ec76, type: 3}
+  isDead: 0
 --- !u!82 &476558982
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17231,6 +17261,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &476558983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476558979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5e97e22428f144a82301caa22bfe6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &477730613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24012,7 +24054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a756b631f5d882438fb3d51a63294cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 60
+  startTime: 120
   timerActive: 0
   timerText: {fileID: 227639658}
   vignetteImage: {fileID: 871129319}
@@ -32707,6 +32749,7 @@ GameObject:
   - component: {fileID: 1110421084}
   - component: {fileID: 1110421085}
   - component: {fileID: 1110421086}
+  - component: {fileID: 1110421087}
   m_Layer: 0
   m_Name: Macrophage 3R
   m_TagString: Untagged
@@ -32768,6 +32811,7 @@ MonoBehaviour:
   alertClip: {fileID: 8300000, guid: fbfe5628c94524747b9e81d152b56cdf, type: 3}
   chaseLoopClip: {fileID: 0}
   attackClip: {fileID: 8300000, guid: f5c886daed14c104a9534c863298ec76, type: 3}
+  isDead: 0
 --- !u!82 &1110421086
 AudioSource:
   m_ObjectHideFlags: 0
@@ -32865,6 +32909,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1110421087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110421083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5e97e22428f144a82301caa22bfe6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1111818922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48698,6 +48754,7 @@ GameObject:
   - component: {fileID: 1446944574}
   - component: {fileID: 1446944575}
   - component: {fileID: 1446944576}
+  - component: {fileID: 1446944577}
   m_Layer: 0
   m_Name: Macrophage 2H
   m_TagString: Untagged
@@ -48754,6 +48811,7 @@ MonoBehaviour:
   alertClip: {fileID: 8300000, guid: fbfe5628c94524747b9e81d152b56cdf, type: 3}
   chaseLoopClip: {fileID: 0}
   attackClip: {fileID: 8300000, guid: f5c886daed14c104a9534c863298ec76, type: 3}
+  isDead: 0
 --- !u!82 &1446944576
 AudioSource:
   m_ObjectHideFlags: 0
@@ -48851,6 +48909,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1446944577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446944573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5e97e22428f144a82301caa22bfe6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1450290066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80158,6 +80228,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1777270723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777270718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5e97e22428f144a82301caa22bfe6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1783492259 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 32d84b0fa74b7f64a89abc7d06469d5e, type: 3}
@@ -102251,15 +102333,17 @@ MonoBehaviour:
   staminaUI: {fileID: 1055759823}
   lifeUI: {fileID: 1663352072}
   outlineUI: {fileID: 1890010642}
-  winTarget: 10
+  winTarget: 1
   mainMenuScene: MainMenu
-  returnToMenuDelay: 5
   infectionAudioSource: {fileID: 2099246385}
   squelchClip: {fileID: 8300000, guid: 3f65e063b929b6a42a31bf58afffeebd, type: 3}
   pointClip: {fileID: 8300000, guid: 546218cff919f6b4c92b8b50e53e5022, type: 3}
+  winClip: {fileID: 8300000, guid: 9b8aed77720bc144aa71ea2e2c534e61, type: 3}
   infectionText: {fileID: 1584918148}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   successColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  musicManager: {fileID: 1843960808}
+  heartbeatManager: {fileID: 1544871993}
 --- !u!4 &2099246382
 Transform:
   m_ObjectHideFlags: 0
@@ -103286,6 +103370,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3166322273924173499, guid: 46156f72cc0d53d42b7b751a64f1e11e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1777270720}
+    - targetCorrespondingSourceObject: {fileID: 3166322273924173499, guid: 46156f72cc0d53d42b7b751a64f1e11e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1777270723}
   m_SourcePrefab: {fileID: 100100000, guid: 46156f72cc0d53d42b7b751a64f1e11e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

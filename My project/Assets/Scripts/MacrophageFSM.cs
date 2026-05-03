@@ -57,6 +57,8 @@ public class MacrophageFSM : MonoBehaviour
 
     private Vector3 originalPosition;
 
+    public bool isDead = false;
+
     void Start()
     {
         currentState = State.Patrol;
@@ -129,6 +131,8 @@ public class MacrophageFSM : MonoBehaviour
     // ---------------- ALERT ----------------
     void AlertState()
     {
+        if (isDead) return;
+
         StopChaseSound();
         StopAttackSound();
 
@@ -152,6 +156,8 @@ public class MacrophageFSM : MonoBehaviour
             transform.position = originalPosition;
             currentState = State.Chase;
         }
+
+        
     }
 
     // ---------------- CHASE ----------------
@@ -324,6 +330,8 @@ public class MacrophageFSM : MonoBehaviour
     // ---------------- MOVEMENT ----------------
     void MoveTo(Vector3 target, float speed)
     {
+        if (isDead) return; // 🔥 IMPORTANT LOCK
+
         transform.position = Vector3.MoveTowards(
             transform.position,
             target,
