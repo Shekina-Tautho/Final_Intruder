@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     [Header("Win Audio")]
     public AudioClip winClip;
 
+    [Header("Lose Audio")]
+    public AudioClip loseClip;
+
     [Header("UI Feedback")]
     public TextMeshProUGUI infectionText;
     public Color normalColor = Color.white;
@@ -232,6 +235,20 @@ public class GameManager : MonoBehaviour
 
         HideGameplayUI();
 
+        // ✅ STOP MUSIC
+        if (musicManager != null && musicManager.audioSource != null)
+        {
+            musicManager.audioSource.Stop();
+        }
+
+        // ✅ STOP HEARTBEAT
+        if (heartbeatManager != null && heartbeatManager.audioSource != null)
+        {
+            heartbeatManager.audioSource.Stop();
+            heartbeatManager.StopAllCoroutines();
+        }
+
+        // slight slow motion before audio (optional but nice feel)
         Time.timeScale = 0.5f;
 
         StartCoroutine(LoseSequence());
@@ -239,13 +256,28 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoseSequence()
     {
-        yield return new WaitForSecondsRealtime(1.5f);
+        // small dramatic delay (real-time so unaffected by timescale)
+        yield return new WaitForSecondsRealtime(0.5f);
 
+        // ✅ PLAY LOSE SOUND IMMEDIATELY
+        if (infectionAudioSource != null && loseClip != null)
+        {
+            infectionAudioSource.Stop();
+            infectionAudioSource.clip = loseClip;
+            infectionAudioSource.Play();
+        }
+
+        // ✅ WAIT FULL AUDIO
+        if (loseClip != null)
+            yield return new WaitForSecondsRealtime(loseClip.length);
+
+        // ✅ SHOW LOSE PANEL
         if (objectiveManager != null)
         {
             objectiveManager.ShowLosePanel();
         }
 
+        // ✅ FREEZE GAME
         Time.timeScale = 0f;
 
         waitingForPlayerExit = true;

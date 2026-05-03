@@ -102339,6 +102339,7 @@ MonoBehaviour:
   squelchClip: {fileID: 8300000, guid: 3f65e063b929b6a42a31bf58afffeebd, type: 3}
   pointClip: {fileID: 8300000, guid: 546218cff919f6b4c92b8b50e53e5022, type: 3}
   winClip: {fileID: 8300000, guid: 9b8aed77720bc144aa71ea2e2c534e61, type: 3}
+  loseClip: {fileID: 8300000, guid: 52df83cdbaf78fe4a849a6984c8545fe, type: 3}
   infectionText: {fileID: 1584918148}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   successColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
