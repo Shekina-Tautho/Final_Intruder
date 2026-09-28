@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8716565580629678631}
   - component: {fileID: 2507413398810817101}
   - component: {fileID: 5668311300264611272}
+  - component: {fileID: 645315806523595418}
   m_Layer: 0
   m_Name: VirusNPC
   m_TagString: Untagged
@@ -98,6 +99,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &645315806523595418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279703062920603297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70dbd2c8218db54dab2b4722d7f9d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virusType: A
 --- !u!1001 &2815037443966880492
 PrefabInstance:
   m_ObjectHideFlags: 0
