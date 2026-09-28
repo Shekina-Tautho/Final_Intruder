@@ -48,67 +48,69 @@ public class ReceptorGroup : MonoBehaviour
         }
     }
 
-    public void TryAttach(Virus virus)
+public void TryAttach(Virus virus)
+{
+    if (virus == null)
     {
-        if (virus == null)
-        {
-            Debug.LogWarning("No virus was provided.");
-            return;
-        }
+        Debug.LogWarning("No virus was provided.");
+        return;
+    }
 
-        Receptor closestReceptor = null;
-        float closestDistance = Mathf.Infinity;
+    Receptor closestReceptor = null;
+    float closestDistance = Mathf.Infinity;
 
-        foreach (Receptor receptor in receptors)
-        {
-            float distance = Vector3.Distance(
-                virus.transform.position,
-                receptor.transform.position
-            );
-
-            Debug.Log(
-                receptor.gameObject.name +
-                " distance from virus: " +
-                distance
-            );
-
-            if (distance <= interactionRadius && distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestReceptor = receptor;
-            }
-        }
-
-        if (closestReceptor == null)
-        {
-            Debug.Log("No receptor is within interaction range.");
-            return;
-        }
-
-        Debug.Log(
-            "Closest receptor: " +
-            closestReceptor.gameObject.name +
-            " | Distance: " +
-            closestDistance
+    foreach (Receptor receptor in receptors)
+    {
+        float distance = Vector3.Distance(
+            virus.transform.position,
+            receptor.transform.position
         );
 
-        if (virus.virusType == closestReceptor.receptorType)
+        if (distance <= interactionRadius && distance < closestDistance)
         {
-            Debug.Log(
-                "MATCH! Virus type " +
-                virus.virusType +
-                " matched receptor type " +
-                closestReceptor.receptorType
-            );
-        }
-        else
-        {
-            Debug.Log(
-                "NO MATCH! Virus type " +
-                virus.virusType +
-                " does not match receptor type " +
-                closestReceptor.receptorType
-            );
+            closestDistance = distance;
+            closestReceptor = receptor;
         }
     }
+
+    if (closestReceptor == null)
+    {
+        Debug.Log("No receptor is within interaction range.");
+        return;
+    }
+
+    Debug.Log(
+        "Closest receptor: " +
+        closestReceptor.gameObject.name +
+        " | Distance: " +
+        closestDistance
+    );
+
+    // Check if the virus matches the receptor
+    if (virus.virusType == closestReceptor.receptorType)
+    {
+        Debug.Log(
+            "MATCH! Virus type " +
+            virus.virusType +
+            " matched receptor type " +
+            closestReceptor.receptorType
+        );
+
+        // Tell the virus to move toward the receptor
+        virus.AttachToReceptor(closestReceptor.transform);
+
+        Debug.Log(
+            "RECEPTOR DETECTED - Virus moving toward receptor!"
+        );
+    }
+    else
+    {
+        Debug.Log(
+            "NO MATCH! Virus type " +
+            virus.virusType +
+            " does not match receptor type " +
+            closestReceptor.receptorType
+        );
+    }
+}
 }

@@ -15016,7 +15016,7 @@ Transform:
   m_GameObject: {fileID: 826018864}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 6.9996166, y: -28, z: -20}
+  m_LocalPosition: {x: 6.9996166, y: -28, z: 226}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15341,6 +15341,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virusType: A
+  isAttaching: 0
+  targetReceptor: {fileID: 0}
+  attachmentSpeed: 2
+  attachmentDistance: 0.1
 --- !u!1 &826077605
 GameObject:
   m_ObjectHideFlags: 0
@@ -22890,7 +22894,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 550, y: 90, z: 368.7457}
-  m_Center: {x: 0, y: -3.966366, z: 227.55835}
+  m_Center: {x: 0, y: -6.7, z: 227.55835}
 --- !u!1001 &1231968334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44208,7 +44212,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 550, y: 90, z: 355.51614}
-  m_Center: {x: 0, y: -3.966366, z: 222.92769}
+  m_Center: {x: 0, y: -6.7, z: 222.92769}
 --- !u!1 &1995709085
 GameObject:
   m_ObjectHideFlags: 0
