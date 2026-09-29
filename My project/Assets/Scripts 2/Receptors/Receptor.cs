@@ -5,9 +5,6 @@ public class Receptor : MonoBehaviour
 {
     public string receptorType;
 
-    [Header("Animation")]
-    public AnimationClip matchAnimation;
-
     private Animator animator;
     private Coroutine animationCoroutine;
 
@@ -17,7 +14,6 @@ public class Receptor : MonoBehaviour
 
         if (animator != null)
         {
-            // Prevent the animation from playing automatically.
             animator.enabled = false;
         }
     }
@@ -33,17 +29,6 @@ public class Receptor : MonoBehaviour
             return;
         }
 
-        if (matchAnimation == null)
-        {
-            Debug.LogWarning(
-                gameObject.name + " has no Match Animation assigned."
-            );
-
-            return;
-        }
-
-        // Prevent the animation from being triggered repeatedly
-        // while it is already playing.
         if (animationCoroutine != null)
         {
             return;
@@ -52,30 +37,23 @@ public class Receptor : MonoBehaviour
         animator.enabled = true;
 
         animationCoroutine = StartCoroutine(PlayAnimationTwice());
-
-        Debug.Log(
-            "Playing receptor animation twice on " +
-            gameObject.name
-        );
     }
 
     private IEnumerator PlayAnimationTwice()
     {
-        float animationLength = matchAnimation.length;
-
-        // FIRST PLAY
+        // Start from the beginning.
         animator.Play("Armature", 0, 0f);
 
-        yield return new WaitForSeconds(animationLength);
+        // Wait for 2 complete animation loops.
+        yield return new WaitForSeconds(1.458f * 2f);
 
-        // SECOND PLAY
-        animator.Play("Armature", 0, 0f);
-
-        yield return new WaitForSeconds(animationLength);
-
-        // Finished both plays
+        // Stop the animation.
         animator.enabled = false;
 
         animationCoroutine = null;
+
+        Debug.Log(
+            "Receptor animation finished two plays."
+        );
     }
 }
