@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &6693288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -293,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &18138366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -380,6 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &32727509
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &43579466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -675,6 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &44448811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -762,6 +767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &47391910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -845,6 +851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &51691885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -928,6 +935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &55653321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1015,6 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &60741179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1102,6 +1111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &83110638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1185,6 +1195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &86181459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1268,6 +1279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &86692282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1351,6 +1363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &87881341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,6 +1485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &108479427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,6 +1694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &123575846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1767,6 +1782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &123812363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1850,6 +1866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &124951600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,6 +2071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &126971329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2137,6 +2155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &133269196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2220,6 +2239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &133570170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2303,6 +2323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &145431639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2390,6 +2411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &146097477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2477,6 +2499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &148705896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,6 +2704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &158567081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2764,6 +2788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &161504677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2847,6 +2872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &164166881
 GameObject:
   m_ObjectHideFlags: 0
@@ -3315,6 +3341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &186830006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3398,6 +3425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &187166998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3481,6 +3509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &199156827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3564,6 +3593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &201693932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3651,6 +3681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &226613768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3734,6 +3765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &227446866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3821,6 +3853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &235608522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3904,6 +3937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &238875281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3991,6 +4025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &249095115
 GameObject:
   m_ObjectHideFlags: 0
@@ -4199,6 +4234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &255570288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4282,6 +4318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &256759096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4365,6 +4402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &257241130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4452,6 +4490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &264415752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4539,6 +4578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &279913214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4622,6 +4662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &285302589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4709,6 +4750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &308862755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4792,6 +4834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &312702368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4879,6 +4922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &322417976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4966,6 +5010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &323702883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5049,6 +5094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &338151670
 GameObject:
   m_ObjectHideFlags: 0
@@ -5257,6 +5303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &340881663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5340,6 +5387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &352895854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5427,6 +5475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &352948735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5514,6 +5563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &356166521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5597,6 +5647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &359614721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5684,6 +5735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &366765715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5771,6 +5823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &371957237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5858,6 +5911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &376452509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5945,6 +5999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &379678568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6036,6 +6091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &401814216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6123,6 +6179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -6327,6 +6384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &419355820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6476,6 +6534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &422758935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6559,6 +6618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &424559291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6646,6 +6706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &428475212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6733,6 +6794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &428602761
 GameObject:
   m_ObjectHideFlags: 0
@@ -6937,6 +6999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &442377769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7024,6 +7087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &458050453
 GameObject:
   m_ObjectHideFlags: 0
@@ -7232,6 +7296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &471117930
 GameObject:
   m_ObjectHideFlags: 0
@@ -7489,6 +7554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &506889350
 GameObject:
   m_ObjectHideFlags: 0
@@ -7697,6 +7763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &523280969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7780,6 +7847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &525287881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7863,6 +7931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &531214337
 GameObject:
   m_ObjectHideFlags: 0
@@ -7981,6 +8050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &537482615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8064,6 +8134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &540556048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8147,6 +8218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &543827110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8230,6 +8302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &547848409
 GameObject:
   m_ObjectHideFlags: 0
@@ -8438,6 +8511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &551392486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8525,6 +8599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &563039412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8612,6 +8687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &568204668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8695,6 +8771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &568732809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8778,6 +8855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &569417870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8865,6 +8943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &575991946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8948,6 +9027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &583863917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9031,6 +9111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &586494794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9118,6 +9199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &591047449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9201,6 +9283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &592271168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9284,6 +9367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &599583418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9371,6 +9455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &605223049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9454,6 +9539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &606792952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9537,6 +9623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &612873156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9624,6 +9711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &616864902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9707,6 +9795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &619263340
 GameObject:
   m_ObjectHideFlags: 0
@@ -10032,6 +10121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &642081472
 GameObject:
   m_ObjectHideFlags: 0
@@ -10240,6 +10330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &646863626
 GameObject:
   m_ObjectHideFlags: 0
@@ -10565,6 +10656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &664729127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10648,6 +10740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &668593744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10731,6 +10824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &669104603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10818,6 +10912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &669909252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10901,6 +10996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &670432472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10984,6 +11080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &675601292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11071,6 +11168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &681369813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11154,6 +11252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &684729824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11237,6 +11336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &686377256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11324,6 +11424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &686978543
 GameObject:
   m_ObjectHideFlags: 0
@@ -11724,7 +11825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa2eb1f9e4066b44a350418c71be0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleChance: 0.3
+  compatibleChance: 1
   interactionRadius: 15
 --- !u!1001 &687669654
 PrefabInstance:
@@ -11813,6 +11914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &692234139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11896,6 +11998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &693581661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11979,6 +12082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &703934285
 GameObject:
   m_ObjectHideFlags: 0
@@ -12123,6 +12227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &717751285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12210,6 +12315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &718578659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12293,6 +12399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &727437522
 GameObject:
   m_ObjectHideFlags: 0
@@ -12563,6 +12670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &735653249
 GameObject:
   m_ObjectHideFlags: 0
@@ -12771,6 +12879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &738399679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12858,6 +12967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &749909143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12945,6 +13055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &751381827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13028,6 +13139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &759054361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13115,6 +13227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &762474693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13202,6 +13315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &766179572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13289,6 +13403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &773715614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13376,6 +13491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &774152886
 GameObject:
   m_ObjectHideFlags: 0
@@ -13705,6 +13821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &783070135
 GameObject:
   m_ObjectHideFlags: 0
@@ -13826,6 +13943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &784844055
 GameObject:
   m_ObjectHideFlags: 0
@@ -14034,6 +14152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &801025730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bded81110a980946b4b9aa53e87bc88, type: 3}
@@ -14122,6 +14241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &803282151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14209,6 +14329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &803637283
 GameObject:
   m_ObjectHideFlags: 0
@@ -14332,6 +14453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &811797735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14419,6 +14541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &812532297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14502,6 +14625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &819020567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14589,6 +14713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &819527592
 GameObject:
   m_ObjectHideFlags: 0
@@ -14793,6 +14918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &822194889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14880,6 +15006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &825643717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14963,6 +15090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &826018864
 GameObject:
   m_ObjectHideFlags: 0
@@ -15640,6 +15768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &838631900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15727,6 +15856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &838959796
 GameObject:
   m_ObjectHideFlags: 0
@@ -15931,6 +16061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &860924008
 GameObject:
   m_ObjectHideFlags: 0
@@ -16139,6 +16270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &904004835
 GameObject:
   m_ObjectHideFlags: 0
@@ -16258,6 +16390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &916482858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16345,6 +16478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &917539086
 GameObject:
   m_ObjectHideFlags: 0
@@ -16549,6 +16683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &920356440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16632,6 +16767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &928750545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16719,6 +16855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &933499536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16802,6 +16939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &943282565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16889,6 +17027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &949549797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16972,6 +17111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &955300717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17059,6 +17199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &962923156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17146,6 +17287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &971628880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17229,6 +17371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &974568710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17312,6 +17455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &976541080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17399,6 +17543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &979246440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17587,6 +17732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &997258114
 GameObject:
   m_ObjectHideFlags: 0
@@ -17812,6 +17958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1007318091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17899,6 +18046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1012752000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17982,6 +18130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1013241736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18065,6 +18214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1016169768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18152,6 +18302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1022128923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18235,6 +18386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1023264033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18318,6 +18470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1024460221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18401,6 +18554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1025527777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18484,6 +18638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1039929739
 GameObject:
   m_ObjectHideFlags: 0
@@ -18692,6 +18847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1049278062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18775,6 +18931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1050289397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18862,6 +19019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1050864710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18949,6 +19107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1053261809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19036,6 +19195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1056804025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19123,6 +19283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1064231484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19206,6 +19367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1070009039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19289,6 +19451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1075064345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19372,6 +19535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1079145582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19459,6 +19623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1083222296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19542,6 +19707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1083438532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19625,6 +19791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1089007356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19708,6 +19875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1097343332
 GameObject:
   m_ObjectHideFlags: 0
@@ -20275,6 +20443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1113646959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20362,6 +20531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1123592878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20449,6 +20619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1129013215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20532,6 +20703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1131435905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20619,6 +20791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1132792193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20702,6 +20875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1140996863
 GameObject:
   m_ObjectHideFlags: 0
@@ -20910,6 +21084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1151567825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20993,6 +21168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1151667259
 GameObject:
   m_ObjectHideFlags: 0
@@ -21201,6 +21377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1157255559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21284,6 +21461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1161098477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21371,6 +21549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1166846099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21454,6 +21633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1167949964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21599,6 +21779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1175241455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21686,6 +21867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1180461140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21769,6 +21951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1187775354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21856,6 +22039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1188051965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21943,6 +22127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1189675711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22095,6 +22280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1193107636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22178,6 +22364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1196728745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22261,6 +22448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1205340615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22344,6 +22532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1206636107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22431,6 +22620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1208931352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22514,6 +22704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1211700611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22601,6 +22792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1216877542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22746,6 +22938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1223284739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22974,6 +23167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1232991617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23061,6 +23255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1239437634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23144,6 +23339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1239797102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23231,6 +23427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1241641672
 GameObject:
   m_ObjectHideFlags: 0
@@ -23346,6 +23543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1249159303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23433,6 +23631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1252447006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23516,6 +23715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1263316189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23603,6 +23803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1265047912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23690,6 +23891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1265075932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23777,6 +23979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1265156193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23864,6 +24067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1267527262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23947,6 +24151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1269210146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24030,6 +24235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1269531778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24113,6 +24319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1278244587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24196,6 +24403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1303945469
 GameObject:
   m_ObjectHideFlags: 0
@@ -24521,6 +24729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1324639224
 GameObject:
   m_ObjectHideFlags: 0
@@ -24665,6 +24874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1327611485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24752,6 +24962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1328482752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24835,6 +25046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!43 &1336952440
 Mesh:
   m_ObjectHideFlags: 0
@@ -25083,6 +25295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1341282094
 GameObject:
   m_ObjectHideFlags: 0
@@ -25227,6 +25440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1344640280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25314,6 +25528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1368880378
 GameObject:
   m_ObjectHideFlags: 0
@@ -25671,6 +25886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1376160728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25754,6 +25970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1377034356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25841,6 +26058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1378258616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25928,6 +26146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1383232726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26011,6 +26230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1387515507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26098,6 +26318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1390278632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26185,6 +26406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1400392382
 GameObject:
   m_ObjectHideFlags: 0
@@ -26389,6 +26611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1410629286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26472,6 +26695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1410635041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26555,6 +26779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1412231006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26642,6 +26867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1413572659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26725,6 +26951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1426590141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26808,6 +27035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1433115548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26891,6 +27119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1433803885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26978,6 +27207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1440716293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27061,6 +27291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1448592239
 GameObject:
   m_ObjectHideFlags: 0
@@ -27265,6 +27496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1452203670
 GameObject:
   m_ObjectHideFlags: 0
@@ -27490,6 +27722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1458712690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27573,6 +27806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1459988826
 GameObject:
   m_ObjectHideFlags: 0
@@ -27781,6 +28015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1469371422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27864,6 +28099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1476793787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27951,6 +28187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1481821305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28034,6 +28271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1484298250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28117,6 +28355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1502949096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28200,6 +28439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1508434322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28283,6 +28523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1509251676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28366,6 +28607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1509884341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28453,6 +28695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1511866738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28540,6 +28783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1515075480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28685,6 +28929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1520810679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28768,6 +29013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1522946495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28851,6 +29097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1527689998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28934,6 +29181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1528254222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bded81110a980946b4b9aa53e87bc88, type: 3}
@@ -29022,6 +29270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1538092764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29109,6 +29358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1538399834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29192,6 +29442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1546279609
 GameObject:
   m_ObjectHideFlags: 0
@@ -29400,6 +29651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1548879463
 GameObject:
   m_ObjectHideFlags: 0
@@ -29865,6 +30117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1585715427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29948,6 +30201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1617256528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30035,6 +30289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1623048067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30122,6 +30377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1628187055
 GameObject:
   m_ObjectHideFlags: 0
@@ -30330,6 +30586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1638059411
 GameObject:
   m_ObjectHideFlags: 0
@@ -30534,6 +30791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1643375098
 GameObject:
   m_ObjectHideFlags: 0
@@ -30650,6 +30908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!4 &1652583579 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a9ab1e52cc9f7f0448b88bbd1d6927ff, type: 3}
@@ -30738,6 +30997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1657599160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30821,6 +31081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1661901975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30904,6 +31165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1662847395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30987,6 +31249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1667446184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31074,6 +31337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1669623328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31157,6 +31421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1670538445
 GameObject:
   m_ObjectHideFlags: 0
@@ -31486,6 +31751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1679987809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31569,6 +31835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1682153605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31652,6 +31919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1685056215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31735,6 +32003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1690626139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31818,6 +32087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1702212023
 GameObject:
   m_ObjectHideFlags: 0
@@ -32026,6 +32296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1705519946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32109,6 +32380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!4 &1709737459 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3a1f2ff7b9f4628469641c3314acb3f4, type: 3}
@@ -32197,6 +32469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1711468778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32280,6 +32553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1713831410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32363,6 +32637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1716466529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32446,6 +32721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1718104028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32529,6 +32805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1720486172
 GameObject:
   m_ObjectHideFlags: 0
@@ -32733,6 +33010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1743474420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32820,6 +33098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1743858963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32903,6 +33182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1745803497
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32990,6 +33270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1746678152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33073,6 +33354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1755245474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33156,6 +33438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1756039539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33243,6 +33526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1757913997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33330,6 +33614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1761470694
 GameObject:
   m_ObjectHideFlags: 0
@@ -33659,6 +33944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1766933899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33742,6 +34028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1767907568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33829,6 +34116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1770741744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33916,6 +34204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1774246914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33999,6 +34288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1775583091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34086,6 +34376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1777914971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34173,6 +34464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1780617567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34256,6 +34548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1787534955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34339,6 +34632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1799831800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34426,6 +34720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1806416106
 GameObject:
   m_ObjectHideFlags: 0
@@ -34634,6 +34929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1817692733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34717,6 +35013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1825065404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34804,6 +35101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1828506024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34891,6 +35189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1843498468
 GameObject:
   m_ObjectHideFlags: 0
@@ -35095,6 +35394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1847405198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35182,6 +35482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1849529074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35269,6 +35570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1856039677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35356,6 +35658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1858123118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35443,6 +35746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1860139144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35530,6 +35834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1863065777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35617,6 +35922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1863713203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35700,6 +36006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1866255383
 GameObject:
   m_ObjectHideFlags: 0
@@ -41285,6 +41592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1872600623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41368,6 +41676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1884518565
 GameObject:
   m_ObjectHideFlags: 0
@@ -41714,6 +42023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1897309558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41801,6 +42111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1908901398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41884,6 +42195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1909994456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41967,6 +42279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1910702343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42050,6 +42363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1916930328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42137,6 +42451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1917522591
 GameObject:
   m_ObjectHideFlags: 0
@@ -42256,6 +42571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1925461691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42343,6 +42659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1929347245
 GameObject:
   m_ObjectHideFlags: 0
@@ -42547,6 +42864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1939725601
 GameObject:
   m_ObjectHideFlags: 0
@@ -42755,6 +43073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1946736885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42842,6 +43161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1949141757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42929,6 +43249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1951158007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43012,6 +43333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1954353845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43095,6 +43417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1956954359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43283,6 +43606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1976688873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43366,6 +43690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1976979524
 GameObject:
   m_ObjectHideFlags: 0
@@ -43570,6 +43895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1983241532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43657,6 +43983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!4 &1986222812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a9ab1e52cc9f7f0448b88bbd1d6927ff, type: 3}
@@ -43898,6 +44225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1991056390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43981,6 +44309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1992193178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44064,6 +44393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1993850909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44417,6 +44747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &1997215013
 GameObject:
   m_ObjectHideFlags: 0
@@ -44625,6 +44956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2014429313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44712,6 +45044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2042339739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44799,6 +45132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2051880250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44882,6 +45216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2052019624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44969,6 +45304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2064848476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45056,6 +45392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2067390637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45139,6 +45476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2069299870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45226,6 +45564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2077482545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45309,6 +45648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &2077702027
 GameObject:
   m_ObjectHideFlags: 0
@@ -45560,6 +45900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2083807802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45643,6 +45984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2084953190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45730,6 +46072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2091454698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45817,6 +46160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2093218929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45904,6 +46248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2098231018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45987,6 +46332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2122867220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46074,6 +46420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2125998506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46157,6 +46504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1 &2126770928
 GameObject:
   m_ObjectHideFlags: 0
@@ -46365,6 +46713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2135902619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46448,6 +46797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &2139497919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46535,6 +46885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &1332816758203609805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46618,6 +46969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &4862396953507498652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46701,6 +47053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &7724364704135802238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46784,6 +47137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1001 &8474915444775975076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46870,6 +47224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: A
+  matchAnimation: {fileID: 7400000, guid: 5f6b93a41aead53418b1f567be663190, type: 2}
 --- !u!95 &8474915444775975080
 Animator:
   serializedVersion: 7
@@ -46975,6 +47330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+  matchAnimation: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
