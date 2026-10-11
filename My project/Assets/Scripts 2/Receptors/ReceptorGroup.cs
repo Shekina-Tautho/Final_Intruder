@@ -4,7 +4,7 @@ public class ReceptorGroup : MonoBehaviour
 {
     [Header("Receptor Settings")]
     [Range(0f, 1f)]
-    public float compatibleChance = 0.3f;
+    public float compatibleChance   = 0.3f;
 
     [Header("Interaction Settings")]
     public float interactionRadius = 0.5f;
