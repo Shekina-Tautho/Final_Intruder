@@ -37,8 +37,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Idle Pose-MoveInPlace (1)
-      takeName: Armature|Idle Pose-MoveInPlace
+      name: Armature|Idle Pose-NoMovement (1)
+      takeName: Armature|Idle Pose-NoMovement
       internalID: 1673439753273717660
       firstFrame: 0
       lastFrame: 298
