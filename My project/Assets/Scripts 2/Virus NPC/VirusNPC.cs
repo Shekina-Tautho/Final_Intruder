@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class VirusNPC : MonoBehaviour
@@ -7,11 +6,8 @@ public class VirusNPC : MonoBehaviour
     public float flowSpeed = 3f;
 
     [Header("Random Diffusion")]
-    public float randomStrength = 2.5f;
-    public float directionChangeSpeed = 1.5f;
-
-    [Header("Sideways Movement")]
-    public float sidewaysStrength = 2f;
+    public float randomStrength = 1.5f;
+    public float directionChangeSpeed = 2f;
 
     private Vector3 randomDirection;
 
@@ -22,27 +18,23 @@ public class VirusNPC : MonoBehaviour
 
     void Update()
     {
-        // Main flow toward clearance
+        // Main mucus/fluid flow toward clearance
         Vector3 flowMovement = Vector3.back * flowSpeed;
 
-        // Random movement in all directions
+        // Create a new random direction
         Vector3 targetDirection = Random.insideUnitSphere;
 
+        // Smoothly change the random direction
         randomDirection = Vector3.Slerp(
             randomDirection,
             targetDirection,
             directionChangeSpeed * Time.deltaTime
         );
 
-        // Encourage movement toward the airway's sides
-        Vector3 sidewaysMovement = Vector3.right *
-            Random.Range(-sidewaysStrength, sidewaysStrength);
-
-        // Combine flow, diffusion, and sideways drift
+        // Combine fluid flow and diffusion
         Vector3 movement =
             flowMovement +
-            randomDirection * randomStrength +
-            sidewaysMovement;
+            randomDirection * randomStrength;
 
         transform.position += movement * Time.deltaTime;
     }
