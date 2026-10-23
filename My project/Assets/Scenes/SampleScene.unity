@@ -195735,7 +195735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
   spawnZone: {fileID: 471117931}
-  virusCount: 40
+  virusCount: 100
 --- !u!4 &2081573773
 Transform:
   m_ObjectHideFlags: 0
