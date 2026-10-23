@@ -18130,7 +18130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compatibleChance: 1
-  interactionRadius: 15
+  interactionRadius: 10
 --- !u!1001 &207921848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64113,7 +64113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compatibleChance: 1
-  interactionRadius: 15
+  interactionRadius: 10
 --- !u!1 &687456432 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3948360537055828486, guid: 9a38cfb8833091241a5ecae97a3d6f5f, type: 3}
@@ -118325,7 +118325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compatibleChance: 1
-  interactionRadius: 15
+  interactionRadius: 10
 --- !u!1 &1279873684 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6542701483853974764, guid: 079e9033d43d3ff44974088ec05982f7, type: 3}
@@ -150232,7 +150232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compatibleChance: 1
-  interactionRadius: 15
+  interactionRadius: 10
 --- !u!1001 &1618500978
 PrefabInstance:
   m_ObjectHideFlags: 0
