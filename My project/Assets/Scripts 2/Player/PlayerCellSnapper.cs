@@ -17,6 +17,12 @@ public class PlayerCellSnapper : MonoBehaviour
     public float animationWaitTime = 1f;
     public float movementDuration = 2f;
 
+    [Header("Endocytosis Animation")]
+    [Range(0f, 100f)]
+    public float endocytosisTargetWeight = 100f;
+
+    public float endocytosisDuration = 2f;
+
     private bool isMovingToCell;
 
     public void MoveToCell(Receptor triggeredReceptor)
@@ -40,7 +46,6 @@ public class PlayerCellSnapper : MonoBehaviour
         SkinnedMeshRenderer closestCell = null;
         float closestDistance = Mathf.Infinity;
 
-        // Find the epithelial cell closest to the triggered receptor.
         foreach (SkinnedMeshRenderer cell in cells)
         {
             if (cell == null)
@@ -66,19 +71,19 @@ public class PlayerCellSnapper : MonoBehaviour
             return;
         }
 
-        Vector3 targetCenter = closestCell.bounds.center;
-
-        StartCoroutine(MoveAfterAnimation(targetCenter));
+        StartCoroutine(
+            MoveAfterAnimation(closestCell)
+        );
     }
 
-    private IEnumerator MoveAfterAnimation(Vector3 targetCenter)
+    private IEnumerator MoveAfterAnimation(
+        SkinnedMeshRenderer targetCell)
     {
         isMovingToCell = true;
 
-        // Let the receptor animation play before moving.
+        // Allow the receptor animation to play first.
         yield return new WaitForSeconds(animationWaitTime);
 
-        // Disable movement controls only during the movement.
         foreach (MonoBehaviour control in controlsToDisable)
         {
             if (control != null)
@@ -88,13 +93,18 @@ public class PlayerCellSnapper : MonoBehaviour
         if (characterController != null)
             characterController.enabled = false;
 
+        // Start the epithelial endocytosis animation.
+        StartCoroutine(AnimateEndocytosis(targetCell));
+
+        Vector3 targetCenter = targetCell.bounds.center;
         Vector3 startPosition = playerRoot.position;
+
         Vector3 targetPosition =
             startPosition + (targetCenter - startPosition);
 
         float elapsedTime = 0f;
 
-        // Move smoothly instead of snapping instantly.
+        // Smoothly move the player toward the cell center.
         while (elapsedTime < movementDuration)
         {
             elapsedTime += Time.deltaTime;
@@ -103,7 +113,6 @@ public class PlayerCellSnapper : MonoBehaviour
                 elapsedTime / movementDuration
             );
 
-            // Smooth start and stop.
             float smoothProgress =
                 progress * progress * (3f - 2f * progress);
 
@@ -121,7 +130,6 @@ public class PlayerCellSnapper : MonoBehaviour
         if (characterController != null)
             characterController.enabled = true;
 
-        // Restore movement controls after arriving.
         foreach (MonoBehaviour control in controlsToDisable)
         {
             if (control != null)
@@ -130,6 +138,59 @@ public class PlayerCellSnapper : MonoBehaviour
 
         isMovingToCell = false;
 
-        Debug.Log("Player has reached the epithelial cell center.");
+        Debug.Log("Player reached the epithelial cell center.");
+    }
+
+    private IEnumerator AnimateEndocytosis(
+        SkinnedMeshRenderer targetCell)
+    {
+        Mesh mesh = targetCell.sharedMesh;
+
+        if (mesh == null)
+            yield break;
+
+        int blendShapeIndex =
+            mesh.GetBlendShapeIndex("Endocytosis");
+
+        if (blendShapeIndex < 0)
+        {
+            Debug.LogWarning(
+                targetCell.gameObject.name +
+                " does not have an Endocytosis blend shape."
+            );
+            yield break;
+        }
+
+        float startWeight =
+            targetCell.GetBlendShapeWeight(blendShapeIndex);
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < endocytosisDuration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            float progress = Mathf.Clamp01(
+                elapsedTime / endocytosisDuration
+            );
+
+            float weight = Mathf.Lerp(
+                startWeight,
+                endocytosisTargetWeight,
+                progress
+            );
+
+            targetCell.SetBlendShapeWeight(
+                blendShapeIndex,
+                weight
+            );
+
+            yield return null;
+        }
+
+        targetCell.SetBlendShapeWeight(
+            blendShapeIndex,
+            endocytosisTargetWeight
+        );
     }
 }
