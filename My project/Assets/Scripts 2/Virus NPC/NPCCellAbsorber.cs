@@ -34,6 +34,7 @@ public class NPCCellAbsorber : MonoBehaviour
     [Range(0f, 100f)]
     public float endocytosisTargetWeight = 100f;
     public float endocytosisDuration = 2f;
+    public float endocytosisResetDuration = 2f;
 
     public bool IsAbsorbing { get; private set; }
 
@@ -126,29 +127,66 @@ public class NPCCellAbsorber : MonoBehaviour
         if (targetCell != null)
             transform.position = targetCell.bounds.center;
 
-    // Allow the endocytosis animation to finish.
-    yield return new WaitForSeconds(endocytosisDuration);
+        // Allow the endocytosis animation to finish.
+        yield return new WaitForSeconds(endocytosisDuration);
 
-    // Reset the Endocytosis blend shape.
-    if (targetCell != null)
-    {
-        Mesh mesh = targetCell.sharedMesh;
-
-        if (mesh != null)
+        // Smoothly reset the Endocytosis blend shape to 0.
+        if (targetCell != null)
         {
-            int blendShapeIndex =
-                mesh.GetBlendShapeIndex("Endocytosis");
+            Mesh mesh = targetCell.sharedMesh;
 
-            if (blendShapeIndex >= 0)
+            if (mesh != null)
             {
-                targetCell.SetBlendShapeWeight(blendShapeIndex, 0f);
+                int blendShapeIndex =
+                    mesh.GetBlendShapeIndex("Endocytosis");
+
+                if (blendShapeIndex >= 0)
+                {
+                    float startWeight =
+                        targetCell.GetBlendShapeWeight(blendShapeIndex);
+
+                    elapsedTime = 0f;
+
+                    while (elapsedTime < endocytosisResetDuration)
+                    {
+                        if (targetCell == null)
+                            break;
+
+                        elapsedTime += Time.deltaTime;
+
+                        float progress = endocytosisResetDuration > 0f
+                            ? Mathf.Clamp01(
+                                elapsedTime / endocytosisResetDuration)
+                            : 1f;
+
+                        float weight = Mathf.Lerp(
+                            startWeight,
+                            0f,
+                            progress
+                        );
+
+                        targetCell.SetBlendShapeWeight(
+                            blendShapeIndex,
+                            weight
+                        );
+
+                        yield return null;
+                    }
+
+                    if (targetCell != null)
+                    {
+                        targetCell.SetBlendShapeWeight(
+                            blendShapeIndex,
+                            0f
+                        );
+                    }
+                }
             }
         }
-    }
 
-    Debug.Log("NPC has been absorbed into the epithelial cell.");
+        Debug.Log("NPC has been absorbed into the epithelial cell.");
 
-    Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     private IEnumerator AnimateEndocytosis(
