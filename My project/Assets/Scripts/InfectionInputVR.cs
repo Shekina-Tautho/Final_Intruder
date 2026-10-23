@@ -73,7 +73,7 @@ public class InfectionInputVR : MonoBehaviour
 
         if (closestGroup != null)
         {
-            closestGroup.TryAttach(virus);
+            closestGroup.TryAttach(virus, true);
         }
     }
 }

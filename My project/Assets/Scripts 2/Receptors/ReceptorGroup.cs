@@ -48,7 +48,14 @@ public class ReceptorGroup : MonoBehaviour
         }
     }
 
+    // Keep this method for NPC interactions.
     public void TryAttach(Virus virus)
+    {
+        TryAttach(virus, false);
+    }
+
+    // Use this overload for player-triggered interactions.
+    public void TryAttach(Virus virus, bool playerInitiated)
     {
         if (virus == null)
         {
@@ -61,6 +68,9 @@ public class ReceptorGroup : MonoBehaviour
 
         foreach (Receptor receptor in receptors)
         {
+            if (receptor == null)
+                continue;
+
             float distance = Vector3.Distance(
                 virus.transform.position,
                 receptor.transform.position
@@ -87,7 +97,7 @@ public class ReceptorGroup : MonoBehaviour
             closestDistance
         );
 
-        // Check compatibility
+        // Check compatibility.
         if (virus.virusType == closestReceptor.receptorType)
         {
             Debug.Log(
@@ -97,12 +107,28 @@ public class ReceptorGroup : MonoBehaviour
                 closestReceptor.receptorType
             );
 
-            // Play the receptor animation
+            // Play the existing receptor animation.
             closestReceptor.PlayMatchAnimation();
 
-            Debug.Log(
-                "RECEPTOR DETECTED - Animation triggered!"
-            );
+            Debug.Log("RECEPTOR DETECTED - Animation triggered!");
+
+            // Only player-triggered matches move the player.
+            if (playerInitiated)
+            {
+                PlayerCellSnapper snapper =
+                    FindFirstObjectByType<PlayerCellSnapper>();
+
+                if (snapper != null)
+                {
+                    snapper.MoveToCell(closestReceptor);
+                }
+                else
+                {
+                    Debug.LogWarning(
+                        "No PlayerCellSnapper found in the scene."
+                    );
+                }
+            }
         }
         else
         {

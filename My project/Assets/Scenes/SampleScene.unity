@@ -76764,6 +76764,7 @@ GameObject:
   - component: {fileID: 826018877}
   - component: {fileID: 826018878}
   - component: {fileID: 826018879}
+  - component: {fileID: 826018880}
   m_Layer: 0
   m_Name: XR Origin (VR)
   m_TagString: Player
@@ -77122,6 +77123,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virusType: A
+--- !u!114 &826018880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826018864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5009a72032deba94e831962e9866be3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRoot: {fileID: 826018867}
+  characterController: {fileID: 826018869}
+  epithelialCellsRoot: {fileID: 285860167}
+  controlsToDisable:
+  - {fileID: 826018878}
+  - {fileID: 826018870}
+  - {fileID: 826018873}
+  - {fileID: 826018874}
+  animationWaitTime: 2
+  movementDuration: 2
 --- !u!1 &826077605
 GameObject:
   m_ObjectHideFlags: 0
