@@ -2022,6 +2022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 19963682}
+  - component: {fileID: 19963683}
   m_Layer: 0
   m_Name: Epithelial Receptors-new
   m_TagString: Untagged
@@ -2124,6 +2125,20 @@ Transform:
   - {fileID: 1113646960}
   m_Father: {fileID: 686978544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &19963683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19963681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa2eb1f9e4066b44a350418c71be0d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compatibleChance: 1
+  interactionRadius: 15
 --- !u!1 &20125937 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 51494334369438, guid: c7be37dcf1617cd4db9fe284beeab265, type: 3}
@@ -17748,6 +17763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 207707176}
+  - component: {fileID: 207707177}
   m_Layer: 0
   m_Name: Epithelial receptors - Side1
   m_TagString: Untagged
@@ -18181,6 +18197,20 @@ Transform:
   - {fileID: 1699060958}
   m_Father: {fileID: 1279179739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -41.222}
+--- !u!114 &207707177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207707175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa2eb1f9e4066b44a350418c71be0d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compatibleChance: 1
+  interactionRadius: 15
 --- !u!1001 &207921848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76767,7 +76797,7 @@ Transform:
   m_GameObject: {fileID: 826018864}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 26.000015, y: 21.8824, z: 308}
+  m_LocalPosition: {x: 79.000015, y: 0.8824005, z: 308}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -77075,8 +77105,8 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 305597724104312850, guid: 65f799b75dd3ef74f839548b69a20cbb, type: 3}
-  moveSpeed: 5
-  verticalSpeed: 2
+  moveSpeed: 10
+  verticalSpeed: 5
   lookSpeed: 2
   boostMultiplier: 2
 --- !u!114 &826018879
@@ -149663,6 +149693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1618047129}
+  - component: {fileID: 1618047130}
   m_Layer: 0
   m_Name: Epithelial receptors - Side2
   m_TagString: Untagged
@@ -150159,6 +150190,20 @@ Transform:
   - {fileID: 1688037218}
   m_Father: {fileID: 1279179739}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: -56.043}
+--- !u!114 &1618047130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618047128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa2eb1f9e4066b44a350418c71be0d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compatibleChance: 1
+  interactionRadius: 15
 --- !u!1001 &1618500978
 PrefabInstance:
   m_ObjectHideFlags: 0
