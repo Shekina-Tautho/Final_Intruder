@@ -54,26 +54,15 @@ public class InfectionInputVR : MonoBehaviour
             return;
         }
 
-        ReceptorGroup closestGroup = null;
-        float closestDistance = Mathf.Infinity;
-
+        // Check each group instead of relying on parent positions.
         foreach (ReceptorGroup group in receptorGroups)
         {
-            float distance = Vector3.Distance(
-                virus.transform.position,
-                group.transform.position
-            );
-
-            if (distance < closestDistance)
+            if (group != null && group.TryAttach(virus, true))
             {
-                closestDistance = distance;
-                closestGroup = group;
+                return;
             }
         }
 
-        if (closestGroup != null)
-        {
-            closestGroup.TryAttach(virus, true);
-        }
+        Debug.Log("No receptor was found within range in any group.");
     }
 }
