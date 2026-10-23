@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class ReceptorGroup : MonoBehaviour
@@ -45,19 +46,31 @@ public class ReceptorGroup : MonoBehaviour
         }
     }
 
-    // Existing method for NPCs.
+    // Existing method used by NPCReceptorAutoAttach.
     public void TryAttach(Virus virus)
     {
         TryAttach(virus, false);
     }
 
-    // Player-triggered interaction.
+    // Player-triggered or NPC-triggered interaction.
     public bool TryAttach(Virus virus, bool playerInitiated)
     {
         if (virus == null)
         {
             Debug.LogWarning("No virus was provided.");
             return false;
+        }
+
+        NPCCellAbsorber npcAbsorber =
+            virus.GetComponent<NPCCellAbsorber>();
+
+        // Prevent an NPC from triggering more receptors
+        // while it is already being absorbed.
+        if (!playerInitiated &&
+            npcAbsorber != null &&
+            npcAbsorber.IsAbsorbing)
+        {
+            return true;
         }
 
         Receptor closestReceptor = null;
@@ -118,7 +131,23 @@ public class ReceptorGroup : MonoBehaviour
             if (snapper != null)
                 snapper.MoveToCell(closestReceptor);
             else
-                Debug.LogWarning("No PlayerCellSnapper found in the scene.");
+                Debug.LogWarning(
+                    "No PlayerCellSnapper found in the scene."
+                );
+        }
+        else
+        {
+            if (npcAbsorber != null)
+            {
+                npcAbsorber.AbsorbIntoCell(closestReceptor);
+            }
+            else
+            {
+                Debug.LogWarning(
+                    virus.gameObject.name +
+                    " has no NPCCellAbsorber component."
+                );
+            }
         }
 
         return true;
