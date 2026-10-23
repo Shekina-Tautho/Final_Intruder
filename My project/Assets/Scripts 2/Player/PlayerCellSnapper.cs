@@ -10,6 +10,9 @@ public class PlayerCellSnapper : MonoBehaviour
     [Header("Epithelial Cells")]
     public Transform epithelialCellsRoot;
 
+    [Header("Fade Transition")]
+    public AbsorptionFade absorptionFade;
+
     [Header("Controls to Disable")]
     public MonoBehaviour[] controlsToDisable;
 
@@ -83,6 +86,11 @@ public class PlayerCellSnapper : MonoBehaviour
 
         // Allow the receptor animation to play first.
         yield return new WaitForSeconds(animationWaitTime);
+        
+        if (absorptionFade != null)
+        {
+            absorptionFade.FadeToBlack();
+        }
 
         foreach (MonoBehaviour control in controlsToDisable)
         {
@@ -96,7 +104,7 @@ public class PlayerCellSnapper : MonoBehaviour
         // Start the epithelial endocytosis animation.
         StartCoroutine(AnimateEndocytosis(targetCell));
 
-        Vector3 targetCenter = targetCell.bounds.center;
+        Vector3 targetCenter = targetCell.bounds.center + Vector3.up * 0.3f;
         Vector3 startPosition = playerRoot.position;
 
         Vector3 targetPosition =
