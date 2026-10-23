@@ -893,6 +893,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 180725791}
+  - component: {fileID: 180725792}
   m_Layer: 0
   m_Name: DisclaimerManager
   m_TagString: Untagged
@@ -915,6 +916,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &180725792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180725790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e5052b9141d2c41bfb87acd265cf5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disclaimerPanel: {fileID: 547748201}
+  disclaimerToggle: {fileID: 1407521933}
+  continueButton: {fileID: 1934615433}
+  continueImage: {fileID: 1934615434}
+  playButton: {fileID: 796118085}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &198793308
 GameObject:
   m_ObjectHideFlags: 0
@@ -3810,9 +3829,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1697457901}
-        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 180725792}
+        m_TargetAssemblyTypeName: DisclaimerController, Assembly-CSharp
+        m_MethodName: OpenDisclaimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16178,7 +16197,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1934615434}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 180725792}
+        m_TargetAssemblyTypeName: DisclaimerController, Assembly-CSharp
+        m_MethodName: ContinueToSimulation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1934615434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17052,23 +17083,23 @@ MonoBehaviour:
     host-pathogen interactions and immune response processes in a simplified, modeled
     environment.
 
-    
 
-    The simulation presents selected biological processes
-    and does not represent every aspect of actual host-pathogen interactions, immune
+
+    The simulation presents selected biological processes and
+    does not represent every aspect of actual host-pathogen interactions, immune
     responses, or individual biological variations. Although its content is informed
     by scientific literature and may undergo expert review, the simulation is not
     intended to provide a complete or fully accurate representation of all biological
     processes.
 
-    
 
-    Pathogenesis is not a substitute for professional medical
-    advice, diagnosis, or treatment. It must not be used as a basis for medical decisions,
+
+    Pathogenesis is not a substitute for professional medical advice,
+    diagnosis, or treatment. It must not be used as a basis for medical decisions,
     clinical procedures, or laboratory practice. It also does not replace formal
     microbiological education or supervised laboratory training.
 
-    
+
 
     By using
     the simulation, users should understand that its purpose is to support learning
@@ -17236,7 +17267,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2041795199}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 180725792}
+        m_TargetAssemblyTypeName: DisclaimerController, Assembly-CSharp
+        m_MethodName: CloseDisclaimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2041795199
 MonoBehaviour:
   m_ObjectHideFlags: 0
