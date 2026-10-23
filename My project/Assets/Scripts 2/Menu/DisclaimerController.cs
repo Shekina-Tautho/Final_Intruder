@@ -10,6 +10,8 @@ public class DisclaimerController : MonoBehaviour
     public Button continueButton;
     public Image continueImage;
     public Button playButton;
+    public GameObject background;
+    public GameObject quitButton;
 
     [Header("Continue Button Colors")]
     public Color disabledColor = Color.gray;
@@ -17,12 +19,18 @@ public class DisclaimerController : MonoBehaviour
 
     private void Awake()
     {
-        originalColor = continueImage.color;
+        if (continueImage != null)
+            originalColor = continueImage.color;
 
-        disclaimerPanel.SetActive(false);
-        continueButton.interactable = false;
+        if (disclaimerPanel != null)
+            disclaimerPanel.SetActive(false);
 
-        disclaimerToggle.isOn = false;
+        if (continueButton != null)
+            continueButton.interactable = false;
+
+        if (disclaimerToggle != null)
+            disclaimerToggle.isOn = false;
+
         UpdateContinueButton(false);
     }
 
@@ -40,9 +48,22 @@ public class DisclaimerController : MonoBehaviour
 
     public void OpenDisclaimer()
     {
-        disclaimerToggle.isOn = false;
+        if (disclaimerToggle != null)
+            disclaimerToggle.isOn = false;
+
         UpdateContinueButton(false);
-        disclaimerPanel.SetActive(true);
+
+        if (background != null)
+            background.SetActive(false);
+
+        if (playButton != null)
+            playButton.gameObject.SetActive(false);
+
+        if (quitButton != null)
+            quitButton.SetActive(false);
+
+        if (disclaimerPanel != null)
+            disclaimerPanel.SetActive(true);
     }
 
     public void UpdateContinueButton(bool isChecked)
@@ -56,7 +77,7 @@ public class DisclaimerController : MonoBehaviour
 
     public void ContinueToSimulation()
     {
-        if (!disclaimerToggle.isOn)
+        if (disclaimerToggle == null || !disclaimerToggle.isOn)
             return;
 
         SceneManager.LoadScene("SampleScene");
@@ -64,6 +85,16 @@ public class DisclaimerController : MonoBehaviour
 
     public void CloseDisclaimer()
     {
-        disclaimerPanel.SetActive(false);
+        if (disclaimerPanel != null)
+            disclaimerPanel.SetActive(false);
+
+        if (background != null)
+            background.SetActive(true);
+
+        if (playButton != null)
+            playButton.gameObject.SetActive(true);
+
+        if (quitButton != null)
+            quitButton.SetActive(true);
     }
 }

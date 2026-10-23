@@ -933,6 +933,8 @@ MonoBehaviour:
   continueButton: {fileID: 1934615433}
   continueImage: {fileID: 1934615434}
   playButton: {fileID: 796118085}
+  background: {fileID: 1877551943}
+  quitButton: {fileID: 446779621}
   disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &198793308
 GameObject:
