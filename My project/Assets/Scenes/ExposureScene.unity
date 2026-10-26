@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 299242575}
   - component: {fileID: 299242574}
   m_Layer: 5
-  m_Name: StageIconGlow
+  m_Name: 'StageImageGlow '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,7 +249,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 510, y: 530}
+  m_SizeDelta: {x: 590, y: 565}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299242574
 MonoBehaviour:
@@ -702,8 +702,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 299242573}
   - {fileID: 1662738704}
+  - {fileID: 299242573}
   m_Father: {fileID: 287846110}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1380,7 +1380,7 @@ GameObject:
   - component: {fileID: 1662738706}
   - component: {fileID: 1662738705}
   m_Layer: 5
-  m_Name: StageIcon
+  m_Name: StageImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1402,8 +1402,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 400, y: 380}
+  m_AnchoredPosition: {x: 0, y: 10}
+  m_SizeDelta: {x: 430, y: 460}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662738705
 MonoBehaviour:
@@ -1427,7 +1427,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 6a224b34d5c82c743bd8f4726681a3b4, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
