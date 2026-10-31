@@ -845,6 +845,7 @@ RectTransform:
   - {fileID: 1253973380}
   - {fileID: 1825854701}
   - {fileID: 1272171407}
+  - {fileID: 1376275210}
   m_Father: {fileID: 697257237}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2315,9 +2316,9 @@ RectTransform:
   - {fileID: 1582804335}
   m_Father: {fileID: 502118707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -1100, y: 450}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1100, y: 490}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1253973381
@@ -2585,6 +2586,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334491767}
   m_CullTransparentMesh: 1
+--- !u!1 &1376275209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1376275210}
+  - component: {fileID: 1376275211}
+  m_Layer: 5
+  m_Name: StageProgressionController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1376275210
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376275209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 502118707}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1376275211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376275209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d221271da4f8c0458201083ce63fb69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 697257241}
+  stageTitle: {fileID: 890779811}
+  stageDescription: {fileID: 1582804336}
+  stageNumber: {fileID: 2098567750}
+  exposureNormal: {fileID: 1662738705}
+  exposureGlow: {fileID: 299242574}
+  tractEntryNormal: {fileID: 1843017852}
+  tractEntryGlow: {fileID: 111225132}
+  exposureDescription: 
+  tractEntryDescription: 
+  tractEntryStartTime: 12
 --- !u!1 &1424527148
 GameObject:
   m_ObjectHideFlags: 0

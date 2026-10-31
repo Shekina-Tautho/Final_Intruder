@@ -1,0 +1,80 @@
+
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Video;
+using TMPro;
+
+public class StageVideoProgression : MonoBehaviour
+{
+    [Header("Video Player")]
+    public VideoPlayer videoPlayer;
+
+    [Header("Stage Information")]
+    public TMP_Text stageTitle;
+    public TMP_Text stageDescription;
+    public TMP_Text stageNumber;
+
+    [Header("Exposure Images")]
+    public Image exposureNormal;
+    public Image exposureGlow;
+
+    [Header("Tract Entry Images")]
+    public Image tractEntryNormal;
+    public Image tractEntryGlow;
+
+    [Header("Stage Descriptions")]
+    [TextArea(3, 5)]
+    public string exposureDescription;
+
+    [TextArea(3, 5)]
+    public string tractEntryDescription;
+
+    [Header("Stage Timestamps")]
+    public double tractEntryStartTime = 12.0;
+
+    private int currentStage = 0;
+
+    void Start()
+    {
+        SetStage(1);
+    }
+
+    void Update()
+    {
+        if (videoPlayer == null || !videoPlayer.isPlaying)
+            return;
+
+        if (currentStage == 1 &&
+            videoPlayer.time >= tractEntryStartTime)
+        {
+            SetStage(2);
+        }
+    }
+
+    void SetStage(int stage)
+    {
+        currentStage = stage;
+
+        // Exposure appearance
+        exposureNormal.enabled = (stage != 1);
+        exposureGlow.enabled = (stage == 1);
+
+        // Tract Entry appearance
+        tractEntryNormal.enabled = (stage != 2);
+        tractEntryGlow.enabled = (stage == 2);
+
+        // Update stage information
+        if (stage == 1)
+        {
+            stageTitle.text = "EXPOSURE";
+            stageDescription.text = exposureDescription;
+            stageNumber.text = "01 / 10";
+        }
+        else if (stage == 2)
+        {
+            stageTitle.text = "TRACT ENTRY";
+            stageDescription.text = tractEntryDescription;
+            stageNumber.text = "02 / 10";
+        }
+    }
+}
