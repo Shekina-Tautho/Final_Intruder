@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StageVideoProgression : MonoBehaviour
 {
@@ -37,6 +38,11 @@ public class StageVideoProgression : MonoBehaviour
     public float fadeStartTime = 5f;
     public float fadeDuration = 5f;
 
+    [Header("Scene Transition")]
+    public string nextSceneName = "SampleScene";
+
+    private bool sceneTransitionStarted = false;
+
     private int currentStage = 0;
 
     void Start()
@@ -47,15 +53,20 @@ public class StageVideoProgression : MonoBehaviour
 
     void Update()
     {
-        if (videoPlayer == null || !videoPlayer.isPlaying)
+        if (videoPlayer == null)
             return;
 
-        if (currentStage == 1 &&
-            videoPlayer.time >= tractEntryStartTime)
+        // Stage progression
+        if (videoPlayer.isPlaying)
         {
-            SetStage(2);
+            if (currentStage == 1 &&
+                videoPlayer.time >= tractEntryStartTime)
+            {
+                SetStage(2);
+            }
         }
-        
+
+        // Ending fade
         if (videoPlayer.length > 0 && fadeDuration > 0)
         {
             double fadeStart = videoPlayer.length - fadeStartTime;
@@ -68,6 +79,13 @@ public class StageVideoProgression : MonoBehaviour
             );
 
             SetFadeAlpha(alpha);
+
+            // Load the next scene after the screen becomes completely black
+            if (alpha >= 1f && !sceneTransitionStarted)
+            {
+                sceneTransitionStarted = true;
+                SceneManager.LoadScene(nextSceneName);
+            }
         }
     }
 
