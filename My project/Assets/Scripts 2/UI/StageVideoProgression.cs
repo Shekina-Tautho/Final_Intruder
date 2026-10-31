@@ -56,12 +56,12 @@ public class StageVideoProgression : MonoBehaviour
         currentStage = stage;
 
         // Exposure appearance
-        exposureNormal.enabled = (stage != 1);
-        exposureGlow.enabled = (stage == 1);
+        exposureNormal.gameObject.SetActive(stage != 1);
+        exposureGlow.gameObject.SetActive(stage == 1);
 
         // Tract Entry appearance
-        tractEntryNormal.enabled = (stage != 2);
-        tractEntryGlow.enabled = (stage == 2);
+        tractEntryNormal.gameObject.SetActive(stage != 2);
+        tractEntryGlow.gameObject.SetActive(stage == 2);
 
         // Update stage information
         if (stage == 1)
