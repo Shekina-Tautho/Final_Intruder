@@ -32,11 +32,17 @@ public class StageVideoProgression : MonoBehaviour
     [Header("Stage Timestamps")]
     public double tractEntryStartTime = 12.0;
 
+    [Header("Ending Fade")]
+    public Renderer fadeRenderer;
+    public float fadeStartTime = 5f;
+    public float fadeDuration = 5f;
+
     private int currentStage = 0;
 
     void Start()
     {
         SetStage(1);
+        SetFadeAlpha(0f);
     }
 
     void Update()
@@ -48,6 +54,20 @@ public class StageVideoProgression : MonoBehaviour
             videoPlayer.time >= tractEntryStartTime)
         {
             SetStage(2);
+        }
+        
+        if (videoPlayer.length > 0 && fadeDuration > 0)
+        {
+            double fadeStart = videoPlayer.length - fadeStartTime;
+            double fadeEnd = fadeStart + fadeDuration;
+
+            float alpha = Mathf.InverseLerp(
+                (float)fadeStart,
+                (float)fadeEnd,
+                (float)videoPlayer.time
+            );
+
+            SetFadeAlpha(alpha);
         }
     }
 
@@ -76,5 +96,14 @@ public class StageVideoProgression : MonoBehaviour
             stageDescription.text = tractEntryDescription;
             stageNumber.text = "02 / 10";
         }
+    }
+    void SetFadeAlpha(float alpha)
+    {
+        if (fadeRenderer == null)
+            return;
+
+        Color color = fadeRenderer.material.color;
+        color.a = alpha;
+        fadeRenderer.material.color = color;
     }
 }
