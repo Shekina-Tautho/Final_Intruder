@@ -1713,7 +1713,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 102.607025, w: 0}
+  m_margin: {x: 0, y: 0, z: -473.27835, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2318,7 +2318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1050, y: 1537.4}
   m_SizeDelta: {x: 1100, y: 490}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1253973381
@@ -2642,8 +2642,10 @@ MonoBehaviour:
   exposureGlow: {fileID: 299242574}
   tractEntryNormal: {fileID: 1843017852}
   tractEntryGlow: {fileID: 111225132}
-  exposureDescription: 
-  tractEntryDescription: 
+  exposureDescription: Observe how influenza spreads through infected respiratory
+    droplets released into the air.
+  tractEntryDescription: Observe how inhaled influenza viruses enter the respiratory
+    tract and travel toward  epithelial cells.
   tractEntryStartTime: 12
 --- !u!1 &1424527148
 GameObject:
