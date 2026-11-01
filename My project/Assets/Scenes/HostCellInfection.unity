@@ -938,7 +938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1176640474}
   m_Layer: 0
-  m_Name: Virions
+  m_Name: RNP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1210,7 +1210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2109404592}
   m_Layer: 0
-  m_Name: Inside Epithelial Cell
+  m_Name: Inside Epithelial Cell Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
