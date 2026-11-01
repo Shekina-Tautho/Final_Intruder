@@ -1759,8 +1759,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Exposure
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef4c0737e7571045a7078ff0f0fd525, type: 2}
-  m_sharedMaterial: {fileID: 1786799361401948700, guid: aef4c0737e7571045a7078ff0f0fd525, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+  m_sharedMaterial: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2313,8 +2313,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: STAGE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef4c0737e7571045a7078ff0f0fd525, type: 2}
-  m_sharedMaterial: {fileID: 1786799361401948700, guid: aef4c0737e7571045a7078ff0f0fd525, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+  m_sharedMaterial: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2760,6 +2760,7 @@ MonoBehaviour:
   fadeRenderer: {fileID: 475718126}
   fadeStartTime: 3
   fadeDuration: 2
+  nextSceneName: SampleScene
 --- !u!1 &1424527148
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,8 +3053,8 @@ MonoBehaviour:
   m_text: "Observe how influenza spreads through infected respiratory droplets released
     into the air. \r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef4c0737e7571045a7078ff0f0fd525, type: 2}
-  m_sharedMaterial: {fileID: 1786799361401948700, guid: aef4c0737e7571045a7078ff0f0fd525, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+  m_sharedMaterial: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3189,8 +3190,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CURRENT STAGE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef4c0737e7571045a7078ff0f0fd525, type: 2}
-  m_sharedMaterial: {fileID: 1786799361401948700, guid: aef4c0737e7571045a7078ff0f0fd525, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+  m_sharedMaterial: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3840,8 +3841,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 01 / 10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef4c0737e7571045a7078ff0f0fd525, type: 2}
-  m_sharedMaterial: {fileID: 1786799361401948700, guid: aef4c0737e7571045a7078ff0f0fd525, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+  m_sharedMaterial: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
