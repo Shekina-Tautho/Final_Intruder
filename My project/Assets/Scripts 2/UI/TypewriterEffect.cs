@@ -22,23 +22,25 @@ public class TypewriterEffect : MonoBehaviour
 
     private IEnumerator PlayIntroduction()
     {
-        // Hide all text initially
-        foreach (TMP_Text textObject in textObjects)
-        {
-            textObject.maxVisibleCharacters = 0;
-        }
-
-        // Hide Continue button
+        // Hide the button at the beginning
         if (continueButton != null)
             continueButton.SetActive(false);
 
-        // Type each text object in order
+        // Prepare all text objects
         foreach (TMP_Text textObject in textObjects)
         {
             if (textObject == null)
                 continue;
 
             textObject.ForceMeshUpdate();
+            textObject.maxVisibleCharacters = 0;
+        }
+
+        // Type each text object in sequence
+        foreach (TMP_Text textObject in textObjects)
+        {
+            if (textObject == null)
+                continue;
 
             int totalCharacters = textObject.textInfo.characterCount;
 
@@ -54,7 +56,7 @@ public class TypewriterEffect : MonoBehaviour
             yield return new WaitForSeconds(delayBetweenTexts);
         }
 
-        // Show Continue button after all text finishes
+        // Show button only when every text is finished
         if (continueButton != null)
             continueButton.SetActive(true);
     }
