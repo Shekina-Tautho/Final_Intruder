@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TypewriterEffect : MonoBehaviour
 {
@@ -12,8 +13,9 @@ public class TypewriterEffect : MonoBehaviour
     public float charactersPerSecond = 30f;
     public float delayBetweenTexts = 0.5f;
 
-    [Header("Continue Button")]
-    public GameObject continueButton;
+    [Header("Scene Transition")]
+    public string nextSceneName = "ExposureScene";
+    public float delayBeforeTransition = 1.5f;
 
     private void Start()
     {
@@ -22,11 +24,7 @@ public class TypewriterEffect : MonoBehaviour
 
     private IEnumerator PlayIntroduction()
     {
-        // Hide the button at the beginning
-        if (continueButton != null)
-            continueButton.SetActive(false);
-
-        // Prepare all text objects
+        // Hide all text initially
         foreach (TMP_Text textObject in textObjects)
         {
             if (textObject == null)
@@ -36,7 +34,7 @@ public class TypewriterEffect : MonoBehaviour
             textObject.maxVisibleCharacters = 0;
         }
 
-        // Type each text object in sequence
+        // Type each text one after another
         foreach (TMP_Text textObject in textObjects)
         {
             if (textObject == null)
@@ -56,8 +54,10 @@ public class TypewriterEffect : MonoBehaviour
             yield return new WaitForSeconds(delayBetweenTexts);
         }
 
-        // Show button only when every text is finished
-        if (continueButton != null)
-            continueButton.SetActive(true);
+        // Wait briefly after the final text
+        yield return new WaitForSeconds(delayBeforeTransition);
+
+        // Automatically load ExposureScene
+        SceneManager.LoadScene(nextSceneName);
     }
 }
