@@ -8,6 +8,13 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(AudioSource))]
 public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
 {
+    public enum ButtonAction
+    {
+        None,
+        LoadScene,
+        Quit
+    }
+
     [Header("Button Sounds")]
     public AudioClip hoverSound;
     public AudioClip clickSound;
@@ -19,7 +26,8 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
     [Range(0f, 2f)]
     public float clickVolume = 1.5f;
 
-    [Header("Scene Transition")]
+    [Header("Button Action")]
+    public ButtonAction buttonAction = ButtonAction.None;
     public string nextSceneName = "IntroductionScene";
 
     private AudioSource audioSource;
@@ -34,7 +42,7 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
         audioSource.spatialBlend = 0f;
 
         if (button != null)
-            button.onClick.AddListener(PlayClickSound);
+            button.onClick.AddListener(HandleClick);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -43,12 +51,12 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
             audioSource.PlayOneShot(hoverSound, hoverVolume);
     }
 
-    private void PlayClickSound()
+    private void HandleClick()
     {
-        StartCoroutine(PlaySoundThenLoadScene());
+        StartCoroutine(PlaySoundThenAct());
     }
 
-    private IEnumerator PlaySoundThenLoadScene()
+    private IEnumerator PlaySoundThenAct()
     {
         if (clickSound != null)
         {
@@ -56,13 +64,19 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
             yield return new WaitForSeconds(clickSound.length);
         }
 
-        if (!string.IsNullOrEmpty(nextSceneName))
+        if (buttonAction == ButtonAction.LoadScene)
+        {
             SceneManager.LoadScene(nextSceneName);
+        }
+        else if (buttonAction == ButtonAction.Quit)
+        {
+            Application.Quit();
+        }
     }
 
     private void OnDestroy()
     {
         if (button != null)
-            button.onClick.RemoveListener(PlayClickSound);
+            button.onClick.RemoveListener(HandleClick);
     }
 }
