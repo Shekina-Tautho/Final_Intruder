@@ -1,7 +1,9 @@
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
@@ -16,6 +18,9 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
 
     [Range(0f, 2f)]
     public float clickVolume = 1.5f;
+
+    [Header("Scene Transition")]
+    public string nextSceneName = "IntroductionScene";
 
     private AudioSource audioSource;
     private Button button;
@@ -40,8 +45,19 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
 
     private void PlayClickSound()
     {
+        StartCoroutine(PlaySoundThenLoadScene());
+    }
+
+    private IEnumerator PlaySoundThenLoadScene()
+    {
         if (clickSound != null)
+        {
             audioSource.PlayOneShot(clickSound, clickVolume);
+            yield return new WaitForSeconds(clickSound.length);
+        }
+
+        if (!string.IsNullOrEmpty(nextSceneName))
+            SceneManager.LoadScene(nextSceneName);
     }
 
     private void OnDestroy()

@@ -3832,19 +3832,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 796118086}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 180725792}
-        m_TargetAssemblyTypeName: DisclaimerController, Assembly-CSharp
-        m_MethodName: OpenDisclaimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &796118086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3913,6 +3901,7 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 7ef808d92e242fb4ba920847f870e528, type: 3}
   hoverVolume: 0.5
   clickVolume: 1.5
+  nextSceneName: IntroductionScene
 --- !u!82 &796118090
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3925,7 +3914,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
