@@ -45375,6 +45375,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 761045246953499085, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
+      propertyPath: m_margin.y
+      value: -35.852432
+      objectReference: {fileID: 0}
     - target: {fileID: 1901475366143693047, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -45477,6 +45481,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7229333848188596504, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567136684087810359, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7664750132925141053, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
