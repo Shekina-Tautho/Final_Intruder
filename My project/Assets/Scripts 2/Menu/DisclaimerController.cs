@@ -80,7 +80,7 @@ public class DisclaimerController : MonoBehaviour
         if (disclaimerToggle == null || !disclaimerToggle.isOn)
             return;
 
-        SceneManager.LoadScene("ExposureScene");
+        SceneManager.LoadScene("IntroductionScene");
     }
 
     public void CloseDisclaimer()
