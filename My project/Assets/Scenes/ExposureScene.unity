@@ -607,9 +607,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3990729804992941522, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4123567436420601798, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
       propertyPath: m_Name
       value: XR Origin (VR)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147837287982826122, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147837287982826122, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5796220062484237711, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
       propertyPath: m_AnchorMax.y

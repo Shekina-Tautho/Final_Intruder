@@ -1322,7 +1322,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -1050, y: 1537.4}
-  m_SizeDelta: {x: 1100, y: 490}
+  m_SizeDelta: {x: 1100, y: 420}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1812466413590278002
 CanvasRenderer:
@@ -1520,7 +1520,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &3608439143775170050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1682,8 +1682,8 @@ MonoBehaviour:
   outcomeGlow: {fileID: 0}
   exposureDescription: 
   tractEntryDescription: 
-  encounterDescription: Match the influenza virus's surface proteins with compatible
-    cellular receptors.
+  encounterDescription: Move toward a cellular receptor and press the right trigger
+    to attempt binding.
   infectionDescription: 
   replicationDescription: 
   releaseDescription: 
