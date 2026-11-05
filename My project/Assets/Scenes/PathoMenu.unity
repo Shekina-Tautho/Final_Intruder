@@ -1790,6 +1790,7 @@ MonoBehaviour:
   clickVolume: 1.5
   buttonAction: 2
   nextSceneName: IntroductionScene
+  disclaimerController: {fileID: 0}
 --- !u!82 &446779628
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4018,8 +4019,9 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 7ef808d92e242fb4ba920847f870e528, type: 3}
   hoverVolume: 0.5
   clickVolume: 1.5
-  buttonAction: 1
-  nextSceneName: IntroductionScene
+  buttonAction: 3
+  nextSceneName: 
+  disclaimerController: {fileID: 180725792}
 --- !u!82 &796118090
 AudioSource:
   m_ObjectHideFlags: 0

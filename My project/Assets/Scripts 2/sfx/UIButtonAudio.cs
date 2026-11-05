@@ -1,4 +1,3 @@
-
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,7 +11,8 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
     {
         None,
         LoadScene,
-        Quit
+        Quit,
+        OpenDisclaimer
     }
 
     [Header("Button Sounds")]
@@ -30,6 +30,9 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
     public ButtonAction buttonAction = ButtonAction.None;
     public string nextSceneName = "IntroductionScene";
 
+    [Header("Disclaimer Reference")]
+    public DisclaimerController disclaimerController;
+
     private AudioSource audioSource;
     private Button button;
 
@@ -42,13 +45,17 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
         audioSource.spatialBlend = 0f;
 
         if (button != null)
+        {
             button.onClick.AddListener(HandleClick);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (hoverSound != null)
+        {
             audioSource.PlayOneShot(hoverSound, hoverVolume);
+        }
     }
 
     private void HandleClick()
@@ -61,22 +68,46 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
         if (clickSound != null)
         {
             audioSource.PlayOneShot(clickSound, clickVolume);
+
             yield return new WaitForSeconds(clickSound.length);
         }
 
-        if (buttonAction == ButtonAction.LoadScene)
+        switch (buttonAction)
         {
-            SceneManager.LoadScene(nextSceneName);
-        }
-        else if (buttonAction == ButtonAction.Quit)
-        {
-            Application.Quit();
+            case ButtonAction.OpenDisclaimer:
+
+                if (disclaimerController != null)
+                {
+                    disclaimerController.OpenDisclaimer();
+                }
+                else
+                {
+                    Debug.LogWarning(
+                        "Disclaimer Controller is not assigned."
+                    );
+                }
+
+                break;
+
+            case ButtonAction.LoadScene:
+
+                SceneManager.LoadScene(nextSceneName);
+
+                break;
+
+            case ButtonAction.Quit:
+
+                Application.Quit();
+
+                break;
         }
     }
 
     private void OnDestroy()
     {
         if (button != null)
+        {
             button.onClick.RemoveListener(HandleClick);
+        }
     }
 }
