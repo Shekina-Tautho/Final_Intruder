@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class ReceptorGroup : MonoBehaviour
@@ -13,7 +12,13 @@ public class ReceptorGroup : MonoBehaviour
     [Header("Audio Feedback")]
     private AudioSource incompatibleAudioSource;
 
+    [Header("UI Feedback")]
+    private IncompatibleMessageUI incompatibleMessageUI;
+
     private Receptor[] receptors;
+
+    // Prevent the incompatible message from appearing more than once.
+    private bool hasShownIncompatibleMessage = false;
 
     void Awake()
     {
@@ -29,6 +34,16 @@ public class ReceptorGroup : MonoBehaviour
         {
             Debug.LogWarning(
                 "Rejection Audio Source not found on XR Origin (VR)."
+            );
+        }
+
+        incompatibleMessageUI =
+            FindFirstObjectByType<IncompatibleMessageUI>();
+
+        if (incompatibleMessageUI == null)
+        {
+            Debug.LogWarning(
+                "IncompatibleMessageUI was not found in the scene."
             );
         }
     }
@@ -136,9 +151,21 @@ public class ReceptorGroup : MonoBehaviour
             // Play rejection sound only for player interactions.
             if (playerInitiated && incompatibleAudioSource != null)
             {
-                incompatibleAudioSource.PlayOneShot(
-                    incompatibleAudioSource.clip
-                );
+                if (incompatibleAudioSource.clip != null)
+                {
+                    incompatibleAudioSource.PlayOneShot(
+                        incompatibleAudioSource.clip
+                    );
+                }
+            }
+
+            // Show rejection message only once for player interactions.
+            if (playerInitiated &&
+                !hasShownIncompatibleMessage &&
+                incompatibleMessageUI != null)
+            {
+                incompatibleMessageUI.ShowMessage();
+                hasShownIncompatibleMessage = true;
             }
 
             return true;
