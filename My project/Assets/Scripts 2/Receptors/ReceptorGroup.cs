@@ -11,9 +11,11 @@ public class ReceptorGroup : MonoBehaviour
 
     [Header("Audio Feedback")]
     private AudioSource incompatibleAudioSource;
+    private AudioSource compatibleAudioSource;
 
     [Header("UI Feedback")]
     private IncompatibleMessageUI incompatibleMessageUI;
+    private CompatibleMessageUI compatibleMessageUI;
 
     private Receptor[] receptors;
 
@@ -26,8 +28,22 @@ public class ReceptorGroup : MonoBehaviour
 
         if (xrOrigin != null)
         {
-            incompatibleAudioSource =
-                xrOrigin.GetComponent<AudioSource>();
+            AudioSource[] audioSources =
+                xrOrigin.GetComponents<AudioSource>();
+
+            if (audioSources.Length >= 2)
+            {
+                incompatibleAudioSource = audioSources[0];
+                compatibleAudioSource = audioSources[1];
+            }
+            else if (audioSources.Length == 1)
+            {
+                incompatibleAudioSource = audioSources[0];
+
+                Debug.LogWarning(
+                    "Match Audio Source is missing from XR Origin (VR)."
+                );
+            }
         }
 
         if (incompatibleAudioSource == null)
@@ -37,6 +53,7 @@ public class ReceptorGroup : MonoBehaviour
             );
         }
 
+        // Find the incompatible message UI.
         incompatibleMessageUI =
             FindFirstObjectByType<IncompatibleMessageUI>();
 
@@ -44,6 +61,17 @@ public class ReceptorGroup : MonoBehaviour
         {
             Debug.LogWarning(
                 "IncompatibleMessageUI was not found in the scene."
+            );
+        }
+
+        // Find the compatible message UI.
+        compatibleMessageUI =
+            FindFirstObjectByType<CompatibleMessageUI>();
+
+        if (compatibleMessageUI == null)
+        {
+            Debug.LogWarning(
+                "CompatibleMessageUI was not found in the scene."
             );
         }
     }
@@ -148,15 +176,24 @@ public class ReceptorGroup : MonoBehaviour
                 closestReceptor.receptorType
             );
 
+            Debug.Log("Player initiated: " + playerInitiated);
+
+            Debug.Log("Incompatible UI found: " +
+                (incompatibleMessageUI != null));
+
+            Debug.Log("Incompatible Audio Source: " +
+                (incompatibleAudioSource != null
+                    ? incompatibleAudioSource.name
+                    : "NULL"));
+
             // Play rejection sound only for player interactions.
-            if (playerInitiated && incompatibleAudioSource != null)
+            if (playerInitiated &&
+                incompatibleAudioSource != null &&
+                incompatibleAudioSource.clip != null)
             {
-                if (incompatibleAudioSource.clip != null)
-                {
-                    incompatibleAudioSource.PlayOneShot(
-                        incompatibleAudioSource.clip
-                    );
-                }
+                incompatibleAudioSource.PlayOneShot(
+                    incompatibleAudioSource.clip
+                );
             }
 
             // Show rejection message only once for player interactions.
@@ -175,6 +212,22 @@ public class ReceptorGroup : MonoBehaviour
             "MATCH! Virus type " + virus.virusType +
             " matched receptor type " + closestReceptor.receptorType
         );
+
+        // Play match sound only for player interactions.
+        if (playerInitiated &&
+            compatibleAudioSource != null &&
+            compatibleAudioSource.clip != null)
+        {
+            compatibleAudioSource.PlayOneShot(
+                compatibleAudioSource.clip
+            );
+        }
+
+        // Show match message only for player interactions.
+        if (playerInitiated && compatibleMessageUI != null)
+        {
+            compatibleMessageUI.ShowMessage();
+        }
 
         closestReceptor.PlayMatchAnimation();
 
