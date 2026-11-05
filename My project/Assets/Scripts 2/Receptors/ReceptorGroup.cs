@@ -10,7 +10,28 @@ public class ReceptorGroup : MonoBehaviour
     [Header("Interaction Settings")]
     public float interactionRadius = 0.5f;
 
+    [Header("Audio Feedback")]
+    private AudioSource incompatibleAudioSource;
+
     private Receptor[] receptors;
+
+    void Awake()
+    {
+        GameObject xrOrigin = GameObject.Find("XR Origin (VR)");
+
+        if (xrOrigin != null)
+        {
+            incompatibleAudioSource =
+                xrOrigin.GetComponent<AudioSource>();
+        }
+
+        if (incompatibleAudioSource == null)
+        {
+            Debug.LogWarning(
+                "Rejection Audio Source not found on XR Origin (VR)."
+            );
+        }
+    }
 
     void Start()
     {
@@ -103,6 +124,7 @@ public class ReceptorGroup : MonoBehaviour
             " | Distance: " + closestDistance
         );
 
+        // Check receptor compatibility.
         if (virus.virusType != closestReceptor.receptorType)
         {
             Debug.Log(
@@ -110,6 +132,14 @@ public class ReceptorGroup : MonoBehaviour
                 " does not match receptor type " +
                 closestReceptor.receptorType
             );
+
+            // Play rejection sound only for player interactions.
+            if (playerInitiated && incompatibleAudioSource != null)
+            {
+                incompatibleAudioSource.PlayOneShot(
+                    incompatibleAudioSource.clip
+                );
+            }
 
             return true;
         }
