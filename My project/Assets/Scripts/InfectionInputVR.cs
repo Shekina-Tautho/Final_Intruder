@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ public class InfectionInputVR : MonoBehaviour
     public InputActionProperty infectAction;
 
     private Virus virus;
+    private bool triggerWasPressed;
 
     void Start()
     {
@@ -22,19 +24,28 @@ public class InfectionInputVR : MonoBehaviour
 
     void Update()
     {
-        // PC testing
-        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+        // PC testing: E key
+        if (Keyboard.current != null &&
+            Keyboard.current.eKey.wasPressedThisFrame)
         {
             TryAttachToReceptor();
         }
 
-        // VR Right Trigger
+        // VR: Right Trigger
+        if (infectAction.action == null)
+            return;
+
         float value = infectAction.action.ReadValue<float>();
 
-        if (value > 0.8f)
+        bool triggerPressed = value > 0.8f;
+
+        // Interact only when the trigger is first pressed.
+        if (triggerPressed && !triggerWasPressed)
         {
             TryAttachToReceptor();
         }
+
+        triggerWasPressed = triggerPressed;
     }
 
     void TryAttachToReceptor()
