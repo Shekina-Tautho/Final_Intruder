@@ -1237,8 +1237,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1828170140}
   blackScreen: {fileID: 265427731}
-  fadeDuration: 2
-  blackScreenDelay: 1
+  fadeInDuration: 1.5
+  fadeOutDuration: 1.5
+  blackScreenDelay: 0.5
   nextSceneName: HostCellInfection
 --- !u!4 &1995238605
 Transform:

@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/EndoScene.unity
+    guid: cf2453721c3b84346807246f7b8337f6
+  - enabled: 1
     path: Assets/Scenes/HostCellInfection.unity
     guid: 985e98633ea051a4bac236c3428074ef
   m_configObjects:

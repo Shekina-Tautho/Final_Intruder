@@ -9,10 +9,12 @@ public class VideoSceneTransition : MonoBehaviour
 {
     [Header("Video")]
     public VideoPlayer videoPlayer;
+    public double videoStartTime = 3.0;
 
-    [Header("Fade to Black")]
+    [Header("Fade Settings")]
     public GameObject blackScreen;
-    public float fadeDuration = 1.5f;
+    public float fadeInDuration = 1.5f;
+    public float fadeOutDuration = 1.5f;
     public float blackScreenDelay = 1.5f;
 
     [Header("Scene Transition")]
@@ -23,27 +25,64 @@ public class VideoSceneTransition : MonoBehaviour
 
     private void Start()
     {
-        if (videoPlayer == null)
+        if (videoPlayer == null || blackScreen == null)
         {
-            Debug.LogWarning("Video Player is not assigned.");
+            Debug.LogWarning("Video Player or Black Screen is not assigned.");
             return;
         }
 
-        if (blackScreen != null)
+        blackScreenImage = blackScreen.GetComponent<Image>();
+
+        if (blackScreenImage == null)
         {
-            blackScreenImage = blackScreen.GetComponent<Image>();
-
-            if (blackScreenImage != null)
-            {
-                Color color = blackScreenImage.color;
-                color.a = 0f;
-                blackScreenImage.color = color;
-            }
-
-            blackScreen.SetActive(false);
+            Debug.LogWarning("BlackScreen needs an Image component.");
+            return;
         }
 
+        // Start with a completely black screen.
+        Color color = blackScreenImage.color;
+        color.a = 1f;
+        blackScreenImage.color = color;
+
+        blackScreen.SetActive(true);
+
+        // Prevent the video from playing automatically.
+        videoPlayer.playOnAwake = false;
+
+        // Listen for video events.
         videoPlayer.loopPointReached += OnVideoFinished;
+        videoPlayer.prepareCompleted += OnVideoPrepared;
+
+        // Prepare the video before playback.
+        videoPlayer.Prepare();
+    }
+
+    private void OnVideoPrepared(VideoPlayer player)
+    {
+        // Remove listener after preparation.
+        videoPlayer.prepareCompleted -= OnVideoPrepared;
+
+        // Skip the first 3 seconds.
+        videoPlayer.time = videoStartTime;
+
+        // Wait until seeking is complete.
+        StartCoroutine(StartVideoAtPosition());
+    }
+
+    private IEnumerator StartVideoAtPosition()
+    {
+        yield return new WaitUntil(() =>
+            videoPlayer.isPrepared &&
+            videoPlayer.time >= videoStartTime - 0.05
+        );
+
+        // Start the video from the requested timestamp.
+        videoPlayer.Play();
+
+        // Fade in and reveal the video.
+        yield return StartCoroutine(Fade(1f, 0f, fadeInDuration));
+
+        blackScreen.SetActive(false);
     }
 
     private void OnVideoFinished(VideoPlayer player)
@@ -52,35 +91,18 @@ public class VideoSceneTransition : MonoBehaviour
             return;
 
         hasFinished = true;
-        StartCoroutine(FadeAndLoadScene());
+        StartCoroutine(FadeOutAndLoadScene());
     }
 
-    private IEnumerator FadeAndLoadScene()
+    private IEnumerator FadeOutAndLoadScene()
     {
-        if (blackScreen != null && blackScreenImage != null)
-        {
-            blackScreen.SetActive(true);
+        blackScreen.SetActive(true);
 
-            float elapsed = 0f;
+        yield return StartCoroutine(
+            Fade(0f, 1f, fadeOutDuration)
+        );
 
-            while (elapsed < fadeDuration)
-            {
-                elapsed += Time.unscaledDeltaTime;
-
-                float alpha = Mathf.Clamp01(elapsed / fadeDuration);
-
-                Color color = blackScreenImage.color;
-                color.a = alpha;
-                blackScreenImage.color = color;
-
-                yield return null;
-            }
-
-            Color finalColor = blackScreenImage.color;
-            finalColor.a = 1f;
-            blackScreenImage.color = finalColor;
-        }
-
+        // Keep the screen black before loading the next scene.
         yield return new WaitForSecondsRealtime(blackScreenDelay);
 
         if (!string.IsNullOrEmpty(nextSceneName))
@@ -93,11 +115,43 @@ public class VideoSceneTransition : MonoBehaviour
         }
     }
 
+    private IEnumerator Fade(float startAlpha, float endAlpha, float duration)
+    {
+        float elapsed = 0f;
+
+        if (duration <= 0f)
+        {
+            Color immediateColor = blackScreenImage.color;
+            immediateColor.a = endAlpha;
+            blackScreenImage.color = immediateColor;
+            yield break;
+        }
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+
+            float progress = Mathf.Clamp01(elapsed / duration);
+            float alpha = Mathf.Lerp(startAlpha, endAlpha, progress);
+
+            Color color = blackScreenImage.color;
+            color.a = alpha;
+            blackScreenImage.color = color;
+
+            yield return null;
+        }
+
+        Color finalColor = blackScreenImage.color;
+        finalColor.a = endAlpha;
+        blackScreenImage.color = finalColor;
+    }
+
     private void OnDestroy()
     {
         if (videoPlayer != null)
         {
             videoPlayer.loopPointReached -= OnVideoFinished;
+            videoPlayer.prepareCompleted -= OnVideoPrepared;
         }
     }
 }
