@@ -507,6 +507,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 599935316147477777, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 599935316147477777, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 685433706885472086, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+      propertyPath: m_margin.y
+      value: 28.280733
+      objectReference: {fileID: 0}
     - target: {fileID: 783152759304935004, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -538,15 +550,31 @@ PrefabInstance:
     - target: {fileID: 991111505881969498, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284118916722904270, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+      propertyPath: stageNumber
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1284118916722904270, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
       propertyPath: sfxAudioSource
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1284118916722904270, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+      propertyPath: stageDescription
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284118916722904270, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
       propertyPath: backgroundMusicSource
       value: 
       objectReference: {fileID: 1685460142}
+    - target: {fileID: 1962179428306571216, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+      propertyPath: stageNumber
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962179428306571216, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+      propertyPath: stageDescription
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2578530414255642306, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -598,6 +626,10 @@ PrefabInstance:
     - target: {fileID: 5796220062484237711, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6144475932227041528, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+      propertyPath: m_margin.y
+      value: 26.618599
       objectReference: {fileID: 0}
     - target: {fileID: 7013672442764813405, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
       propertyPath: m_LocalPosition.x
@@ -672,7 +704,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4237004564132948146, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
+    - {fileID: 4362115837230558922, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2914705765460837685, guid: 36ccece3ee92c8a40af5992ea5d1fa14, type: 3}

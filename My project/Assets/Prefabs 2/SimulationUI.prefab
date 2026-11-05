@@ -1520,7 +1520,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3608439143775170050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,6 +1637,10 @@ MonoBehaviour:
   tractEntryDescription: Observe how inhaled influenza viruses enter the respiratory
     tract and travel toward  epithelial cells.
   tractEntryStartTime: 12
+  backgroundMusicSource: {fileID: 0}
+  sfxAudioSource: {fileID: 0}
+  stageChangeSound: {fileID: 0}
+  stageChangeVolume: 1
   fadeRenderer: {fileID: 0}
   fadeStartTime: 3
   fadeDuration: 2
@@ -1678,8 +1682,8 @@ MonoBehaviour:
   outcomeGlow: {fileID: 0}
   exposureDescription: 
   tractEntryDescription: 
-  encounterDescription: Attempt to attach to epithelial cells by matching the influenza
-    virus's surface proteins with compatible cellular receptors.
+  encounterDescription: Match the influenza virus's surface proteins with compatible
+    cellular receptors.
   infectionDescription: 
   replicationDescription: 
   releaseDescription: 
