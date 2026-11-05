@@ -35,18 +35,25 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
 
     private AudioSource audioSource;
     private Button button;
+    private Toggle toggle;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         button = GetComponent<Button>();
+        toggle = GetComponent<Toggle>();
 
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 0f;
 
         if (button != null)
         {
-            button.onClick.AddListener(HandleClick);
+            button.onClick.AddListener(HandleButtonClick);
+        }
+
+        if (toggle != null)
+        {
+            toggle.onValueChanged.AddListener(HandleToggleClick);
         }
     }
 
@@ -58,17 +65,37 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
         }
     }
 
-    private void HandleClick()
+    private void HandleButtonClick()
     {
-        StartCoroutine(PlaySoundThenAct());
+        // Play click sound immediately
+        if (clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound, clickVolume);
+        }
+
+        // No additional action needed for Continue and X buttons
+        if (buttonAction == ButtonAction.None)
+            return;
+
+        // Start coroutine only for actions that need a delay
+        if (isActiveAndEnabled)
+        {
+            StartCoroutine(PlaySoundThenAct());
+        }
+    }
+
+    private void HandleToggleClick(bool isOn)
+    {
+        if (clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound, clickVolume);
+        }
     }
 
     private IEnumerator PlaySoundThenAct()
     {
         if (clickSound != null)
         {
-            audioSource.PlayOneShot(clickSound, clickVolume);
-
             yield return new WaitForSeconds(clickSound.length);
         }
 
@@ -82,16 +109,21 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
                 }
                 else
                 {
-                    Debug.LogWarning(
-                        "Disclaimer Controller is not assigned."
-                    );
+                    Debug.LogWarning("Disclaimer Controller is not assigned.");
                 }
 
                 break;
 
             case ButtonAction.LoadScene:
 
-                SceneManager.LoadScene(nextSceneName);
+                if (!string.IsNullOrEmpty(nextSceneName))
+                {
+                    SceneManager.LoadScene(nextSceneName);
+                }
+                else
+                {
+                    Debug.LogWarning("Next Scene Name is empty.");
+                }
 
                 break;
 
@@ -107,7 +139,12 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler
     {
         if (button != null)
         {
-            button.onClick.RemoveListener(HandleClick);
+            button.onClick.RemoveListener(HandleButtonClick);
+        }
+
+        if (toggle != null)
+        {
+            toggle.onValueChanged.RemoveListener(HandleToggleClick);
         }
     }
 }
