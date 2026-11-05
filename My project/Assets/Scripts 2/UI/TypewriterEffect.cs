@@ -1,4 +1,3 @@
-
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -12,6 +11,12 @@ public class TypewriterEffect : MonoBehaviour
     [Header("Typing Settings")]
     public float charactersPerSecond = 30f;
     public float delayBetweenTexts = 0.5f;
+
+    [Header("Typing Sound")]
+    public AudioSource typingAudioSource;
+    public AudioClip typingSound;
+    [Range(0f, 1f)]
+    public float typingVolume = 0.5f;
 
     [Header("Scene Transition")]
     public string nextSceneName = "ExposureScene";
@@ -42,6 +47,15 @@ public class TypewriterEffect : MonoBehaviour
 
             int totalCharacters = textObject.textInfo.characterCount;
 
+            // Start typing sound
+            if (typingAudioSource != null && typingSound != null)
+            {
+                typingAudioSource.clip = typingSound;
+                typingAudioSource.volume = typingVolume;
+                typingAudioSource.loop = true;
+                typingAudioSource.Play();
+            }
+
             for (int i = 0; i < totalCharacters; i++)
             {
                 textObject.maxVisibleCharacters = i + 1;
@@ -49,6 +63,12 @@ public class TypewriterEffect : MonoBehaviour
                 yield return new WaitForSeconds(
                     1f / charactersPerSecond
                 );
+            }
+
+            // Stop typing sound after each text
+            if (typingAudioSource != null)
+            {
+                typingAudioSource.Stop();
             }
 
             yield return new WaitForSeconds(delayBetweenTexts);
