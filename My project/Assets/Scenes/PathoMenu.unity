@@ -18431,6 +18431,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3444424628388660510, guid: 0ef7e1216c99ac043b694a32bacdc57a, type: 3}
+      propertyPath: m_UIPressInput.m_InputActionReferencePerformed
+      value: 
+      objectReference: {fileID: 386775657917439861, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 6505772602907945104, guid: 0ef7e1216c99ac043b694a32bacdc57a, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig) Variant
