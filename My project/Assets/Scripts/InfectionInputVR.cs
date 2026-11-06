@@ -8,51 +8,131 @@ public class InfectionInputVR : MonoBehaviour
     public InputActionProperty infectAction;
 
     private Virus virus;
-    private bool triggerWasPressed;
+    private bool enabledActionHere = false;
 
-    void Start()
+    private void Awake()
     {
         virus = GetComponent<Virus>();
 
         if (virus == null)
         {
             Debug.LogError(
-                "InfectionInputVR could not find a Virus component on this GameObject."
+                "InfectionInputVR: No Virus component found!"
+            );
+        }
+        else
+        {
+            Debug.Log(
+                "Virus detected: " + virus.virusType
             );
         }
     }
 
-    void Update()
+    private void OnEnable()
     {
-        // PC testing: E key
-        if (Keyboard.current != null &&
-            Keyboard.current.eKey.wasPressedThisFrame)
+        if (infectAction.action == null)
         {
-            TryAttachToReceptor();
+            Debug.LogError(
+                "InfectionInputVR: Infect Action is NOT assigned!"
+            );
+
+            return;
         }
 
-        // VR: Right Trigger
+        // Enable the action if it is not already enabled.
+        if (!infectAction.action.enabled)
+        {
+            infectAction.action.Enable();
+            enabledActionHere = true;
+
+            Debug.Log("Infect Action successfully enabled.");
+        }
+        else
+        {
+            Debug.Log("Infect Action is already enabled.");
+        }
+
+        // Display the actual input bindings.
+        Debug.Log(
+            "Active Input Action: " +
+            infectAction.action.name
+        );
+
+        foreach (var control in infectAction.action.controls)
+        {
+            Debug.Log(
+                "Infect Binding: " + control.path
+            );
+        }
+
+        if (infectAction.action.controls.Count == 0)
+        {
+            Debug.LogWarning(
+                "Infect Action has no resolved input controls!"
+            );
+        }
+    }
+
+    private void Update()
+    {
+        CheckKeyboardInput();
+        CheckVRInput();
+    }
+
+    // ==========================================
+    // KEYBOARD INPUT: E
+    // ==========================================
+
+    private void CheckKeyboardInput()
+    {
+        if (Keyboard.current == null)
+            return;
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            Debug.Log(
+                "KEYBOARD E DETECTED!"
+            );
+
+            TryAttachToReceptor();
+        }
+    }
+
+    // ==========================================
+    // VR INPUT: RIGHT CONTROLLER A BUTTON
+    // ==========================================
+
+    private void CheckVRInput()
+    {
         if (infectAction.action == null)
             return;
 
-        float value = infectAction.action.ReadValue<float>();
+        if (!infectAction.action.enabled)
+            return;
 
-        bool triggerPressed = value > 0.8f;
-
-        // Interact only when the trigger is first pressed.
-        if (triggerPressed && !triggerWasPressed)
+        // Detect a new button press.
+        if (infectAction.action.WasPressedThisFrame())
         {
+            Debug.Log(
+                "RIGHT CONTROLLER A BUTTON DETECTED!"
+            );
+
             TryAttachToReceptor();
         }
-
-        triggerWasPressed = triggerPressed;
     }
 
-    void TryAttachToReceptor()
+    // ==========================================
+    // RECEPTOR ATTACHMENT
+    // ==========================================
+
+    private void TryAttachToReceptor()
     {
         if (virus == null)
         {
-            Debug.LogWarning("No Virus component found.");
+            Debug.LogWarning(
+                "Cannot attach: Virus component is missing."
+            );
+
             return;
         }
 
@@ -61,19 +141,53 @@ public class InfectionInputVR : MonoBehaviour
 
         if (receptorGroups.Length == 0)
         {
-            Debug.LogWarning("No ReceptorGroup found in the scene.");
+            Debug.LogWarning(
+                "No ReceptorGroup found in the scene."
+            );
+
             return;
         }
 
-        // Check each group instead of relying on parent positions.
+        Debug.Log(
+            "Checking " + receptorGroups.Length +
+            " receptor group(s)..."
+        );
+
         foreach (ReceptorGroup group in receptorGroups)
         {
-            if (group != null && group.TryAttach(virus, true))
+            if (group == null)
+                continue;
+
+            bool interactionProcessed =
+                group.TryAttach(virus, true);
+
+            if (interactionProcessed)
             {
+                Debug.Log(
+                    "Receptor interaction processed successfully."
+                );
+
                 return;
             }
         }
 
-        Debug.Log("No receptor was found within range in any group.");
+        Debug.Log(
+            "No receptor found within interaction range."
+        );
+    }
+
+    // ==========================================
+    // CLEANUP
+    // ==========================================
+
+    private void OnDisable()
+    {
+        // Only disable the action if this script enabled it.
+        if (enabledActionHere && infectAction.action != null)
+        {
+            infectAction.action.Disable();
+
+            enabledActionHere = false;
+        }
     }
 }
