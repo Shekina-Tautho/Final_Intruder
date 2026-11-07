@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using System.Collections;
 
@@ -49,6 +50,7 @@ public class PlayerCellSnapper : MonoBehaviour
         SkinnedMeshRenderer closestCell = null;
         float closestDistance = Mathf.Infinity;
 
+        // Find the epithelial cell closest to the triggered receptor.
         foreach (SkinnedMeshRenderer cell in cells)
         {
             if (cell == null)
@@ -74,6 +76,21 @@ public class PlayerCellSnapper : MonoBehaviour
             return;
         }
 
+        // SAVE THE ABSORBED CELL POSITION.
+        // Convert its world position into local coordinates
+        // relative to the epithelial cells parent.
+        VirusTransferData.absorbedCellLocalPosition =
+            epithelialCellsRoot.InverseTransformPoint(
+                closestCell.bounds.center
+            );
+
+        VirusTransferData.hasAbsorbedCell = true;
+
+        Debug.Log(
+            "Saved absorbed cell position: " +
+            VirusTransferData.absorbedCellLocalPosition
+        );
+
         StartCoroutine(
             MoveAfterAnimation(closestCell)
         );
@@ -86,12 +103,13 @@ public class PlayerCellSnapper : MonoBehaviour
 
         // Allow the receptor animation to play first.
         yield return new WaitForSeconds(animationWaitTime);
-        
+
         if (absorptionFade != null)
         {
             absorptionFade.FadeToBlack();
         }
 
+        // Disable player controls during absorption.
         foreach (MonoBehaviour control in controlsToDisable)
         {
             if (control != null)
@@ -104,11 +122,12 @@ public class PlayerCellSnapper : MonoBehaviour
         // Start the epithelial endocytosis animation.
         StartCoroutine(AnimateEndocytosis(targetCell));
 
-        Vector3 targetCenter = targetCell.bounds.center + Vector3.up * 0.3f;
+        Vector3 targetCenter =
+            targetCell.bounds.center + Vector3.up * 0.3f;
+
         Vector3 startPosition = playerRoot.position;
 
-        Vector3 targetPosition =
-            startPosition + (targetCenter - startPosition);
+        Vector3 targetPosition = targetCenter;
 
         float elapsedTime = 0f;
 
@@ -138,6 +157,7 @@ public class PlayerCellSnapper : MonoBehaviour
         if (characterController != null)
             characterController.enabled = true;
 
+        // Restore player controls.
         foreach (MonoBehaviour control in controlsToDisable)
         {
             if (control != null)
