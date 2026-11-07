@@ -18,6 +18,9 @@ public class TutorialManager : MonoBehaviour
         public GameObject controllerModel;
 
         [Header("Controller Rotation")]
+        [Tooltip("Assign the empty parent object that controls the controller's rotation.")]
+        public Transform rotationTarget;
+
         public Vector3 controllerRotation = Vector3.zero;
 
         [Header("Highlighted Parts")]
@@ -223,10 +226,25 @@ public class TutorialManager : MonoBehaviour
         if (step.controllerModel != null)
         {
             step.controllerModel.SetActive(true);
+        }
 
-            // Apply this step's controller rotation.
-            step.controllerModel.transform.localEulerAngles =
-                step.controllerRotation;
+        // Rotate the separate parent object.
+        if (step.rotationTarget != null)
+        {
+            step.rotationTarget.localRotation =
+                Quaternion.Euler(step.controllerRotation);
+
+            Debug.Log(
+                "Rotation applied to " + step.rotationTarget.name +
+                ": " + step.controllerRotation
+            );
+        }
+        else
+        {
+            Debug.LogWarning(
+                "No Rotation Target assigned for tutorial step: " +
+                step.title
+            );
         }
 
         // Show only the current step's highlights.
@@ -243,8 +261,7 @@ public class TutorialManager : MonoBehaviour
 
         Debug.Log(
             "Tutorial Step " + (currentStep + 1) +
-            ": " + step.title +
-            " | Controller Rotation: " + step.controllerRotation
+            ": " + step.title
         );
     }
 
