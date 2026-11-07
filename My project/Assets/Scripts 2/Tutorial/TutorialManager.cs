@@ -17,6 +17,9 @@ public class TutorialManager : MonoBehaviour
         [Header("Controller Model")]
         public GameObject controllerModel;
 
+        [Header("Controller Rotation")]
+        public Vector3 controllerRotation = Vector3.zero;
+
         [Header("Highlighted Parts")]
         public GameObject[] highlights;
     }
@@ -220,6 +223,10 @@ public class TutorialManager : MonoBehaviour
         if (step.controllerModel != null)
         {
             step.controllerModel.SetActive(true);
+
+            // Apply this step's controller rotation.
+            step.controllerModel.transform.localEulerAngles =
+                step.controllerRotation;
         }
 
         // Show only the current step's highlights.
@@ -236,7 +243,8 @@ public class TutorialManager : MonoBehaviour
 
         Debug.Log(
             "Tutorial Step " + (currentStep + 1) +
-            ": " + step.title
+            ": " + step.title +
+            " | Controller Rotation: " + step.controllerRotation
         );
     }
 
