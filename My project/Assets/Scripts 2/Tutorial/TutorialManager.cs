@@ -33,6 +33,14 @@ public class TutorialManager : MonoBehaviour
     public TMP_Text instructionText;
     public TMP_Text pressAnyButtonText;
 
+    [Header("Tutorial Audio")]
+    public AudioSource audioSource;
+    public AudioClip buttonClickSound;
+
+    [Range(0f, 1f)]
+    public float buttonClickVolume = 1f;
+
+
     [Header("Existing Simulation UI")]
     public GameObject simulationUI;
 
@@ -134,6 +142,15 @@ public class TutorialManager : MonoBehaviour
         // Detect a fresh button press.
         if (buttonPressed && !previousButtonState)
         {
+            // Play button click sound.
+            if (audioSource != null && buttonClickSound != null)
+            {
+                audioSource.PlayOneShot(
+                    buttonClickSound,
+                    buttonClickVolume
+                );
+            }
+
             NextStep();
         }
 
