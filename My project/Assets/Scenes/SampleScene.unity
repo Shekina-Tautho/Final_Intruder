@@ -14164,7 +14164,6 @@ Transform:
   - {fileID: 307752639}
   - {fileID: 1007268520}
   - {fileID: 456213942}
-  - {fileID: 1009702967}
   m_Father: {fileID: 904004836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &170026615
@@ -94552,17 +94551,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009702966}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 18}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
+  m_LocalPosition: {x: 0, y: 0, z: 148}
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 802393993}
-  m_Father: {fileID: 170026614}
+  m_Father: {fileID: 1891064503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 73.000046, y: -24.5}
   m_SizeDelta: {x: 6500, y: 4000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1009702968
@@ -181534,6 +181533,8 @@ MonoBehaviour:
   tutorialPanel: {fileID: 802393992}
   titleText: {fileID: 899342504}
   instructionText: {fileID: 713431717}
+  pressAnyButtonText: {fileID: 2142404374}
+  simulationUI: {fileID: 417767288}
   virusSpawner: {fileID: 2081573772}
   steps: []
 --- !u!4 &1891064503
@@ -181548,7 +181549,8 @@ Transform:
   m_LocalPosition: {x: 6, y: 0.36143994, z: 155}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1009702967}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1891086821
@@ -203599,8 +203601,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PRESS ANY CONTROLLER BUTTON TO CONTINUE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+  m_sharedMaterial: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -203624,8 +203626,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
