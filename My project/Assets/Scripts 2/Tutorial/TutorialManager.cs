@@ -33,6 +33,10 @@ public class TutorialManager : MonoBehaviour
     [Header("Gameplay")]
     public VirusSpawner virusSpawner;
 
+    [Header("Player Visibility")]
+    [Tooltip("Add the player's visible body object here. Do not add Main Camera or XR Origin.")]
+    public GameObject[] playerVisuals;
+
     [Header("Tutorial Steps")]
     public TutorialStep[] steps;
 
@@ -45,7 +49,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Awake()
     {
-        // Hide gameplay UI immediately
+        // Hide gameplay UI immediately.
         if (simulationUI != null)
         {
             simulationUI.SetActive(false);
@@ -53,15 +57,13 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError(
-                "SimulationUI is not assigned in TutorialManager!"
-            );
+            Debug.LogError("SimulationUI is not assigned!");
         }
     }
 
     private void Start()
     {
-        // Validate required references
+        // Validate required references.
         if (tutorialPanel == null ||
             titleText == null ||
             instructionText == null ||
@@ -81,22 +83,35 @@ public class TutorialManager : MonoBehaviour
             return;
         }
 
-        // Ensure gameplay UI is hidden
+        // Validate tutorial steps.
+        for (int i = 0; i < steps.Length; i++)
+        {
+            if (steps[i] == null)
+            {
+                Debug.LogError("Tutorial step " + i + " is empty!");
+                return;
+            }
+        }
+
+        // Hide the player's visible body.
+        SetPlayerVisibility(false);
+
+        // Ensure gameplay UI is hidden.
         simulationUI.SetActive(false);
 
-        // Show tutorial
+        // Show tutorial.
         tutorialPanel.SetActive(true);
         pressAnyButtonText.gameObject.SetActive(true);
 
         // Prevent a button already held at startup
-        // from immediately skipping the first step
+        // from immediately skipping the first step.
         previousButtonState = IsAnyControllerButtonPressed();
 
         tutorialStarted = true;
 
         ShowStep();
 
-        Debug.Log("Tutorial started.");
+        Debug.Log("Tutorial started successfully.");
     }
 
     private void Update()
@@ -110,7 +125,7 @@ public class TutorialManager : MonoBehaviour
 
         bool buttonPressed = IsAnyControllerButtonPressed();
 
-        // Detect a fresh button press
+        // Detect a fresh button press.
         if (buttonPressed && !previousButtonState)
         {
             NextStep();
@@ -172,13 +187,16 @@ public class TutorialManager : MonoBehaviour
 
     private void ShowStep()
     {
+        if (currentStep < 0 || currentStep >= steps.Length)
+            return;
+
         TutorialStep step = steps[currentStep];
 
-        // Update instructional text
+        // Update instructional text.
         titleText.text = step.title;
         instructionText.text = step.instruction;
 
-        // Hide all controller models and highlights
+        // Hide all controller models and highlights.
         foreach (TutorialStep tutorialStep in steps)
         {
             if (tutorialStep.controllerModel != null)
@@ -198,13 +216,13 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
-        // Show current controller model
+        // Show only the controller for this step.
         if (step.controllerModel != null)
         {
             step.controllerModel.SetActive(true);
         }
 
-        // Highlight current controller parts
+        // Show only the current step's highlights.
         if (step.highlights != null)
         {
             foreach (GameObject highlight in step.highlights)
@@ -222,22 +240,75 @@ public class TutorialManager : MonoBehaviour
         );
     }
 
+    private void SetPlayerVisibility(bool isVisible)
+    {
+        if (playerVisuals == null || playerVisuals.Length == 0)
+        {
+            Debug.LogWarning(
+                "Player Visuals array is empty. No player objects will be changed."
+            );
+            return;
+        }
+
+        foreach (GameObject visual in playerVisuals)
+        {
+            if (visual != null)
+            {
+                visual.SetActive(isVisible);
+
+                Debug.Log(
+                    "Player object: " + visual.name +
+                    " | Visibility: " + isVisible
+                );
+            }
+            else
+            {
+                Debug.LogWarning(
+                    "Player Visuals contains an empty reference!"
+                );
+            }
+        }
+    }
+
     private void FinishTutorial()
     {
         tutorialStarted = false;
 
-        // Hide tutorial interface
+        // Hide tutorial interface.
         tutorialPanel.SetActive(false);
 
-        // Hide instruction prompt
+        // Hide instruction prompt.
         pressAnyButtonText.gameObject.SetActive(false);
 
-        // Restore gameplay UI
+        // Hide all tutorial controller models and highlights.
+        foreach (TutorialStep step in steps)
+        {
+            if (step.controllerModel != null)
+            {
+                step.controllerModel.SetActive(false);
+            }
+
+            if (step.highlights != null)
+            {
+                foreach (GameObject highlight in step.highlights)
+                {
+                    if (highlight != null)
+                    {
+                        highlight.SetActive(false);
+                    }
+                }
+            }
+        }
+
+        // Restore the player's visible body.
+        SetPlayerVisibility(true);
+
+        // Restore gameplay UI.
         simulationUI.SetActive(true);
 
         Debug.Log("SimulationUI restored.");
 
-        // Start virus simulation
+        // Start virus simulation.
         virusSpawner.StartSpawning();
 
         Debug.Log("Tutorial completed. Virus simulation started!");

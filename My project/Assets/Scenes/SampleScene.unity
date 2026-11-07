@@ -34722,11 +34722,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3475118261464492563, guid: 5c4ec9e2d3ed63e4bbdd35a5983052c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -24.05092
+      value: -25.66845
       objectReference: {fileID: 0}
     - target: {fileID: 3475118261464492563, guid: 5c4ec9e2d3ed63e4bbdd35a5983052c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 149.22116
+      value: 151
       objectReference: {fileID: 0}
     - target: {fileID: 3475118261464492563, guid: 5c4ec9e2d3ed63e4bbdd35a5983052c4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34758,7 +34758,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4283425761326543017, guid: 5c4ec9e2d3ed63e4bbdd35a5983052c4, type: 3}
       propertyPath: m_Name
-      value: XR Controller Right 1
+      value: RightControllerDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283425761326543017, guid: 5c4ec9e2d3ed63e4bbdd35a5983052c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -66552,10 +66556,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Use the left thumbstick to move forward, backward, left, and right.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+  m_sharedMaterial: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -66579,8 +66583,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -66618,7 +66622,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -2008.4551, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -74799,8 +74803,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 16fdac12e456b8d48b940941c96ba676, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -84049,7 +84053,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899342501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00000027011987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84057,7 +84061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.045776367, y: 1138.5593}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &899342503
@@ -84088,17 +84092,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: LEFT THUMBSTICK
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+  m_sharedMaterial: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293055776
+  m_fontColor: {r: 0.12548937, g: 0.83367825, b: 0.8867924, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -84115,13 +84119,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 300
+  m_fontSizeBase: 300
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -84154,7 +84158,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -2227.5269, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -94664,7 +94668,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009702966}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 0, y: 0, z: 148}
+  m_LocalPosition: {x: 0, y: 0, z: 150}
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -94673,7 +94677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 73.000046, y: -24.5}
+  m_AnchoredPosition: {x: 73.000046, y: -26}
   m_SizeDelta: {x: 6500, y: 4000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1009702968
@@ -123040,11 +123044,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8270855663187062767, guid: 312bac6849a28004cbebc443df062999, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -24.05092
+      value: -25.66845
       objectReference: {fileID: 0}
     - target: {fileID: 8270855663187062767, guid: 312bac6849a28004cbebc443df062999, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 149.22116
+      value: 151
       objectReference: {fileID: 0}
     - target: {fileID: 8270855663187062767, guid: 312bac6849a28004cbebc443df062999, type: 3}
       propertyPath: m_LocalRotation.w
@@ -123076,11 +123080,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8758423527188247893, guid: 312bac6849a28004cbebc443df062999, type: 3}
       propertyPath: m_Name
-      value: XR Controller Left 1
+      value: LeftControllerDisplay
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5578866909471720403, guid: 312bac6849a28004cbebc443df062999, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1665748531}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 312bac6849a28004cbebc443df062999, type: 3}
 --- !u!1001 &1308179624
@@ -156398,6 +156405,92 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.038006548, y: 0.033653986, z: 0.04971222}
   m_Center: {x: 0.00003904121, y: 0.0003411746, z: -0.011626395}
+--- !u!1 &1665748530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1665748531}
+  - component: {fileID: 1665748533}
+  - component: {fileID: 1665748532}
+  m_Layer: 0
+  m_Name: ThumbstickHighlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1665748531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665748530}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000059604645, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.008775876, y: -0.002558912, z: -0.0074315914}
+  m_LocalScale: {x: 1.342947, y: 1.342947, z: 1.342947}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2134113270}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1665748532
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665748530}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 99685157b02e4d446bbecb015645e5e8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1665748533
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665748530}
+  m_Mesh: {fileID: -2564423107879867638, guid: 147ae308eec018b40a7b312ae58f44c7, type: 3}
 --- !u!1001 &1667446184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181717,7 +181810,21 @@ MonoBehaviour:
   pressAnyButtonText: {fileID: 2142404374}
   simulationUI: {fileID: 417767288}
   virusSpawner: {fileID: 2081573772}
-  steps: []
+  playerVisuals:
+  - {fileID: 1917522591}
+  steps:
+  - title: Left Thumbstick
+    instruction: Use the left thumbstick to move forward, backward, left, and right.
+    controllerModel: {fileID: 0}
+    highlights: []
+  - title: Left Trigger
+    instruction: Press the left trigger to move upward.
+    controllerModel: {fileID: 0}
+    highlights: []
+  - title: Left Grip
+    instruction: Press the left grip to move downward.
+    controllerModel: {fileID: 0}
+    highlights: []
 --- !u!4 &1891064503
 Transform:
   m_ObjectHideFlags: 0
@@ -184410,7 +184517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1917522592
 Transform:
   m_ObjectHideFlags: 0
@@ -203302,6 +203409,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.03800654, y: 0.03365397, z: 0.05171222}
   m_Center: {x: 0.00003905531, y: 0.00034120106, z: -0.011626411}
+--- !u!4 &2134113270 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5578866909471720403, guid: 312bac6849a28004cbebc443df062999, type: 3}
+  m_PrefabInstance: {fileID: 1307651485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2135902619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203758,7 +203870,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -1361.4407}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2142404374
@@ -203847,7 +203959,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -2231.5244, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
