@@ -36965,7 +36965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &363574711
 Transform:
   m_ObjectHideFlags: 0
@@ -45858,7 +45858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8915991606869854641, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
       propertyPath: startingStage
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9085990699262014861, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -149984,6 +149984,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receptorType: 
+--- !u!1 &1590907678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1590907680}
+  - component: {fileID: 1590907679}
+  m_Layer: 0
+  m_Name: VirusSpawnZone (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1590907679
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590907678}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1590907680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590907678}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18, y: 53, z: 184}
+  m_LocalScale: {x: 50, y: 50, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1593064893 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4598369774445179128, guid: 57aa987448c4f204ab6dd33268418873, type: 3}
@@ -182203,6 +182256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25b795dd3b411f4fa94215a1aadc461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skipTutorial: 1
   tutorialPanel: {fileID: 802393992}
   titleText: {fileID: 899342504}
   instructionText: {fileID: 713431717}
@@ -182214,6 +182268,7 @@ MonoBehaviour:
   virusSpawner: {fileID: 2081573772}
   playerVisuals:
   - {fileID: 1917522591}
+  - {fileID: 789297212}
   steps:
   - title: Left Thumbstick
     instruction: Use the left thumbstick to move forward, backward, left, and right.
@@ -185033,7 +185088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1917522592
 Transform:
   m_ObjectHideFlags: 0
@@ -208380,6 +208435,7 @@ SceneRoots:
   - {fileID: 783070136}
   - {fileID: 87881342}
   - {fileID: 471117932}
+  - {fileID: 1590907680}
   - {fileID: 728286349}
   - {fileID: 2081573773}
   - {fileID: 2052171021}

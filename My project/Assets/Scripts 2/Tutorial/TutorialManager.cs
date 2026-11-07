@@ -27,6 +27,9 @@ public class TutorialManager : MonoBehaviour
         public GameObject[] highlights;
     }
 
+    [Header("Tutorial Settings")]
+    public bool skipTutorial = false;
+
     [Header("Tutorial UI")]
     public GameObject tutorialPanel;
     public TMP_Text titleText;
@@ -39,7 +42,6 @@ public class TutorialManager : MonoBehaviour
 
     [Range(0f, 1f)]
     public float buttonClickVolume = 1f;
-
 
     [Header("Existing Simulation UI")]
     public GameObject simulationUI;
@@ -77,6 +79,35 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        // Skip tutorial and start simulation immediately when enabled.
+        if (skipTutorial)
+        {
+            Debug.Log("Tutorial skipped. Starting simulation.");
+
+            if (tutorialPanel != null)
+                tutorialPanel.SetActive(false);
+
+            if (pressAnyButtonText != null)
+                pressAnyButtonText.gameObject.SetActive(false);
+
+            SetPlayerVisibility(true);
+
+            if (simulationUI != null)
+                simulationUI.SetActive(true);
+
+            if (virusSpawner != null)
+            {
+                virusSpawner.StartSpawning();
+                Debug.Log("Virus simulation started without tutorial.");
+            }
+            else
+            {
+                Debug.LogWarning("VirusSpawner is not assigned!");
+            }
+
+            return;
+        }
+
         // Validate required references.
         if (tutorialPanel == null ||
             titleText == null ||
