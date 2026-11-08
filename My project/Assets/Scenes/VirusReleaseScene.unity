@@ -55732,6 +55732,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.038006563, y: 0.033653993, z: 0.04971222}
   m_Center: {x: 0.00003905309, y: 0.00034119934, z: -0.011626366}
+--- !u!1 &597037942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597037944}
+  - component: {fileID: 597037943}
+  m_Layer: 0
+  m_Name: ReleaseVirusSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &597037943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597037942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91773e280ce807428b19fdc5b4ebba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
+  virusCount: 20
+  spawnZone: {fileID: 0}
+  additionalSpawnPoints: []
+  spawnRadius: 0.5
+  releaseMode: 0
+  releaseOrigin: {x: 0, y: 0, z: 0}
+  releaseDirection: {x: 0, y: 0, z: 0}
+  disableAutoAttachOnSpawn: 0
+--- !u!4 &597037944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597037942}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5027227, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &597944884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6776448427977294496, guid: e6b1ea954b409c34ab54dacf6f6aa50e, type: 3}
@@ -62241,7 +62294,8 @@ MonoBehaviour:
   characterController: {fileID: 826018869}
   controlsToDisable: []
   epithelialCellsRoot: {fileID: 285860167}
-  virusSpawner: {fileID: 2081573772}
+  outsideVirusSpawner: {fileID: 1616784811}
+  virusSpawner: {fileID: 597037943}
   releaseVirusCount: 20
   playerReleaseDistance: 100
   playerReleaseDuration: 1.5
@@ -151953,6 +152007,60 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.038006563, y: 0.03365401, z: 0.04971222}
   m_Center: {x: 0.000039041424, y: 0.0003411969, z: -0.011626396}
+--- !u!1 &1616784810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1616784812}
+  - component: {fileID: 1616784811}
+  m_Layer: 0
+  m_Name: OutsideVirusSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1616784811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616784810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91773e280ce807428b19fdc5b4ebba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
+  virusCount: 100
+  spawnZone: {fileID: 471117931}
+  additionalSpawnPoints:
+  - {fileID: 1590907680}
+  spawnRadius: 0.5
+  releaseMode: 0
+  releaseOrigin: {x: 0, y: 0, z: 0}
+  releaseDirection: {x: 0, y: 0, z: 0}
+  disableAutoAttachOnSpawn: 0
+--- !u!4 &1616784812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616784810}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5027227, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1617064769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5622869064028652005, guid: e6b1ea954b409c34ab54dacf6f6aa50e, type: 3}
@@ -208503,3 +208611,5 @@ SceneRoots:
   - {fileID: 1911888471}
   - {fileID: 1891064503}
   - {fileID: 663784712}
+  - {fileID: 1616784812}
+  - {fileID: 597037944}

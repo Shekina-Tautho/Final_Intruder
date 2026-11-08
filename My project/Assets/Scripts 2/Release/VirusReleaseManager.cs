@@ -14,7 +14,12 @@ public class VirusReleaseManager : MonoBehaviour
     [Header("Epithelial Cells")]
     public Transform epithelialCellsRoot;
 
-    [Header("Virus Spawner")]
+    [Header("Outside NPC Spawner")]
+    [Tooltip("Spawns the NPC viruses already present in the environment.")]
+    public VirusSpawner outsideVirusSpawner;
+
+    [Header("Release NPC Spawner")]
+    [Tooltip("Spawns the second group of NPC viruses from the absorbed cell.")]
     public VirusSpawner virusSpawner;
 
     [Header("Release Settings")]
@@ -36,7 +41,23 @@ public class VirusReleaseManager : MonoBehaviour
 
     private void Awake()
     {
+        // Disable player movement while Scene 3 prepares.
         SetPlayerControls(false);
+
+        // Spawn the outside NPC group immediately.
+        if (outsideVirusSpawner != null)
+        {
+            outsideVirusSpawner.StartSpawning();
+            Debug.Log("Outside NPC viruses spawned.");
+        }
+        else
+        {
+            Debug.LogError(
+                "VirusReleaseManager: Outside Virus Spawner is not assigned!"
+            );
+        }
+
+        // Prepare the separate release group.
         PrepareRelease();
     }
 
@@ -76,10 +97,10 @@ public class VirusReleaseManager : MonoBehaviour
             return;
         }
 
+        // Find the cell that absorbed the player.
         SkinnedMeshRenderer closestCell = null;
         float closestDistance = Mathf.Infinity;
 
-        // Find the matching cell.
         foreach (SkinnedMeshRenderer cell in cells)
         {
             if (cell == null)
@@ -107,7 +128,7 @@ public class VirusReleaseManager : MonoBehaviour
 
         releasePosition = closestCell.bounds.center;
 
-        // Calculate the center of the entire epithelial arrangement.
+        // Calculate the center of the epithelial arrangement.
         Vector3 totalCenter = Vector3.zero;
         int validCellCount = 0;
 
@@ -130,28 +151,26 @@ public class VirusReleaseManager : MonoBehaviour
 
         epithelialCenter = totalCenter / validCellCount;
 
-        // Direction from absorbed cell toward the arrangement center.
-        releaseDirection =
-            epithelialCenter - releasePosition;
+        // Calculate direction from the absorbed cell toward the center.
+        releaseDirection = epithelialCenter - releasePosition;
 
         if (releaseDirection.sqrMagnitude < 0.001f)
         {
             Debug.LogError(
-                "VirusReleaseManager: Absorbed cell is at the calculated center. " +
-                "A release direction cannot be calculated."
+                "VirusReleaseManager: Could not calculate release direction."
             );
             return;
         }
 
         releaseDirection.Normalize();
 
-        // Keep the player inside the cell before release.
+        // Position player inside the matching cell.
         if (characterController != null)
             characterController.enabled = false;
 
         playerRoot.position = releasePosition;
 
-        // Configure NPC spawn point.
+        // Configure the separate release NPC spawner.
         GameObject spawnPointObject =
             new GameObject("VirusReleaseSpawnPoint");
 
@@ -168,10 +187,7 @@ public class VirusReleaseManager : MonoBehaviour
         virusSpawner.virusCount = releaseVirusCount;
         virusSpawner.releaseMode = true;
         virusSpawner.releaseOrigin = releasePosition;
-
-        // All NPCs will move in the same direction as the player.
         virusSpawner.releaseDirection = releaseDirection;
-
         virusSpawner.disableAutoAttachOnSpawn = true;
 
         isPrepared = true;
@@ -204,10 +220,10 @@ public class VirusReleaseManager : MonoBehaviour
 
         SetPlayerControls(false);
 
-        // Spawn NPC viruses.
+        // Spawn the second NPC group from the epithelial cell.
         virusSpawner.StartSpawning();
 
-        // Start player release.
+        // Move the player out of the epithelial cell.
         StartCoroutine(ReleasePlayer());
     }
 
@@ -243,11 +259,9 @@ public class VirusReleaseManager : MonoBehaviour
 
         playerRoot.position = endPosition;
 
-        // Restore CharacterController.
         if (characterController != null)
             characterController.enabled = true;
 
-        // Restore player movement.
         SetPlayerControls(true);
 
         Debug.Log(
