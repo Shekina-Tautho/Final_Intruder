@@ -18142,7 +18142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa2eb1f9e4066b44a350418c71be0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleChance: 0.52
+  compatibleChance: 1
   interactionRadius: 5
 --- !u!1001 &207921848
 PrefabInstance:
@@ -30323,7 +30323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 280547532}
   fadeDuration: 2
-  nextSceneName: EndoScene
+  nextSceneName: VirusReleaseScene
   waitBeforeLoading: 0.5
 --- !u!114 &280547532
 MonoBehaviour:
@@ -65046,7 +65046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa2eb1f9e4066b44a350418c71be0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleChance: 0.52
+  compatibleChance: 1
   interactionRadius: 5
 --- !u!1 &687456432 stripped
 GameObject:
@@ -120372,7 +120372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa2eb1f9e4066b44a350418c71be0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleChance: 0.3
+  compatibleChance: 1
   interactionRadius: 5
 --- !u!1 &1279873684 stripped
 GameObject:
@@ -152504,7 +152504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa2eb1f9e4066b44a350418c71be0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleChance: 0.52
+  compatibleChance: 1
   interactionRadius: 5
 --- !u!1001 &1618500978
 PrefabInstance:
@@ -182203,6 +182203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25b795dd3b411f4fa94215a1aadc461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skipTutorial: 0
   tutorialPanel: {fileID: 802393992}
   titleText: {fileID: 899342504}
   instructionText: {fileID: 713431717}
@@ -182212,6 +182213,8 @@ MonoBehaviour:
   buttonClickVolume: 1
   simulationUI: {fileID: 417767288}
   virusSpawner: {fileID: 2081573772}
+  useVirusReleaseManager: 0
+  virusReleaseManager: {fileID: 0}
   playerVisuals:
   - {fileID: 1917522591}
   steps:
@@ -198907,8 +198910,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
-  spawnZone: {fileID: 471117931}
   virusCount: 100
+  spawnZone: {fileID: 471117931}
+  additionalSpawnPoints: []
+  spawnRadius: 0.5
+  releaseMode: 0
+  releaseOrigin: {x: 0, y: 0, z: 0}
+  releaseDirection: {x: 0, y: 0, z: 0}
+  disableAutoAttachOnSpawn: 0
 --- !u!4 &2081573773
 Transform:
   m_ObjectHideFlags: 0

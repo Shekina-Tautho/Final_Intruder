@@ -62208,6 +62208,58 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.038006555, y: 0.033654, z: 0.0471222}
   m_Center: {x: 0.00003902754, y: 0.00034120487, z: -0.01162641}
+--- !u!1 &663784710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 663784712}
+  - component: {fileID: 663784711}
+  m_Layer: 0
+  m_Name: VirusReleaseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &663784711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663784710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b52f42774f38e6409556f3f36fff230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRoot: {fileID: 826018867}
+  characterController: {fileID: 826018869}
+  controlsToDisable: []
+  epithelialCellsRoot: {fileID: 285860167}
+  virusSpawner: {fileID: 2081573772}
+  releaseVirusCount: 20
+  playerReleaseDistance: 100
+  playerReleaseDuration: 1.5
+--- !u!4 &663784712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663784710}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &663945768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182266,6 +182318,8 @@ MonoBehaviour:
   buttonClickVolume: 1
   simulationUI: {fileID: 417767288}
   virusSpawner: {fileID: 2081573772}
+  useVirusReleaseManager: 1
+  virusReleaseManager: {fileID: 663784711}
   playerVisuals:
   - {fileID: 1917522591}
   - {fileID: 789297212}
@@ -198967,6 +199021,10 @@ MonoBehaviour:
   additionalSpawnPoints:
   - {fileID: 1590907680}
   spawnRadius: 0.5
+  releaseMode: 0
+  releaseOrigin: {x: 0, y: 0, z: 0}
+  releaseDirection: {x: 0, y: 0, z: 0}
+  disableAutoAttachOnSpawn: 0
 --- !u!4 &2081573773
 Transform:
   m_ObjectHideFlags: 0
@@ -208444,3 +208502,4 @@ SceneRoots:
   - {fileID: 2052171021}
   - {fileID: 1911888471}
   - {fileID: 1891064503}
+  - {fileID: 663784712}

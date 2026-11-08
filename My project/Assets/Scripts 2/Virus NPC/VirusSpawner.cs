@@ -12,9 +12,13 @@ public class VirusSpawner : MonoBehaviour
 
     [Header("Additional Spawn Points")]
     public Transform[] additionalSpawnPoints;
-
-    [Tooltip("Random spawning distance around each additional spawn point.")]
     public float spawnRadius = 0.5f;
+
+    [Header("Release Settings")]
+    public bool releaseMode = false;
+    public Vector3 releaseOrigin;
+    public Vector3 releaseDirection;
+    public bool disableAutoAttachOnSpawn = false;
 
     private bool hasSpawned = false;
 
@@ -32,8 +36,11 @@ public class VirusSpawner : MonoBehaviour
             return;
         }
 
-        if (spawnZone == null &&
-            (additionalSpawnPoints == null || additionalSpawnPoints.Length == 0))
+        int pointCount = additionalSpawnPoints != null
+            ? additionalSpawnPoints.Length
+            : 0;
+
+        if (spawnZone == null && pointCount == 0)
         {
             Debug.LogError("No spawn zones or spawn points assigned!");
             return;
@@ -55,27 +62,52 @@ public class VirusSpawner : MonoBehaviour
     {
         Vector3 spawnPosition = GetRandomPosition();
 
-        Instantiate(
+        GameObject spawnedVirus = Instantiate(
             virusPrefab,
             spawnPosition,
             Quaternion.identity
         );
+
+        if (!releaseMode)
+            return;
+
+        // Prevent released viruses from attaching to receptors.
+        if (disableAutoAttachOnSpawn)
+        {
+            NPCReceptorAutoAttach autoAttach =
+                spawnedVirus.GetComponent<NPCReceptorAutoAttach>();
+
+            if (autoAttach != null)
+                autoAttach.enabled = false;
+        }
+
+        // Give the virus the same inward direction as the player.
+        VirusNPC virusMovement =
+            spawnedVirus.GetComponent<VirusNPC>();
+
+        if (virusMovement != null)
+        {
+            virusMovement.BeginRelease(releaseDirection);
+        }
     }
 
     private Vector3 GetRandomPosition()
     {
-        int availableLocations = additionalSpawnPoints != null
+        int pointCount = additionalSpawnPoints != null
             ? additionalSpawnPoints.Length
             : 0;
 
+        int availableLocations = pointCount;
+
         if (spawnZone != null)
-        {
             availableLocations++;
-        }
 
-        int selectedLocation = Random.Range(0, availableLocations);
+        int selectedLocation = Random.Range(
+            0,
+            availableLocations
+        );
 
-        // Use the original BoxCollider spawn area.
+        // Original BoxCollider spawn area.
         if (spawnZone != null && selectedLocation == 0)
         {
             Bounds bounds = spawnZone.bounds;
@@ -87,10 +119,12 @@ public class VirusSpawner : MonoBehaviour
             return new Vector3(x, y, z);
         }
 
-        // Use one of the additional spawn points.
-        int pointIndex = selectedLocation - (spawnZone != null ? 1 : 0);
+        // Additional spawn point.
+        int pointIndex = selectedLocation -
+            (spawnZone != null ? 1 : 0);
 
-        Transform selectedPoint = additionalSpawnPoints[pointIndex];
+        Transform selectedPoint =
+            additionalSpawnPoints[pointIndex];
 
         Vector3 randomOffset =
             Random.insideUnitSphere * spawnRadius;

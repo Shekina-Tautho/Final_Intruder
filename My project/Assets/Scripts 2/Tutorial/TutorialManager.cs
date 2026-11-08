@@ -18,7 +18,6 @@ public class TutorialManager : MonoBehaviour
         public GameObject controllerModel;
 
         [Header("Controller Rotation")]
-        [Tooltip("Assign the empty parent object that controls the controller's rotation.")]
         public Transform rotationTarget;
 
         public Vector3 controllerRotation = Vector3.zero;
@@ -49,8 +48,12 @@ public class TutorialManager : MonoBehaviour
     [Header("Gameplay")]
     public VirusSpawner virusSpawner;
 
+    [Tooltip("Enable this only in Scene 3.")]
+    public bool useVirusReleaseManager = false;
+
+    public VirusReleaseManager virusReleaseManager;
+
     [Header("Player Visibility")]
-    [Tooltip("Add the player's visible body object here. Do not add Main Camera or XR Origin.")]
     public GameObject[] playerVisuals;
 
     [Header("Tutorial Steps")]
@@ -65,7 +68,6 @@ public class TutorialManager : MonoBehaviour
 
     private void Awake()
     {
-        // Hide gameplay UI immediately.
         if (simulationUI != null)
         {
             simulationUI.SetActive(false);
@@ -79,10 +81,9 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        // Skip tutorial and start simulation immediately when enabled.
         if (skipTutorial)
         {
-            Debug.Log("Tutorial skipped. Starting simulation.");
+            Debug.Log("Tutorial skipped.");
 
             if (tutorialPanel != null)
                 tutorialPanel.SetActive(false);
@@ -95,29 +96,34 @@ public class TutorialManager : MonoBehaviour
             if (simulationUI != null)
                 simulationUI.SetActive(true);
 
-            if (virusSpawner != null)
-            {
-                virusSpawner.StartSpawning();
-                Debug.Log("Virus simulation started without tutorial.");
-            }
-            else
-            {
-                Debug.LogWarning("VirusSpawner is not assigned!");
-            }
-
+            StartGameplay();
             return;
         }
 
-        // Validate required references.
         if (tutorialPanel == null ||
             titleText == null ||
             instructionText == null ||
             pressAnyButtonText == null ||
-            simulationUI == null ||
-            virusSpawner == null)
+            simulationUI == null)
         {
             Debug.LogError(
-                "TutorialManager: One or more required references are missing!"
+                "TutorialManager: Required tutorial references are missing!"
+            );
+            return;
+        }
+
+        if (useVirusReleaseManager && virusReleaseManager == null)
+        {
+            Debug.LogError(
+                "TutorialManager: VirusReleaseManager is missing!"
+            );
+            return;
+        }
+
+        if (!useVirusReleaseManager && virusSpawner == null)
+        {
+            Debug.LogError(
+                "TutorialManager: VirusSpawner is missing!"
             );
             return;
         }
@@ -128,7 +134,6 @@ public class TutorialManager : MonoBehaviour
             return;
         }
 
-        // Validate tutorial steps.
         for (int i = 0; i < steps.Length; i++)
         {
             if (steps[i] == null)
@@ -138,18 +143,13 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
-        // Hide the player's visible body.
         SetPlayerVisibility(false);
 
-        // Ensure gameplay UI is hidden.
         simulationUI.SetActive(false);
 
-        // Show tutorial.
         tutorialPanel.SetActive(true);
         pressAnyButtonText.gameObject.SetActive(true);
 
-        // Prevent a button already held at startup
-        // from immediately skipping the first step.
         previousButtonState = IsAnyControllerButtonPressed();
 
         tutorialStarted = true;
@@ -170,10 +170,8 @@ public class TutorialManager : MonoBehaviour
 
         bool buttonPressed = IsAnyControllerButtonPressed();
 
-        // Detect a fresh button press.
         if (buttonPressed && !previousButtonState)
         {
-            // Play button click sound.
             if (audioSource != null && buttonClickSound != null)
             {
                 audioSource.PlayOneShot(
@@ -246,46 +244,31 @@ public class TutorialManager : MonoBehaviour
 
         TutorialStep step = steps[currentStep];
 
-        // Update instructional text.
         titleText.text = step.title;
         instructionText.text = step.instruction;
 
-        // Hide all controller models and highlights.
         foreach (TutorialStep tutorialStep in steps)
         {
             if (tutorialStep.controllerModel != null)
-            {
                 tutorialStep.controllerModel.SetActive(false);
-            }
 
             if (tutorialStep.highlights != null)
             {
                 foreach (GameObject highlight in tutorialStep.highlights)
                 {
                     if (highlight != null)
-                    {
                         highlight.SetActive(false);
-                    }
                 }
             }
         }
 
-        // Show only the controller for this step.
         if (step.controllerModel != null)
-        {
             step.controllerModel.SetActive(true);
-        }
 
-        // Rotate the separate parent object.
         if (step.rotationTarget != null)
         {
             step.rotationTarget.localRotation =
                 Quaternion.Euler(step.controllerRotation);
-
-            Debug.Log(
-                "Rotation applied to " + step.rotationTarget.name +
-                ": " + step.controllerRotation
-            );
         }
         else
         {
@@ -295,15 +278,12 @@ public class TutorialManager : MonoBehaviour
             );
         }
 
-        // Show only the current step's highlights.
         if (step.highlights != null)
         {
             foreach (GameObject highlight in step.highlights)
             {
                 if (highlight != null)
-                {
                     highlight.SetActive(true);
-                }
             }
         }
 
@@ -318,7 +298,7 @@ public class TutorialManager : MonoBehaviour
         if (playerVisuals == null || playerVisuals.Length == 0)
         {
             Debug.LogWarning(
-                "Player Visuals array is empty. No player objects will be changed."
+                "Player Visuals array is empty."
             );
             return;
         }
@@ -326,20 +306,7 @@ public class TutorialManager : MonoBehaviour
         foreach (GameObject visual in playerVisuals)
         {
             if (visual != null)
-            {
                 visual.SetActive(isVisible);
-
-                Debug.Log(
-                    "Player object: " + visual.name +
-                    " | Visibility: " + isVisible
-                );
-            }
-            else
-            {
-                Debug.LogWarning(
-                    "Player Visuals contains an empty reference!"
-                );
-            }
         }
     }
 
@@ -347,43 +314,62 @@ public class TutorialManager : MonoBehaviour
     {
         tutorialStarted = false;
 
-        // Hide tutorial interface.
         tutorialPanel.SetActive(false);
-
-        // Hide instruction prompt.
         pressAnyButtonText.gameObject.SetActive(false);
 
-        // Hide all tutorial controller models and highlights.
         foreach (TutorialStep step in steps)
         {
             if (step.controllerModel != null)
-            {
                 step.controllerModel.SetActive(false);
-            }
 
             if (step.highlights != null)
             {
                 foreach (GameObject highlight in step.highlights)
                 {
                     if (highlight != null)
-                    {
                         highlight.SetActive(false);
-                    }
                 }
             }
         }
 
-        // Restore the player's visible body.
         SetPlayerVisibility(true);
 
-        // Restore gameplay UI.
         simulationUI.SetActive(true);
 
-        Debug.Log("SimulationUI restored.");
+        Debug.Log("Tutorial completed.");
 
-        // Start virus simulation.
-        virusSpawner.StartSpawning();
+        StartGameplay();
+    }
 
-        Debug.Log("Tutorial completed. Virus simulation started!");
+    private void StartGameplay()
+    {
+        if (useVirusReleaseManager)
+        {
+            if (virusReleaseManager == null)
+            {
+                Debug.LogError(
+                    "VirusReleaseManager is not assigned!"
+                );
+                return;
+            }
+
+            virusReleaseManager.BeginRelease();
+
+            Debug.Log("Scene 3 virus release started.");
+        }
+        else
+        {
+            if (virusSpawner == null)
+            {
+                Debug.LogError(
+                    "VirusSpawner is not assigned!"
+                );
+                return;
+            }
+
+            virusSpawner.StartSpawning();
+
+            Debug.Log("Normal virus simulation started.");
+        }
     }
 }
