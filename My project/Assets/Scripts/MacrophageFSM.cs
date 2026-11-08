@@ -121,7 +121,14 @@ public class MacrophageFSM : MonoBehaviour
         if (patrolPoints.Length == 0) return;
 
         Transform target = patrolPoints[patrolIndex];
-        MoveTo(target.position, patrolSpeed);
+
+        // Move towards only active patrol points
+        if (target.gameObject.activeSelf) {
+            MoveTo(target.position, patrolSpeed);
+        // If patrol point is inactive, skip to next patrol point
+        } else {
+            patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
+        }
 
         if (Vector3.Distance(transform.position, target.position) < 0.8f)
         {
@@ -331,12 +338,16 @@ public class MacrophageFSM : MonoBehaviour
 
         for (int i = 0; i < patrolPoints.Length; i++)
         {
-            float dist = Vector3.Distance(transform.position, patrolPoints[i].position);
-
-            if (dist < shortestDistance)
+            // if patrol point is active
+            if (transform.gameObject.activeSelf)
             {
-                shortestDistance = dist;
-                nearestIndex = i;
+                float dist = Vector3.Distance(transform.position, patrolPoints[i].position);
+
+                if (dist < shortestDistance)
+                {
+                    shortestDistance = dist;
+                    nearestIndex = i;
+                }
             }
         }
 

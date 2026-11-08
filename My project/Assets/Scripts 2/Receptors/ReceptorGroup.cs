@@ -17,6 +17,9 @@ public class ReceptorGroup : MonoBehaviour
     private IncompatibleMessageUI incompatibleMessageUI;
     private CompatibleMessageUI compatibleMessageUI;
 
+    [Header("Patrol Points")]
+    public Transform[] patrolPoints;
+
     private Receptor[] receptors;
 
     // Prevent the incompatible message from appearing more than once.
@@ -233,6 +236,10 @@ public class ReceptorGroup : MonoBehaviour
 
         Debug.Log("RECEPTOR DETECTED - Animation triggered!");
 
+        // Set nearest patrolPoint to active
+        ActivatePatrolPoint(closestReceptor);
+
+
         if (playerInitiated)
         {
             PlayerCellSnapper snapper =
@@ -261,5 +268,30 @@ public class ReceptorGroup : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void ActivatePatrolPoint(Receptor closestReceptor)
+    {
+        // Check if patrolPoints is empty
+        if (patrolPoints.Length == 0) return;
+
+        Transform nearestPatrolPoint = null;
+        float shortestDistance = Mathf.Infinity;
+
+        // Check each patrolPoint in patrolPoint array
+        for (int i = 0; i < patrolPoints.Length; i++)
+        {
+            float dist = Vector3.Distance(closestReceptor.transform.position, patrolPoints[i].position);
+
+            // Get the nearest patrolPoint
+            if (dist < shortestDistance)
+                {
+                    shortestDistance = dist;
+                    nearestPatrolPoint = patrolPoints[i];
+                }
+        }
+
+        // Set nearest Patrolpoint to active
+        nearestPatrolPoint.gameObject.SetActive(true);
     }
 }
