@@ -55766,10 +55766,13 @@ MonoBehaviour:
   spawnZone: {fileID: 0}
   additionalSpawnPoints: []
   spawnRadius: 0.5
-  releaseMode: 0
+  releaseMode: 1
+  releaseSpawnCenter: {fileID: 0}
   releaseOrigin: {x: 0, y: 0, z: 0}
   releaseDirection: {x: 0, y: 0, z: 0}
-  disableAutoAttachOnSpawn: 0
+  disableAutoAttachOnSpawn: 1
+  spawnedVirusTransforms: []
+  spawnedStartPositions: []
 --- !u!4 &597037944
 Transform:
   m_ObjectHideFlags: 0
@@ -62291,6 +62294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRoot: {fileID: 826018867}
+  playerHead: {fileID: 170026614}
   characterController: {fileID: 826018869}
   controlsToDisable: []
   epithelialCellsRoot: {fileID: 285860167}
@@ -62298,7 +62302,7 @@ MonoBehaviour:
   virusSpawner: {fileID: 597037943}
   releaseVirusCount: 20
   playerReleaseDistance: 100
-  playerReleaseDuration: 1.5
+  playerReleaseDuration: 2.5
 --- !u!4 &663784712
 Transform:
   m_ObjectHideFlags: 0
@@ -152039,13 +152043,15 @@ MonoBehaviour:
   virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
   virusCount: 100
   spawnZone: {fileID: 471117931}
-  additionalSpawnPoints:
-  - {fileID: 1590907680}
+  additionalSpawnPoints: []
   spawnRadius: 0.5
   releaseMode: 0
+  releaseSpawnCenter: {fileID: 0}
   releaseOrigin: {x: 0, y: 0, z: 0}
   releaseDirection: {x: 0, y: 0, z: 0}
   disableAutoAttachOnSpawn: 0
+  spawnedVirusTransforms: []
+  spawnedStartPositions: []
 --- !u!4 &1616784812
 Transform:
   m_ObjectHideFlags: 0
@@ -199130,9 +199136,12 @@ MonoBehaviour:
   - {fileID: 1590907680}
   spawnRadius: 0.5
   releaseMode: 0
+  releaseSpawnCenter: {fileID: 0}
   releaseOrigin: {x: 0, y: 0, z: 0}
   releaseDirection: {x: 0, y: 0, z: 0}
   disableAutoAttachOnSpawn: 0
+  spawnedVirusTransforms: []
+  spawnedStartPositions: []
 --- !u!4 &2081573773
 Transform:
   m_ObjectHideFlags: 0

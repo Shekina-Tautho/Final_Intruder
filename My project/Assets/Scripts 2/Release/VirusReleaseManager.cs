@@ -6,6 +6,7 @@ public class VirusReleaseManager : MonoBehaviour
 {
     [Header("Player")]
     public Transform playerRoot;
+    public Transform playerHead;
     public CharacterController characterController;
 
     [Tooltip("Add only the scripts responsible for player movement.")]
@@ -15,11 +16,9 @@ public class VirusReleaseManager : MonoBehaviour
     public Transform epithelialCellsRoot;
 
     [Header("Outside NPC Spawner")]
-    [Tooltip("Spawns the NPC viruses already present in the environment.")]
     public VirusSpawner outsideVirusSpawner;
 
     [Header("Release NPC Spawner")]
-    [Tooltip("Spawns the second group of NPC viruses from the absorbed cell.")]
     public VirusSpawner virusSpawner;
 
     [Header("Release Settings")]
@@ -41,10 +40,13 @@ public class VirusReleaseManager : MonoBehaviour
 
     private void Awake()
     {
-        // Disable player movement while Scene 3 prepares.
         SetPlayerControls(false);
 
-        // Spawn the outside NPC group immediately.
+        if (playerHead == null && Camera.main != null)
+        {
+            playerHead = Camera.main.transform;
+        }
+
         if (outsideVirusSpawner != null)
         {
             outsideVirusSpawner.StartSpawning();
@@ -57,7 +59,6 @@ public class VirusReleaseManager : MonoBehaviour
             );
         }
 
-        // Prepare the separate release group.
         PrepareRelease();
     }
 
@@ -97,7 +98,6 @@ public class VirusReleaseManager : MonoBehaviour
             return;
         }
 
-        // Find the cell that absorbed the player.
         SkinnedMeshRenderer closestCell = null;
         float closestDistance = Mathf.Infinity;
 
@@ -128,7 +128,6 @@ public class VirusReleaseManager : MonoBehaviour
 
         releasePosition = closestCell.bounds.center;
 
-        // Calculate the center of the epithelial arrangement.
         Vector3 totalCenter = Vector3.zero;
         int validCellCount = 0;
 
@@ -151,7 +150,6 @@ public class VirusReleaseManager : MonoBehaviour
 
         epithelialCenter = totalCenter / validCellCount;
 
-        // Calculate direction from the absorbed cell toward the center.
         releaseDirection = epithelialCenter - releasePosition;
 
         if (releaseDirection.sqrMagnitude < 0.001f)
@@ -164,38 +162,36 @@ public class VirusReleaseManager : MonoBehaviour
 
         releaseDirection.Normalize();
 
-        // Position player inside the matching cell.
         if (characterController != null)
             characterController.enabled = false;
 
         playerRoot.position = releasePosition;
 
-        // Configure the separate release NPC spawner.
-        GameObject spawnPointObject =
-            new GameObject("VirusReleaseSpawnPoint");
-
-        spawnPointObject.transform.position = releasePosition;
-
+        virusSpawner.releaseSpawnCenter = playerRoot;
         virusSpawner.spawnZone = null;
-
-        virusSpawner.additionalSpawnPoints =
-            new Transform[]
-            {
-                spawnPointObject.transform
-            };
+        virusSpawner.additionalSpawnPoints = null;
 
         virusSpawner.virusCount = releaseVirusCount;
         virusSpawner.releaseMode = true;
-        virusSpawner.releaseOrigin = releasePosition;
+        virusSpawner.releaseOrigin = playerRoot.position;
         virusSpawner.releaseDirection = releaseDirection;
         virusSpawner.disableAutoAttachOnSpawn = true;
 
         isPrepared = true;
 
-        Debug.Log("Release cell: " + closestCell.name);
-        Debug.Log("Release position: " + releasePosition);
+        Debug.Log("========== RELEASE PREPARATION ==========");
+        Debug.Log("Matching epithelial cell: " + closestCell.name);
+        Debug.Log("Saved cell position: " + savedWorldPosition);
+        Debug.Log("Player starting position: " + playerRoot.position);
+
+        if (playerHead != null)
+        {
+            Debug.Log("Player HEAD starting position: " + playerHead.position);
+        }
+
         Debug.Log("Epithelial center: " + epithelialCenter);
         Debug.Log("Release direction: " + releaseDirection);
+        Debug.Log("==========================================");
     }
 
     public void BeginRelease()
@@ -220,10 +216,21 @@ public class VirusReleaseManager : MonoBehaviour
 
         SetPlayerControls(false);
 
-        // Spawn the second NPC group from the epithelial cell.
+        Debug.Log("========== RELEASE START ==========");
+        Debug.Log("PLAYER START: " + playerRoot.position);
+
+        if (playerHead != null)
+        {
+            Debug.Log("PLAYER HEAD START: " + playerHead.position);
+        }
+
         virusSpawner.StartSpawning();
 
-        // Move the player out of the epithelial cell.
+        Debug.Log(
+            "Total tracked release NPCs: " +
+            virusSpawner.spawnedVirusTransforms.Count
+        );
+
         StartCoroutine(ReleasePlayer());
     }
 
@@ -234,6 +241,8 @@ public class VirusReleaseManager : MonoBehaviour
         Vector3 endPosition =
             startPosition +
             releaseDirection * playerReleaseDistance;
+
+        Debug.Log("PLAYER TARGET END POSITION: " + endPosition);
 
         float elapsed = 0f;
 
@@ -264,9 +273,63 @@ public class VirusReleaseManager : MonoBehaviour
 
         SetPlayerControls(true);
 
-        Debug.Log(
-            "Player release complete. Movement enabled."
-        );
+        Debug.Log("========== RELEASE POSITION COMPARISON ==========");
+        Debug.Log("PLAYER FINAL POSITION: " + playerRoot.position);
+
+        if (playerHead != null)
+        {
+            Debug.Log("PLAYER HEAD FINAL POSITION: " + playerHead.position);
+        }
+
+        for (int i = 0;
+             i < virusSpawner.spawnedVirusTransforms.Count;
+             i++)
+        {
+            Transform npc = virusSpawner.spawnedVirusTransforms[i];
+
+            if (npc == null)
+            {
+                Debug.LogWarning(
+                    "[RELEASE NPC " + (i + 1) + "] No longer exists."
+                );
+                continue;
+            }
+
+            Vector3 npcStart =
+                virusSpawner.spawnedStartPositions[i];
+
+            Vector3 npcFinal = npc.position;
+
+            float distanceFromPlayerRoot = Vector3.Distance(
+                npcFinal,
+                playerRoot.position
+            );
+
+            Debug.Log(
+                "[RELEASE NPC " + (i + 1) + "]" +
+                "\nSTART: " + npcStart +
+                "\nFINAL: " + npcFinal +
+                "\nDISTANCE FROM PLAYER ROOT: " +
+                distanceFromPlayerRoot + " units"
+            );
+
+            if (playerHead != null)
+            {
+                float distanceFromHead = Vector3.Distance(
+                    npcFinal,
+                    playerHead.position
+                );
+
+                Debug.Log(
+                    "[RELEASE NPC " + (i + 1) +
+                    "] DISTANCE FROM PLAYER HEAD: " +
+                    distanceFromHead + " units"
+                );
+            }
+        }
+
+        Debug.Log("==================================================");
+        Debug.Log("Player release complete. Movement enabled.");
     }
 
     private void SetPlayerControls(bool enabledState)
