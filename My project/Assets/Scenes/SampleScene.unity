@@ -17388,7 +17388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1917522592
 Transform:
   m_ObjectHideFlags: 0
@@ -18394,6 +18394,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
   virusCount: 100
+  overrideSpawnScale: 1
+  spawnedVirusScale: {x: 0.25, y: 0.25, z: 0.25}
   spawnZone: {fileID: 471117931}
   additionalSpawnPoints: []
   spawnRadius: 0.5
@@ -18401,6 +18403,8 @@ MonoBehaviour:
   releaseSpawnCenter: {fileID: 0}
   releaseOrigin: {x: 0, y: 0, z: 0}
   releaseDirection: {x: 0, y: 0, z: 0}
+  releaseMovementDistance: 1.5
+  releaseMovementDuration: 1.5
   disableAutoAttachOnSpawn: 0
   spawnedVirusTransforms: []
   spawnedStartPositions: []

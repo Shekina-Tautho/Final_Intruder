@@ -6,6 +6,14 @@ public class ReleaseVirusMovement : MonoBehaviour
     [Header("Synchronized Release")]
     public float driftSpeed = 4f;
 
+    [Header("Progressive Spreading")]
+    [Tooltip("Maximum sideways spreading distance.")]
+    public float spreadRadius = 3.5f;
+
+    [Tooltip("Controls how much viruses spread vertically.")]
+    [Range(0f, 1f)]
+    public float verticalSpreadMultiplier = 0.4f;
+
     [Header("Random Diffusion")]
     public float randomStrength = 1.5f;
     public float directionChangeSpeed = 1f;
@@ -13,6 +21,7 @@ public class ReleaseVirusMovement : MonoBehaviour
     private Vector3 releaseDirection;
     private Vector3 startingPosition;
     private Vector3 randomDirection;
+    private Vector3 spreadOffset;
 
     private float releaseDistance;
     private float releaseDuration;
@@ -29,7 +38,9 @@ public class ReleaseVirusMovement : MonoBehaviour
     public void BeginRelease(
         Vector3 direction,
         float distance,
-        float duration)
+        float duration,
+        int virusIndex,
+        int totalViruses)
     {
         releaseDirection = direction.normalized;
 
@@ -40,12 +51,53 @@ public class ReleaseVirusMovement : MonoBehaviour
 
         releaseTimer = 0f;
 
+        // Calculate directions perpendicular to forward movement.
+        Vector3 right = Vector3.Cross(
+            releaseDirection,
+            Vector3.up
+        ).normalized;
+
+        if (right.sqrMagnitude < 0.001f)
+        {
+            right = Vector3.Cross(
+                releaseDirection,
+                Vector3.forward
+            ).normalized;
+        }
+
+        Vector3 up = Vector3.Cross(
+            right,
+            releaseDirection
+        ).normalized;
+
+        // Distribute viruses using a golden-angle pattern.
+        float goldenAngle = 137.5f;
+
+        float angle = virusIndex * goldenAngle;
+
+        float normalizedRadius = Mathf.Sqrt(
+            (virusIndex + 0.5f) /
+            Mathf.Max(1, totalViruses)
+        );
+
+        float radius = normalizedRadius * spreadRadius;
+
+        float angleRadians = angle * Mathf.Deg2Rad;
+
+        float horizontal = Mathf.Cos(angleRadians) * radius;
+        float vertical = Mathf.Sin(angleRadians) * radius;
+
+        spreadOffset =
+            right * horizontal +
+            up * vertical * verticalSpreadMultiplier;
+
         isReleasing = true;
         hasStartedDrifting = false;
 
         Debug.Log(
             "[RELEASE VIRUS] Beginning synchronized release: " +
-            gameObject.name
+            gameObject.name +
+            " | Spread offset: " + spreadOffset
         );
     }
 
@@ -59,13 +111,26 @@ public class ReleaseVirusMovement : MonoBehaviour
                 releaseTimer / releaseDuration
             );
 
-            float smoothProgress =
-                Mathf.SmoothStep(0f, 1f, progress);
+            float smoothProgress = Mathf.SmoothStep(
+                0f,
+                1f,
+                progress
+            );
 
-            transform.position = startingPosition +
+            // Synchronized forward movement.
+            Vector3 forwardMovement =
                 releaseDirection *
                 releaseDistance *
                 smoothProgress;
+
+            // Progressive spreading WHILE moving.
+            Vector3 lateralSpread =
+                spreadOffset * smoothProgress;
+
+            transform.position =
+                startingPosition +
+                forwardMovement +
+                lateralSpread;
 
             if (progress >= 1f)
             {
@@ -76,6 +141,7 @@ public class ReleaseVirusMovement : MonoBehaviour
             return;
         }
 
+        // Existing random diffusion behavior.
         if (hasStartedDrifting)
         {
             Vector3 targetDirection =

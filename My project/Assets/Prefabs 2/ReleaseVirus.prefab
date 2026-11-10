@@ -90,5 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driftSpeed: 4
+  spreadRadius: 7
+  verticalSpreadMultiplier: 0.4
   randomStrength: 1.5
   directionChangeSpeed: 1

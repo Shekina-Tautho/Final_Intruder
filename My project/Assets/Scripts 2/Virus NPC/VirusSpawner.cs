@@ -8,6 +8,10 @@ public class VirusSpawner : MonoBehaviour
     public GameObject virusPrefab;
     public int virusCount = 20;
 
+    [Header("Spawned Virus Scale")]
+    public bool overrideSpawnScale = true;
+    public Vector3 spawnedVirusScale = new Vector3(0.25f, 0.25f, 0.25f);
+
     [Header("Original Spawn Area")]
     public BoxCollider spawnZone;
 
@@ -102,6 +106,12 @@ public class VirusSpawner : MonoBehaviour
             Quaternion.identity
         );
 
+        // Apply scale only to this spawned instance.
+        if (overrideSpawnScale)
+        {
+            spawnedVirus.transform.localScale = spawnedVirusScale;
+        }
+
         spawnedVirusTransforms.Add(spawnedVirus.transform);
 
         spawnedStartPositions.Add(
@@ -118,7 +128,9 @@ public class VirusSpawner : MonoBehaviour
                 Vector3.Distance(
                     spawnedVirus.transform.position,
                     releaseSpawnCenter.position
-                )
+                ) +
+                "\nSPAWNED SCALE: " +
+                spawnedVirus.transform.localScale
             );
 
             StartReleaseVirus(spawnedVirus, index);
@@ -140,7 +152,7 @@ public class VirusSpawner : MonoBehaviour
         GameObject spawnedVirus,
         int index)
     {
-        // The new release prefab must have its own movement script.
+        // The release prefab must have its own movement script.
 
         ReleaseVirusMovement movement =
             spawnedVirus.GetComponent<ReleaseVirusMovement>();
@@ -156,18 +168,20 @@ public class VirusSpawner : MonoBehaviour
             return;
         }
 
-        // Give the new virus the same release movement
-        // distance, direction, and duration as the player.
+        // Give each virus its own spreading position.
+        // All viruses retain synchronized forward movement.
 
         movement.BeginRelease(
             releaseDirection,
             releaseMovementDistance,
-            releaseMovementDuration
+            releaseMovementDuration,
+            index,
+            virusCount
         );
 
         Debug.Log(
             "[RELEASE VIRUS " + (index + 1) + "] " +
-            "Synchronized release started."
+            "Synchronized release and progressive spreading started."
         );
     }
 
