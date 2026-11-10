@@ -71,6 +71,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3a1f2ff7b9f4628469641c3314acb3f4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3531339170177873945}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3a1f2ff7b9f4628469641c3314acb3f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1291772855374997756}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3a1f2ff7b9f4628469641c3314acb3f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3974728349559298625}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3a1f2ff7b9f4628469641c3314acb3f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 593806358392663837}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3a1f2ff7b9f4628469641c3314acb3f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3390252453376682687}
   m_SourcePrefab: {fileID: 100100000, guid: 3a1f2ff7b9f4628469641c3314acb3f4, type: 3}
 --- !u!1 &2649738140610089851 stripped
 GameObject:
@@ -96,3 +108,69 @@ MonoBehaviour:
   spreadSpeedMultiplier: 0.65
   randomStrength: 1.5
   directionChangeSpeed: 1
+  driftTransitionDuration: 2
+--- !u!114 &1291772855374997756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649738140610089851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70dbd2c8218db54dab2b4722d7f9d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virusType: A
+--- !u!114 &3974728349559298625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649738140610089851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec7dc7b2885fdb47b50e2c13188a08e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkInterval: 0.1
+--- !u!114 &593806358392663837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649738140610089851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8498ad97a12f042bda7bfa22732067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  epithelialCellsRoot: {fileID: 0}
+  animationWaitTime: 1
+  movementDuration: 2
+  endocytosisTargetWeight: 100
+  endocytosisDuration: 2
+  endocytosisResetDuration: 2
+--- !u!135 &3390252453376682687
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649738140610089851}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.3
+  m_Center: {x: 0, y: 0, z: 0}
