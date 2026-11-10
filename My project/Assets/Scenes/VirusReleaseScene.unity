@@ -55762,9 +55762,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 2649738140610089851, guid: 5db6f4e066338d94b83f38f117a163de, type: 3}
-  virusCount: 20
-  overrideSpawnScale: 1
-  spawnedVirusScale: {x: 1, y: 1, z: 1}
+  virusCount: 10
+  releasedVirusScale: {x: 1, y: 1, z: 1}
   spawnZone: {fileID: 0}
   additionalSpawnPoints: []
   spawnRadius: 0.5
@@ -62304,9 +62303,9 @@ MonoBehaviour:
   epithelialCellsRoot: {fileID: 285860167}
   outsideVirusSpawner: {fileID: 1616784811}
   virusSpawner: {fileID: 597037943}
-  releaseVirusCount: 20
-  playerReleaseDistance: 100
-  playerReleaseDuration: 2.5
+  releaseVirusCount: 10
+  playerReleaseDistance: 70
+  playerReleaseDuration: 10
 --- !u!4 &663784712
 Transform:
   m_ObjectHideFlags: 0
@@ -152046,8 +152045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
   virusCount: 100
-  overrideSpawnScale: 1
-  spawnedVirusScale: {x: 0.25, y: 0.25, z: 0.25}
+  releasedVirusScale: {x: 0.25, y: 0.25, z: 0.25}
   spawnZone: {fileID: 471117931}
   additionalSpawnPoints: []
   spawnRadius: 0.5
@@ -199139,8 +199137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
   virusCount: 100
-  overrideSpawnScale: 1
-  spawnedVirusScale: {x: 0.25, y: 0.25, z: 0.25}
+  releasedVirusScale: {x: 0.25, y: 0.25, z: 0.25}
   spawnZone: {fileID: 471117931}
   additionalSpawnPoints:
   - {fileID: 1590907680}

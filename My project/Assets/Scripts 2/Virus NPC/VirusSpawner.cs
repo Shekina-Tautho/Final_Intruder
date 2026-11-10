@@ -8,9 +8,9 @@ public class VirusSpawner : MonoBehaviour
     public GameObject virusPrefab;
     public int virusCount = 20;
 
-    [Header("Spawned Virus Scale")]
-    public bool overrideSpawnScale = true;
-    public Vector3 spawnedVirusScale = new Vector3(0.25f, 0.25f, 0.25f);
+    [Header("Released Virus Scale")]
+    public Vector3 releasedVirusScale =
+        new Vector3(0.25f, 0.25f, 0.25f);
 
     [Header("Original Spawn Area")]
     public BoxCollider spawnZone;
@@ -106,10 +106,13 @@ public class VirusSpawner : MonoBehaviour
             Quaternion.identity
         );
 
-        // Apply scale only to this spawned instance.
-        if (overrideSpawnScale)
+        // ONLY released viruses receive a scale adjustment.
+        // Outside NPCs retain their original prefab scale.
+
+        if (releaseMode)
         {
-            spawnedVirus.transform.localScale = spawnedVirusScale;
+            spawnedVirus.transform.localScale =
+                releasedVirusScale;
         }
 
         spawnedVirusTransforms.Add(spawnedVirus.transform);
@@ -139,7 +142,7 @@ public class VirusSpawner : MonoBehaviour
         }
 
         // ORIGINAL OUTSIDE NPC BEHAVIOR
-        // Keep the existing infection simulation unchanged.
+        // No scale adjustment is applied.
 
         Debug.Log(
             "[OUTSIDE NPC " + (index + 1) +
@@ -152,8 +155,6 @@ public class VirusSpawner : MonoBehaviour
         GameObject spawnedVirus,
         int index)
     {
-        // The release prefab must have its own movement script.
-
         ReleaseVirusMovement movement =
             spawnedVirus.GetComponent<ReleaseVirusMovement>();
 
@@ -167,9 +168,6 @@ public class VirusSpawner : MonoBehaviour
 
             return;
         }
-
-        // Give each virus its own spreading position.
-        // All viruses retain synchronized forward movement.
 
         movement.BeginRelease(
             releaseDirection,
@@ -187,8 +185,7 @@ public class VirusSpawner : MonoBehaviour
 
     private Vector3 GetRandomPosition()
     {
-        // NEW RELEASE VIRUSES:
-        // Spawn around the player.
+        // RELEASE VIRUSES: Spawn around the player.
 
         if (releaseMode && releaseSpawnCenter != null)
         {
@@ -198,8 +195,7 @@ public class VirusSpawner : MonoBehaviour
             return releaseSpawnCenter.position + randomOffset;
         }
 
-        // ORIGINAL OUTSIDE NPC SPAWNING:
-        // Preserve the existing spawn zone and spawn point logic.
+        // ORIGINAL OUTSIDE NPC SPAWNING
 
         int pointCount = additionalSpawnPoints != null
             ? additionalSpawnPoints.Length
