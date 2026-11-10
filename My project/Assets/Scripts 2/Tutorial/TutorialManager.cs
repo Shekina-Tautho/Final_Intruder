@@ -61,6 +61,9 @@ public class TutorialManager : MonoBehaviour
     [Header("Existing Simulation UI")]
     public GameObject simulationUI;
 
+    [Header("Additional Post-Tutorial Panel")]
+    public GameObject postTutorialPanel;
+
     [Header("Gameplay")]
     public VirusSpawner virusSpawner;
 
@@ -92,6 +95,12 @@ public class TutorialManager : MonoBehaviour
         else
         {
             Debug.LogError("SimulationUI is not assigned!");
+        }
+
+        // Hide the additional panel at the beginning.
+        if (postTutorialPanel != null)
+        {
+            postTutorialPanel.SetActive(false);
         }
     }
 
@@ -364,7 +373,11 @@ public class TutorialManager : MonoBehaviour
 
         SetPlayerVisibility(true);
 
-        simulationUI.SetActive(true);
+        // Keep both panels hidden while the voice-overs play.
+        simulationUI.SetActive(false);
+
+        if (postTutorialPanel != null)
+            postTutorialPanel.SetActive(false);
 
         Debug.Log("Tutorial completed.");
 
@@ -374,6 +387,11 @@ public class TutorialManager : MonoBehaviour
             postTutorialVoiceOverClips.Length > 0)
         {
             StartCoroutine(PlayPostTutorialVoiceOvers());
+        }
+        else
+        {
+            // Show both panels immediately if there are no voice-overs.
+            ShowPostTutorialPanels();
         }
 
         StartGameplay();
@@ -422,6 +440,29 @@ public class TutorialManager : MonoBehaviour
         }
 
         Debug.Log("All post-tutorial voice-overs completed.");
+
+        // Show both panels after all clips finish.
+        ShowPostTutorialPanels();
+    }
+
+    private void ShowPostTutorialPanels()
+    {
+        if (simulationUI != null)
+            simulationUI.SetActive(true);
+
+        if (postTutorialPanel != null)
+            postTutorialPanel.SetActive(true);
+
+        // Play the button-click sound when the panels appear.
+        if (audioSource != null && buttonClickSound != null)
+        {
+            audioSource.PlayOneShot(
+                buttonClickSound,
+                buttonClickVolume
+            );
+        }
+
+        Debug.Log("Post-tutorial panels are now visible.");
     }
 
     private void StartGameplay()

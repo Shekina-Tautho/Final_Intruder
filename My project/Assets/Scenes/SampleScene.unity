@@ -1249,6 +1249,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5968052682291072703, guid: 6f52ddec174814f4da7d46326ac4e2fe, type: 3}
   m_PrefabInstance: {fileID: 3361547763825281282}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &306709639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3562551940114941011, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
+  m_PrefabInstance: {fileID: 456213941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &307752638
 GameObject:
   m_ObjectHideFlags: 0
@@ -17089,6 +17094,7 @@ MonoBehaviour:
   postTutorialVoiceOverVolume: 1
   voiceOverPause: 1
   simulationUI: {fileID: 417767288}
+  postTutorialPanel: {fileID: 306709639}
   virusSpawner: {fileID: 2081573772}
   useVirusReleaseManager: 0
   virusReleaseManager: {fileID: 0}
