@@ -352,8 +352,12 @@ MonoBehaviour:
   videoPlayer: {fileID: 1620787099}
   voiceOverSource: {fileID: 1133252942}
   voiceOvers:
+  - timestamp: 0
+    audioClip: {fileID: 0}
   - timestamp: 1
-    audioClip: {fileID: 8300000, guid: cdd8463bc9357a043862f0cd7e6c7a15, type: 3}
+    audioClip: {fileID: 8300000, guid: dd242dd7d7396394887af95cd8b00992, type: 3}
+  - timestamp: 6
+    audioClip: {fileID: 8300000, guid: 1b5a158aab9773c48b3dbe273f6f9c24, type: 3}
 --- !u!82 &1133252942
 AudioSource:
   m_ObjectHideFlags: 0
