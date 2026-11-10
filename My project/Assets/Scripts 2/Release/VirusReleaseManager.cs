@@ -24,6 +24,9 @@ public class VirusReleaseManager : MonoBehaviour
     [Header("Scene Fade")]
     public VirusReleaseSceneFade sceneFade;
 
+    [Header("Simulation UI")]
+    public SimulationUIController simulationUI;
+
     [Header("Release Settings")]
     [Min(0)]
     public int releaseVirusCount = 20;
@@ -305,6 +308,12 @@ public class VirusReleaseManager : MonoBehaviour
         }
 
         playerRoot.position = endPosition;
+
+        // Update simulation stage from 6 (Release) to 7 (Spread).
+        if (simulationUI != null)
+        {
+            simulationUI.SetStage(7);
+        }
 
         if (characterController != null)
             characterController.enabled = true;

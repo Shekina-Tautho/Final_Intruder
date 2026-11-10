@@ -45692,6 +45692,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8521052142259041580, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
   m_PrefabInstance: {fileID: 456213941}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &456213943 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8915991606869854641, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
+  m_PrefabInstance: {fileID: 456213941}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c470a8552ee0b34f9408872c7bf9572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &456213946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62111,6 +62122,7 @@ MonoBehaviour:
   outsideVirusSpawner: {fileID: 1616784811}
   virusSpawner: {fileID: 597037943}
   sceneFade: {fileID: 0}
+  simulationUI: {fileID: 456213943}
   releaseVirusCount: 10
   playerReleaseDistance: 50
   playerReleaseDuration: 10
