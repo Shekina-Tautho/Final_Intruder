@@ -1,8 +1,13 @@
 
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.InputSystem;
 using TMPro;
 using System.Collections.Generic;
+
+// Explicit XR aliases to prevent naming conflicts.
+using XRInputDevice = UnityEngine.XR.InputDevice;
+using XRCommonUsages = UnityEngine.XR.CommonUsages;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -63,8 +68,8 @@ public class TutorialManager : MonoBehaviour
     private bool previousButtonState = false;
     private bool tutorialStarted = false;
 
-    private readonly List<InputDevice> controllerDevices =
-        new List<InputDevice>();
+    private readonly List<XRInputDevice> controllerDevices =
+        new List<XRInputDevice>();
 
     private void Awake()
     {
@@ -168,9 +173,25 @@ public class TutorialManager : MonoBehaviour
             !tutorialPanel.activeInHierarchy)
             return;
 
-        bool buttonPressed = IsAnyControllerButtonPressed();
+        // Check VR controller buttons.
+        bool controllerPressed = IsAnyControllerButtonPressed();
 
-        if (buttonPressed && !previousButtonState)
+        // Detect a new controller button press.
+        bool controllerJustPressed =
+            controllerPressed && !previousButtonState;
+
+        // Check keyboard Enter and Numpad Enter.
+        bool keyboardPressed = false;
+
+        if (Keyboard.current != null)
+        {
+            keyboardPressed =
+                Keyboard.current.enterKey.wasPressedThisFrame ||
+                Keyboard.current.numpadEnterKey.wasPressedThisFrame;
+        }
+
+        // Advance tutorial using either input method.
+        if (controllerJustPressed || keyboardPressed)
         {
             if (audioSource != null && buttonClickSound != null)
             {
@@ -183,7 +204,7 @@ public class TutorialManager : MonoBehaviour
             NextStep();
         }
 
-        previousButtonState = buttonPressed;
+        previousButtonState = controllerPressed;
     }
 
     private bool IsAnyControllerButtonPressed()
@@ -195,15 +216,15 @@ public class TutorialManager : MonoBehaviour
             controllerDevices
         );
 
-        foreach (InputDevice device in controllerDevices)
+        foreach (XRInputDevice device in controllerDevices)
         {
-            if (IsPressed(device, CommonUsages.primaryButton) ||
-                IsPressed(device, CommonUsages.secondaryButton) ||
-                IsPressed(device, CommonUsages.triggerButton) ||
-                IsPressed(device, CommonUsages.gripButton) ||
-                IsPressed(device, CommonUsages.menuButton) ||
-                IsPressed(device, CommonUsages.primary2DAxisClick) ||
-                IsPressed(device, CommonUsages.secondary2DAxisClick))
+            if (IsPressed(device, XRCommonUsages.primaryButton) ||
+                IsPressed(device, XRCommonUsages.secondaryButton) ||
+                IsPressed(device, XRCommonUsages.triggerButton) ||
+                IsPressed(device, XRCommonUsages.gripButton) ||
+                IsPressed(device, XRCommonUsages.menuButton) ||
+                IsPressed(device, XRCommonUsages.primary2DAxisClick) ||
+                IsPressed(device, XRCommonUsages.secondary2DAxisClick))
             {
                 return true;
             }
@@ -213,7 +234,7 @@ public class TutorialManager : MonoBehaviour
     }
 
     private bool IsPressed(
-        InputDevice device,
+        XRInputDevice device,
         InputFeatureUsage<bool> button)
     {
         bool value;
@@ -297,9 +318,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (playerVisuals == null || playerVisuals.Length == 0)
         {
-            Debug.LogWarning(
-                "Player Visuals array is empty."
-            );
+            Debug.LogWarning("Player Visuals array is empty.");
             return;
         }
 

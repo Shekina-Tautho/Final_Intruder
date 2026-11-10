@@ -14,6 +14,14 @@ public class ReleaseVirusMovement : MonoBehaviour
     [Range(0f, 1f)]
     public float verticalSpreadMultiplier = 0.4f;
 
+    [Header("Spread Movement")]
+    [Tooltip("How long to wait before spreading begins.")]
+    public float spreadStartDelay = 0.5f;
+
+    [Tooltip("Controls how quickly spreading progresses. Lower values make it more gradual.")]
+    [Range(0.1f, 2f)]
+    public float spreadSpeedMultiplier = 0.65f;
+
     [Header("Random Diffusion")]
     public float randomStrength = 1.5f;
     public float directionChangeSpeed = 1f;
@@ -107,32 +115,46 @@ public class ReleaseVirusMovement : MonoBehaviour
         {
             releaseTimer += Time.deltaTime;
 
-            float progress = Mathf.Clamp01(
-                releaseTimer / releaseDuration
+            // Existing synchronized rising/forward movement.
+            float progress = ReleaseMovementProfile.GetProgress(
+                releaseTimer,
+                releaseDuration
             );
 
-            float smoothProgress = Mathf.SmoothStep(
-                0f,
-                1f,
-                progress
-            );
-
-            // Synchronized forward movement.
             Vector3 forwardMovement =
                 releaseDirection *
                 releaseDistance *
-                smoothProgress;
+                progress;
 
-            // Progressive spreading WHILE moving.
+            // Independent, slower spreading movement.
+            float spreadElapsed = Mathf.Max(
+                0f,
+                releaseTimer - spreadStartDelay
+            );
+
+            float spreadDuration = Mathf.Max(
+                0.01f,
+                releaseDuration - spreadStartDelay
+            );
+
+            float spreadProgress = Mathf.Clamp01(
+                spreadElapsed / spreadDuration
+            );
+
+            spreadProgress = Mathf.Pow(
+                spreadProgress,
+                1f / Mathf.Max(0.01f, spreadSpeedMultiplier)
+            );
+
             Vector3 lateralSpread =
-                spreadOffset * smoothProgress;
+                spreadOffset * spreadProgress;
 
             transform.position =
                 startingPosition +
                 forwardMovement +
                 lateralSpread;
 
-            if (progress >= 1f)
+            if (releaseTimer >= releaseDuration)
             {
                 isReleasing = false;
                 hasStartedDrifting = true;
@@ -159,5 +181,78 @@ public class ReleaseVirusMovement : MonoBehaviour
 
             transform.position += movement * Time.deltaTime;
         }
+    }
+}
+
+// Shared movement calculation for both player and release NPCs.
+public static class ReleaseMovementProfile
+{
+    public static float fastPhaseDuration = 2f;
+    public static float fastSpeedMultiplier = 1.6f;
+    public static float slowSpeedMultiplier = 0.55f;
+
+    public static void Configure(
+        float fastDuration,
+        float fastMultiplier,
+        float slowMultiplier)
+    {
+        fastPhaseDuration = Mathf.Max(0f, fastDuration);
+        fastSpeedMultiplier = Mathf.Max(0.01f, fastMultiplier);
+        slowSpeedMultiplier = Mathf.Max(0.01f, slowMultiplier);
+    }
+
+    public static float GetProgress(
+        float elapsed,
+        float totalDuration)
+    {
+        totalDuration = Mathf.Max(0.01f, totalDuration);
+
+        elapsed = Mathf.Clamp(
+            elapsed,
+            0f,
+            totalDuration
+        );
+
+        float fastDuration = Mathf.Min(
+            fastPhaseDuration,
+            totalDuration
+        );
+
+        // If the entire release is within the fast phase.
+        if (totalDuration <= fastDuration)
+        {
+            return elapsed / totalDuration;
+        }
+
+        // Calculate the total weighted movement.
+        float fastMovement =
+            fastDuration * fastSpeedMultiplier;
+
+        float slowDuration =
+            totalDuration - fastDuration;
+
+        float slowMovement =
+            slowDuration * slowSpeedMultiplier;
+
+        float totalMovement =
+            fastMovement + slowMovement;
+
+        float currentMovement;
+
+        if (elapsed <= fastDuration)
+        {
+            currentMovement =
+                elapsed * fastSpeedMultiplier;
+        }
+        else
+        {
+            currentMovement =
+                fastMovement +
+                (elapsed - fastDuration) * slowSpeedMultiplier;
+        }
+
+        return Mathf.Clamp01(
+            currentMovement / totalMovement
+        );
     }
 }

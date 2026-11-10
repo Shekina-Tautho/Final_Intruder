@@ -29,7 +29,12 @@ public class VirusReleaseManager : MonoBehaviour
     public float playerReleaseDistance = 1.5f;
 
     [Min(0.1f)]
-    public float playerReleaseDuration = 1.5f;
+    public float playerReleaseDuration = 4f;
+
+    [Header("Release Speed Profile")]
+    public float fastPhaseDuration = 2f;
+    public float fastSpeedMultiplier = 1.6f;
+    public float slowSpeedMultiplier = 0.55f;
 
     private Vector3 releasePosition;
     private Vector3 epithelialCenter;
@@ -227,6 +232,13 @@ public class VirusReleaseManager : MonoBehaviour
 
         SetPlayerControls(false);
 
+        // Configure the shared speed profile BEFORE spawning the NPCs.
+        ReleaseMovementProfile.Configure(
+            fastPhaseDuration,
+            fastSpeedMultiplier,
+            slowSpeedMultiplier
+        );
+
         Debug.Log("========== RELEASE START ==========");
         Debug.Log("PLAYER START: " + playerRoot.position);
 
@@ -243,7 +255,7 @@ public class VirusReleaseManager : MonoBehaviour
             virusSpawner.spawnedVirusTransforms.Count
         );
 
-        // Move the player in the same direction, distance, and duration.
+        // Move the player using the same movement profile.
         StartCoroutine(ReleasePlayer());
     }
 
@@ -263,17 +275,15 @@ public class VirusReleaseManager : MonoBehaviour
         {
             elapsed += Time.deltaTime;
 
-            float progress = Mathf.Clamp01(
-                elapsed / playerReleaseDuration
+            float progress = ReleaseMovementProfile.GetProgress(
+                elapsed,
+                playerReleaseDuration
             );
-
-            float smoothProgress =
-                Mathf.SmoothStep(0f, 1f, progress);
 
             playerRoot.position = Vector3.Lerp(
                 startPosition,
                 endPosition,
-                smoothProgress
+                progress
             );
 
             yield return null;

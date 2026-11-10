@@ -62306,6 +62306,9 @@ MonoBehaviour:
   releaseVirusCount: 10
   playerReleaseDistance: 70
   playerReleaseDuration: 10
+  fastPhaseDuration: 5
+  fastSpeedMultiplier: 2
+  slowSpeedMultiplier: 0.55
 --- !u!4 &663784712
 Transform:
   m_ObjectHideFlags: 0
