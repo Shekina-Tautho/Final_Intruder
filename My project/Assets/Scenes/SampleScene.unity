@@ -4236,7 +4236,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.351
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -17082,7 +17082,7 @@ MonoBehaviour:
   buttonClickSound: {fileID: 8300000, guid: 7ef808d92e242fb4ba920847f870e528, type: 3}
   buttonClickVolume: 1
   postTutorialVoiceOverSource: {fileID: 763248363}
-  postTutorialVoiceOverClip: {fileID: 0}
+  postTutorialVoiceOverClip: {fileID: 8300000, guid: 5398f1c40cda57f4eba7a380eeb251b2, type: 3}
   postTutorialVoiceOverVolume: 1
   simulationUI: {fileID: 417767288}
   virusSpawner: {fileID: 2081573772}
