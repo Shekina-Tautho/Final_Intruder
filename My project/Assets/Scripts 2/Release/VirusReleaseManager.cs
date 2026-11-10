@@ -21,6 +21,9 @@ public class VirusReleaseManager : MonoBehaviour
     [Header("Release NPC Spawner")]
     public VirusSpawner virusSpawner;
 
+    [Header("Scene Fade")]
+    public VirusReleaseSceneFade sceneFade;
+
     [Header("Release Settings")]
     [Min(0)]
     public int releaseVirusCount = 20;
@@ -255,8 +258,20 @@ public class VirusReleaseManager : MonoBehaviour
             virusSpawner.spawnedVirusTransforms.Count
         );
 
-        // Move the player using the same movement profile.
+        // Start player movement.
         StartCoroutine(ReleasePlayer());
+
+        // Start the fade-in at the same time as movement.
+        if (sceneFade != null)
+        {
+            sceneFade.BeginFadeIn();
+        }
+        else
+        {
+            Debug.LogWarning(
+                "VirusReleaseManager: Scene Fade is not assigned."
+            );
+        }
     }
 
     private IEnumerator ReleasePlayer()
