@@ -47,6 +47,7 @@ public class VirusReleaseManager : MonoBehaviour
             playerHead = Camera.main.transform;
         }
 
+        // Spawn the original outside NPC viruses.
         if (outsideVirusSpawner != null)
         {
             outsideVirusSpawner.StartSpawning();
@@ -98,6 +99,7 @@ public class VirusReleaseManager : MonoBehaviour
             return;
         }
 
+        // Find the epithelial cell closest to the saved absorbed-cell position.
         SkinnedMeshRenderer closestCell = null;
         float closestDistance = Mathf.Infinity;
 
@@ -128,6 +130,7 @@ public class VirusReleaseManager : MonoBehaviour
 
         releasePosition = closestCell.bounds.center;
 
+        // Calculate the average center of all epithelial cells.
         Vector3 totalCenter = Vector3.zero;
         int validCellCount = 0;
 
@@ -150,6 +153,7 @@ public class VirusReleaseManager : MonoBehaviour
 
         epithelialCenter = totalCenter / validCellCount;
 
+        // Direction points inward, toward the epithelial center.
         releaseDirection = epithelialCenter - releasePosition;
 
         if (releaseDirection.sqrMagnitude < 0.001f)
@@ -162,11 +166,13 @@ public class VirusReleaseManager : MonoBehaviour
 
         releaseDirection.Normalize();
 
+        // Position the player at the matching epithelial cell.
         if (characterController != null)
             characterController.enabled = false;
 
         playerRoot.position = releasePosition;
 
+        // Configure the separate release-virus spawner.
         virusSpawner.releaseSpawnCenter = playerRoot;
         virusSpawner.spawnZone = null;
         virusSpawner.additionalSpawnPoints = null;
@@ -175,7 +181,10 @@ public class VirusReleaseManager : MonoBehaviour
         virusSpawner.releaseMode = true;
         virusSpawner.releaseOrigin = playerRoot.position;
         virusSpawner.releaseDirection = releaseDirection;
-        virusSpawner.disableAutoAttachOnSpawn = true;
+
+        // Keep player and release viruses synchronized.
+        virusSpawner.releaseMovementDistance = playerReleaseDistance;
+        virusSpawner.releaseMovementDuration = playerReleaseDuration;
 
         isPrepared = true;
 
@@ -191,6 +200,8 @@ public class VirusReleaseManager : MonoBehaviour
 
         Debug.Log("Epithelial center: " + epithelialCenter);
         Debug.Log("Release direction: " + releaseDirection);
+        Debug.Log("Release distance: " + playerReleaseDistance);
+        Debug.Log("Release duration: " + playerReleaseDuration);
         Debug.Log("==========================================");
     }
 
@@ -224,6 +235,7 @@ public class VirusReleaseManager : MonoBehaviour
             Debug.Log("PLAYER HEAD START: " + playerHead.position);
         }
 
+        // Spawn the new ReleaseVirus prefabs.
         virusSpawner.StartSpawning();
 
         Debug.Log(
@@ -231,6 +243,7 @@ public class VirusReleaseManager : MonoBehaviour
             virusSpawner.spawnedVirusTransforms.Count
         );
 
+        // Move the player in the same direction, distance, and duration.
         StartCoroutine(ReleasePlayer());
     }
 

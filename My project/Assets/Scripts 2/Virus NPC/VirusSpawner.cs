@@ -20,6 +20,12 @@ public class VirusSpawner : MonoBehaviour
     public Transform releaseSpawnCenter;
     public Vector3 releaseOrigin;
     public Vector3 releaseDirection;
+
+    [Header("Synchronized Release Movement")]
+    public float releaseMovementDistance = 1.5f;
+    public float releaseMovementDuration = 1.5f;
+
+    [Header("Legacy NPC Settings")]
     public bool disableAutoAttachOnSpawn = false;
 
     [Header("Runtime Position Tracking")]
@@ -41,13 +47,17 @@ public class VirusSpawner : MonoBehaviour
 
         if (virusPrefab == null)
         {
-            Debug.LogError("Virus Prefab is not assigned!");
+            Debug.LogError(
+                "VirusSpawner: Virus Prefab is not assigned!"
+            );
             return;
         }
 
         if (releaseMode && releaseSpawnCenter == null)
         {
-            Debug.LogError("Release Spawn Center is not assigned!");
+            Debug.LogError(
+                "VirusSpawner: Release Spawn Center is not assigned!"
+            );
             return;
         }
 
@@ -57,11 +67,11 @@ public class VirusSpawner : MonoBehaviour
 
         if (!releaseMode && spawnZone == null && pointCount == 0)
         {
-            Debug.LogError("No spawn zones or spawn points assigned!");
+            Debug.LogError(
+                "VirusSpawner: No spawn zones or spawn points assigned!"
+            );
             return;
         }
-
-        hasSpawned = true;
 
         spawnedVirusTransforms.Clear();
         spawnedStartPositions.Clear();
@@ -75,7 +85,11 @@ public class VirusSpawner : MonoBehaviour
             SpawnVirus(i);
         }
 
-        Debug.Log(virusCount + " viruses spawned!");
+        hasSpawned = true;
+
+        Debug.Log(
+            virusCount + " viruses spawned successfully!"
+        );
     }
 
     private void SpawnVirus(int index)
@@ -89,63 +103,79 @@ public class VirusSpawner : MonoBehaviour
         );
 
         spawnedVirusTransforms.Add(spawnedVirus.transform);
-        spawnedStartPositions.Add(spawnedVirus.transform.position);
+
+        spawnedStartPositions.Add(
+            spawnedVirus.transform.position
+        );
 
         if (releaseMode)
         {
             Debug.Log(
-                "[RELEASE NPC " + (index + 1) +
-                "] START POSITION: " +
-                spawnedVirus.transform.position
+                "[RELEASE VIRUS " + (index + 1) + "]" +
+                "\nSTART POSITION: " +
+                spawnedVirus.transform.position +
+                "\nDISTANCE FROM PLAYER: " +
+                Vector3.Distance(
+                    spawnedVirus.transform.position,
+                    releaseSpawnCenter.position
+                )
             );
-        }
 
-        // Keep the original behavior for outside NPCs.
-        if (!releaseMode)
+            StartReleaseVirus(spawnedVirus, index);
+
             return;
-
-        // Disable scripts that could attach or move
-        // release NPCs toward epithelial cells.
-        if (disableAutoAttachOnSpawn)
-        {
-            NPCReceptorAutoAttach autoAttach =
-                spawnedVirus.GetComponent<NPCReceptorAutoAttach>();
-
-            if (autoAttach != null)
-                autoAttach.enabled = false;
-
-            NPCCellAbsorber cellAbsorber =
-                spawnedVirus.GetComponent<NPCCellAbsorber>();
-
-            if (cellAbsorber != null)
-                cellAbsorber.enabled = false;
-
-            Debug.Log(
-                "[RELEASE NPC " + (index + 1) +
-                "] Auto-attach and cell absorption disabled."
-            );
         }
 
-        // Start release movement.
-        VirusNPC virusMovement =
-            spawnedVirus.GetComponent<VirusNPC>();
+        // ORIGINAL OUTSIDE NPC BEHAVIOR
+        // Keep the existing infection simulation unchanged.
 
-        if (virusMovement != null)
+        Debug.Log(
+            "[OUTSIDE NPC " + (index + 1) +
+            "] Spawned at: " +
+            spawnedVirus.transform.position
+        );
+    }
+
+    private void StartReleaseVirus(
+        GameObject spawnedVirus,
+        int index)
+    {
+        // The new release prefab must have its own movement script.
+
+        ReleaseVirusMovement movement =
+            spawnedVirus.GetComponent<ReleaseVirusMovement>();
+
+        if (movement == null)
         {
-            virusMovement.BeginRelease(releaseDirection);
-        }
-        else
-        {
-            Debug.LogWarning(
-                "Spawned NPC has no VirusNPC component: " +
+            Debug.LogError(
+                "[RELEASE VIRUS " + (index + 1) + "] " +
+                "ReleaseVirusMovement is missing from prefab: " +
                 spawnedVirus.name
             );
+
+            return;
         }
+
+        // Give the new virus the same release movement
+        // distance, direction, and duration as the player.
+
+        movement.BeginRelease(
+            releaseDirection,
+            releaseMovementDistance,
+            releaseMovementDuration
+        );
+
+        Debug.Log(
+            "[RELEASE VIRUS " + (index + 1) + "] " +
+            "Synchronized release started."
+        );
     }
 
     private Vector3 GetRandomPosition()
     {
-        // Release NPCs spawn around the player.
+        // NEW RELEASE VIRUSES:
+        // Spawn around the player.
+
         if (releaseMode && releaseSpawnCenter != null)
         {
             Vector3 randomOffset =
@@ -154,7 +184,9 @@ public class VirusSpawner : MonoBehaviour
             return releaseSpawnCenter.position + randomOffset;
         }
 
-        // Original outside NPC spawning logic.
+        // ORIGINAL OUTSIDE NPC SPAWNING:
+        // Preserve the existing spawn zone and spawn point logic.
+
         int pointCount = additionalSpawnPoints != null
             ? additionalSpawnPoints.Length
             : 0;
@@ -162,10 +194,14 @@ public class VirusSpawner : MonoBehaviour
         int availableLocations = pointCount;
 
         if (spawnZone != null)
+        {
             availableLocations++;
+        }
 
         if (availableLocations == 0)
+        {
             return Vector3.zero;
+        }
 
         int selectedLocation = Random.Range(
             0,
@@ -176,9 +212,20 @@ public class VirusSpawner : MonoBehaviour
         {
             Bounds bounds = spawnZone.bounds;
 
-            float x = Random.Range(bounds.min.x, bounds.max.x);
-            float y = Random.Range(bounds.min.y, bounds.max.y);
-            float z = Random.Range(bounds.min.z, bounds.max.z);
+            float x = Random.Range(
+                bounds.min.x,
+                bounds.max.x
+            );
+
+            float y = Random.Range(
+                bounds.min.y,
+                bounds.max.y
+            );
+
+            float z = Random.Range(
+                bounds.min.z,
+                bounds.max.z
+            );
 
             return new Vector3(x, y, z);
         }
@@ -190,7 +237,9 @@ public class VirusSpawner : MonoBehaviour
             additionalSpawnPoints[pointIndex];
 
         if (selectedPoint == null)
+        {
             return Vector3.zero;
+        }
 
         Vector3 offset =
             Random.insideUnitSphere * spawnRadius;

@@ -55761,7 +55761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91773e280ce807428b19fdc5b4ebba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
+  virusPrefab: {fileID: 2649738140610089851, guid: 5db6f4e066338d94b83f38f117a163de, type: 3}
   virusCount: 20
   spawnZone: {fileID: 0}
   additionalSpawnPoints: []
@@ -55770,6 +55770,8 @@ MonoBehaviour:
   releaseSpawnCenter: {fileID: 0}
   releaseOrigin: {x: 0, y: 0, z: 0}
   releaseDirection: {x: 0, y: 0, z: 0}
+  releaseMovementDistance: 1.5
+  releaseMovementDuration: 1.5
   disableAutoAttachOnSpawn: 1
   spawnedVirusTransforms: []
   spawnedStartPositions: []
@@ -152049,6 +152051,8 @@ MonoBehaviour:
   releaseSpawnCenter: {fileID: 0}
   releaseOrigin: {x: 0, y: 0, z: 0}
   releaseDirection: {x: 0, y: 0, z: 0}
+  releaseMovementDistance: 1.5
+  releaseMovementDuration: 1.5
   disableAutoAttachOnSpawn: 0
   spawnedVirusTransforms: []
   spawnedStartPositions: []
@@ -199139,6 +199143,8 @@ MonoBehaviour:
   releaseSpawnCenter: {fileID: 0}
   releaseOrigin: {x: 0, y: 0, z: 0}
   releaseDirection: {x: 0, y: 0, z: 0}
+  releaseMovementDistance: 1.5
+  releaseMovementDuration: 1.5
   disableAutoAttachOnSpawn: 0
   spawnedVirusTransforms: []
   spawnedStartPositions: []
