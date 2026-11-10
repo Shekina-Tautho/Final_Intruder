@@ -17085,6 +17085,7 @@ MonoBehaviour:
   postTutorialVoiceOverClips:
   - {fileID: 8300000, guid: 5398f1c40cda57f4eba7a380eeb251b2, type: 3}
   - {fileID: 8300000, guid: 8a7297cf43751e749b381c29fbe88875, type: 3}
+  - {fileID: 8300000, guid: 739f08886c2431b45a0b0d0050e62ecd, type: 3}
   postTutorialVoiceOverVolume: 1
   voiceOverPause: 1
   simulationUI: {fileID: 417767288}
