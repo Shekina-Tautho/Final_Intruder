@@ -594,6 +594,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8165839428200008367, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
+      propertyPath: stageChangeVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165839428200008367, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
       propertyPath: exposureDescription
       value: 
       objectReference: {fileID: 0}
@@ -890,7 +894,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 54dd2c31970524843aa62bd1ee1d20de, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.351
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1011,7 +1015,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1828170140}
   voiceOverAudioSource: {fileID: 1788311841}
-  voiceOvers: []
+  voiceOvers:
+  - timestamp: 1
+    audioClip: {fileID: 8300000, guid: 3d1ba1f9c7e21ea47b07893d2c8a9ab5, type: 3}
+  - timestamp: 38
+    audioClip: {fileID: 8300000, guid: 32aa3333ce3334648b052865c79534b4, type: 3}
 --- !u!82 &1788311841
 AudioSource:
   m_ObjectHideFlags: 0
