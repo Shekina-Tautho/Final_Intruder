@@ -26,14 +26,22 @@ public class ReleaseVirusMovement : MonoBehaviour
     public float randomStrength = 1.5f;
     public float directionChangeSpeed = 1f;
 
+    [Header("Movement Transition")]
+    [Tooltip("How long to smoothly blend from release movement into drifting.")]
+    public float driftTransitionDuration = 2f;
+
     private Vector3 releaseDirection;
     private Vector3 startingPosition;
     private Vector3 randomDirection;
     private Vector3 spreadOffset;
 
+    private Vector3 releaseVelocity;
+    private Vector3 driftStartVelocity;
+
     private float releaseDistance;
     private float releaseDuration;
     private float releaseTimer;
+    private float driftTransitionTimer;
 
     private bool isReleasing;
     private bool hasStartedDrifting;
@@ -58,6 +66,10 @@ public class ReleaseVirusMovement : MonoBehaviour
         releaseDuration = Mathf.Max(0.01f, duration);
 
         releaseTimer = 0f;
+        driftTransitionTimer = 0f;
+
+        releaseVelocity = Vector3.zero;
+        driftStartVelocity = Vector3.zero;
 
         // Calculate directions perpendicular to forward movement.
         Vector3 right = Vector3.Cross(
@@ -111,9 +123,11 @@ public class ReleaseVirusMovement : MonoBehaviour
 
     private void Update()
     {
+        float deltaTime = Time.deltaTime;
+
         if (isReleasing)
         {
-            releaseTimer += Time.deltaTime;
+            releaseTimer += deltaTime;
 
             // Existing synchronized rising/forward movement.
             float progress = ReleaseMovementProfile.GetProgress(
@@ -149,21 +163,40 @@ public class ReleaseVirusMovement : MonoBehaviour
             Vector3 lateralSpread =
                 spreadOffset * spreadProgress;
 
-            transform.position =
+            // Calculate the new release position.
+            Vector3 newPosition =
                 startingPosition +
                 forwardMovement +
                 lateralSpread;
 
+            // Track actual release velocity for a smooth transition.
+            if (deltaTime > 0f)
+            {
+                releaseVelocity =
+                    (newPosition - transform.position) / deltaTime;
+            }
+
+            transform.position = newPosition;
+
+            // Begin drifting without resetting movement velocity.
             if (releaseTimer >= releaseDuration)
             {
                 isReleasing = false;
                 hasStartedDrifting = true;
+
+                driftStartVelocity = releaseVelocity;
+                driftTransitionTimer = 0f;
+
+                Debug.Log(
+                    "[RELEASE VIRUS] Smooth drift transition started: " +
+                    gameObject.name
+                );
             }
 
             return;
         }
 
-        // Existing random diffusion behavior.
+        // Random diffusion behavior.
         if (hasStartedDrifting)
         {
             Vector3 targetDirection =
@@ -172,17 +205,47 @@ public class ReleaseVirusMovement : MonoBehaviour
             randomDirection = Vector3.Slerp(
                 randomDirection,
                 targetDirection,
-                directionChangeSpeed * Time.deltaTime
+                directionChangeSpeed * deltaTime
             );
 
-            Vector3 movement =
+            Vector3 targetMovement =
                 Vector3.back * driftSpeed +
                 randomDirection * randomStrength;
 
-            transform.position += movement * Time.deltaTime;
+            // Smoothly blend release velocity into normal drifting.
+            if (driftTransitionTimer < driftTransitionDuration)
+            {
+                driftTransitionTimer += deltaTime;
+
+                float transitionProgress = Mathf.Clamp01(
+                    driftTransitionTimer /
+                    Mathf.Max(0.01f, driftTransitionDuration)
+                );
+
+                // SmoothStep prevents an abrupt velocity change.
+                float smoothProgress = Mathf.SmoothStep(
+                    0f,
+                    1f,
+                    transitionProgress
+                );
+
+                Vector3 blendedMovement = Vector3.Lerp(
+                    driftStartVelocity,
+                    targetMovement,
+                    smoothProgress
+                );
+
+                transform.position += blendedMovement * deltaTime;
+            }
+            else
+            {
+                // Normal random diffusion after the transition.
+                transform.position += targetMovement * deltaTime;
+            }
         }
     }
 }
+
 
 // Shared movement calculation for both player and release NPCs.
 public static class ReleaseMovementProfile

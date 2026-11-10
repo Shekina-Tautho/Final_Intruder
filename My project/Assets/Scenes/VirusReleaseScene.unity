@@ -55771,6 +55771,8 @@ MonoBehaviour:
   releaseSpawnCenter: {fileID: 0}
   releaseOrigin: {x: 0, y: 0, z: 0}
   releaseDirection: {x: 0, y: 0, z: 0}
+  releaseSpawnRadius: 5
+  releaseSpawnHeightVariation: 0.4
   releaseMovementDistance: 1.5
   releaseMovementDuration: 1.5
   disableAutoAttachOnSpawn: 1
@@ -152056,6 +152058,8 @@ MonoBehaviour:
   releaseSpawnCenter: {fileID: 0}
   releaseOrigin: {x: 0, y: 0, z: 0}
   releaseDirection: {x: 0, y: 0, z: 0}
+  releaseSpawnRadius: 0.8
+  releaseSpawnHeightVariation: 0.4
   releaseMovementDistance: 1.5
   releaseMovementDuration: 1.5
   disableAutoAttachOnSpawn: 0
@@ -199149,6 +199153,8 @@ MonoBehaviour:
   releaseSpawnCenter: {fileID: 0}
   releaseOrigin: {x: 0, y: 0, z: 0}
   releaseDirection: {x: 0, y: 0, z: 0}
+  releaseSpawnRadius: 0.8
+  releaseSpawnHeightVariation: 0.4
   releaseMovementDistance: 1.5
   releaseMovementDuration: 1.5
   disableAutoAttachOnSpawn: 0

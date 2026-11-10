@@ -25,6 +25,15 @@ public class VirusSpawner : MonoBehaviour
     public Vector3 releaseOrigin;
     public Vector3 releaseDirection;
 
+    [Header("Release Spawn Distribution")]
+    [Tooltip("Maximum distance of release viruses from the player.")]
+    [Min(0f)]
+    public float releaseSpawnRadius = 0.8f;
+
+    [Tooltip("Controls the amount of vertical variation in initial spawn positions.")]
+    [Range(0f, 1f)]
+    public float releaseSpawnHeightVariation = 0.4f;
+
     [Header("Synchronized Release Movement")]
     public float releaseMovementDistance = 1.5f;
     public float releaseMovementDuration = 1.5f;
@@ -98,7 +107,7 @@ public class VirusSpawner : MonoBehaviour
 
     private void SpawnVirus(int index)
     {
-        Vector3 spawnPosition = GetRandomPosition();
+        Vector3 spawnPosition = GetRandomPosition(index);
 
         GameObject spawnedVirus = Instantiate(
             virusPrefab,
@@ -108,7 +117,6 @@ public class VirusSpawner : MonoBehaviour
 
         // ONLY released viruses receive a scale adjustment.
         // Outside NPCs retain their original prefab scale.
-
         if (releaseMode)
         {
             spawnedVirus.transform.localScale =
@@ -141,9 +149,8 @@ public class VirusSpawner : MonoBehaviour
             return;
         }
 
-        // ORIGINAL OUTSIDE NPC BEHAVIOR
+        // ORIGINAL OUTSIDE NPC BEHAVIOR.
         // No scale adjustment is applied.
-
         Debug.Log(
             "[OUTSIDE NPC " + (index + 1) +
             "] Spawned at: " +
@@ -183,20 +190,45 @@ public class VirusSpawner : MonoBehaviour
         );
     }
 
-    private Vector3 GetRandomPosition()
+    private Vector3 GetRandomPosition(int index)
     {
-        // RELEASE VIRUSES: Spawn around the player.
-
+        // RELEASE VIRUSES:
+        // Distribute them around the player in a loose formation.
         if (releaseMode && releaseSpawnCenter != null)
         {
+            float goldenAngle = 137.5f;
+
+            // Give each virus a different horizontal direction.
+            float angle = index * goldenAngle * Mathf.Deg2Rad;
+
+            // Add slight variation in height.
+            float vertical = Random.Range(
+                -releaseSpawnHeightVariation,
+                releaseSpawnHeightVariation
+            );
+
+            Vector3 offsetDirection = new Vector3(
+                Mathf.Cos(angle),
+                vertical,
+                Mathf.Sin(angle)
+            ).normalized;
+
+            // Randomize distance without placing viruses too close
+            // to the exact center.
+            float minimumRadius = releaseSpawnRadius * 0.65f;
+
+            float randomRadius = Random.Range(
+                minimumRadius,
+                releaseSpawnRadius
+            );
+
             Vector3 randomOffset =
-                Random.insideUnitSphere * spawnRadius;
+                offsetDirection * randomRadius;
 
             return releaseSpawnCenter.position + randomOffset;
         }
 
-        // ORIGINAL OUTSIDE NPC SPAWNING
-
+        // ORIGINAL OUTSIDE NPC SPAWNING.
         int pointCount = additionalSpawnPoints != null
             ? additionalSpawnPoints.Length
             : 0;
