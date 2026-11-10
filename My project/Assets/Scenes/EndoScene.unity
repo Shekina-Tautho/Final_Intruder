@@ -1260,7 +1260,7 @@ MonoBehaviour:
   fadeInDuration: 1.5
   fadeOutDuration: 1.5
   blackScreenDelay: 0.5
-  nextSceneName: HostCellInfection
+  nextSceneName: ViralReplication
 --- !u!4 &1995238605
 Transform:
   m_ObjectHideFlags: 0
