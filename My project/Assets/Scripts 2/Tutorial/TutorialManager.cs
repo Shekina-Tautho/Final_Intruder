@@ -47,6 +47,13 @@ public class TutorialManager : MonoBehaviour
     [Range(0f, 1f)]
     public float buttonClickVolume = 1f;
 
+    [Header("Post-Tutorial Voice Over")]
+    public AudioSource postTutorialVoiceOverSource;
+    public AudioClip postTutorialVoiceOverClip;
+
+    [Range(0f, 1f)]
+    public float postTutorialVoiceOverVolume = 1f;
+
     [Header("Existing Simulation UI")]
     public GameObject simulationUI;
 
@@ -356,6 +363,16 @@ public class TutorialManager : MonoBehaviour
         simulationUI.SetActive(true);
 
         Debug.Log("Tutorial completed.");
+
+        // Start the simulation voice-over after the tutorial.
+        if (postTutorialVoiceOverSource != null &&
+            postTutorialVoiceOverClip != null)
+        {
+            postTutorialVoiceOverSource.PlayOneShot(
+                postTutorialVoiceOverClip,
+                postTutorialVoiceOverVolume
+            );
+        }
 
         StartGameplay();
     }
