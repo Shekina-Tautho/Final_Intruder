@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.InputSystem;
 using TMPro;
+using System.Collections;
 using System.Collections.Generic;
 
 // Explicit XR aliases to prevent naming conflicts.
@@ -49,10 +50,13 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Post-Tutorial Voice Over")]
     public AudioSource postTutorialVoiceOverSource;
-    public AudioClip postTutorialVoiceOverClip;
+    public AudioClip[] postTutorialVoiceOverClips;
 
     [Range(0f, 1f)]
     public float postTutorialVoiceOverVolume = 1f;
+
+    [Tooltip("Pause between tutorial completion and the first clip, and between each clip.")]
+    public float voiceOverPause = 1f;
 
     [Header("Existing Simulation UI")]
     public GameObject simulationUI;
@@ -364,17 +368,60 @@ public class TutorialManager : MonoBehaviour
 
         Debug.Log("Tutorial completed.");
 
-        // Start the simulation voice-over after the tutorial.
+        // Start the post-tutorial voice-over sequence.
         if (postTutorialVoiceOverSource != null &&
-            postTutorialVoiceOverClip != null)
+            postTutorialVoiceOverClips != null &&
+            postTutorialVoiceOverClips.Length > 0)
         {
-            postTutorialVoiceOverSource.PlayOneShot(
-                postTutorialVoiceOverClip,
-                postTutorialVoiceOverVolume
-            );
+            StartCoroutine(PlayPostTutorialVoiceOvers());
         }
 
         StartGameplay();
+    }
+
+    private IEnumerator PlayPostTutorialVoiceOvers()
+    {
+        // Wait one second after the tutorial finishes.
+        yield return new WaitForSeconds(voiceOverPause);
+
+        for (int i = 0; i < postTutorialVoiceOverClips.Length; i++)
+        {
+            AudioClip clip = postTutorialVoiceOverClips[i];
+
+            if (clip == null)
+            {
+                Debug.LogWarning(
+                    "Post-tutorial voice-over clip " + (i + 1) +
+                    " is missing. Skipping."
+                );
+                continue;
+            }
+
+            // Play the current voice-over clip.
+            postTutorialVoiceOverSource.clip = clip;
+            postTutorialVoiceOverSource.volume =
+                postTutorialVoiceOverVolume;
+
+            postTutorialVoiceOverSource.Play();
+
+            Debug.Log(
+                "Playing post-tutorial voice-over " + (i + 1) +
+                " of " + postTutorialVoiceOverClips.Length
+            );
+
+            // Wait until the current clip finishes.
+            yield return new WaitWhile(
+                () => postTutorialVoiceOverSource.isPlaying
+            );
+
+            // Wait one second before the next clip.
+            if (i < postTutorialVoiceOverClips.Length - 1)
+            {
+                yield return new WaitForSeconds(voiceOverPause);
+            }
+        }
+
+        Debug.Log("All post-tutorial voice-overs completed.");
     }
 
     private void StartGameplay()
