@@ -1204,7 +1204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 280547532}
   fadeDuration: 2
-  nextSceneName: VirusReleaseScene
+  nextSceneName: EndoScene
   waitBeforeLoading: 0.5
 --- !u!114 &280547532
 MonoBehaviour:
