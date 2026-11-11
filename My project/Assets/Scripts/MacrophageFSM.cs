@@ -28,11 +28,11 @@ public class MacrophageFSM : MonoBehaviour
     public float returnSpeed = 3f;
 
     [Header("Ranges")]
-    public float detectionRange = 8f;
-    public float attackRange = 1.5f;
+    public float detectionRange = 50f;
+    public float attackRange = 10f;
 
     [Header("Patrol Zone (IMPORTANT FIX)")]
-    public float patrolRadius = 12f;
+    public float patrolRadius = 200f;
     private Vector3 patrolCenter;
 
     [Header("Alert Settings")]
@@ -121,7 +121,15 @@ public class MacrophageFSM : MonoBehaviour
         if (patrolPoints.Length == 0) return;
 
         Transform target = patrolPoints[patrolIndex];
-        MoveTo(target.position, patrolSpeed);
+
+        // Move towards active patrol points
+        if (target.gameObject.activeSelf) {
+            MoveTo(target.position, patrolSpeed);
+        // Skip inactive patrol points
+        } else {
+            patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
+        }
+
 
         if (Vector3.Distance(transform.position, target.position) < 0.8f)
         {
@@ -331,12 +339,15 @@ public class MacrophageFSM : MonoBehaviour
 
         for (int i = 0; i < patrolPoints.Length; i++)
         {
-            float dist = Vector3.Distance(transform.position, patrolPoints[i].position);
-
-            if (dist < shortestDistance)
+            // Only return to active patrol points
+            if (patrolPoints[i].gameObject.activeSelf)
             {
-                shortestDistance = dist;
-                nearestIndex = i;
+                float dist = Vector3.Distance(transform.position, patrolPoints[i].position);
+                if (dist < shortestDistance)
+                {
+                    shortestDistance = dist;
+                    nearestIndex = i;
+                }
             }
         }
 

@@ -17,6 +17,9 @@ public class ReceptorGroup : MonoBehaviour
     private IncompatibleMessageUI incompatibleMessageUI;
     private CompatibleMessageUI compatibleMessageUI;
 
+    [Header("Patrol Points")]
+    public Transform[] patrolPoints;
+
     private Receptor[] receptors;
 
     // Prevent the incompatible message from appearing more than once.
@@ -83,6 +86,11 @@ public class ReceptorGroup : MonoBehaviour
         AssignReceptorTypes();
 
         Debug.Log("Found " + receptors.Length + " receptors.");
+        Debug.Log(
+            "Start() on " + gameObject.name +
+            ", Instance ID: " + GetInstanceID() +
+            ", Patrol Points: " + patrolPoints.Length
+        );
     }
 
     void AssignReceptorTypes()
@@ -233,6 +241,11 @@ public class ReceptorGroup : MonoBehaviour
 
         Debug.Log("RECEPTOR DETECTED - Animation triggered!");
 
+        // Check
+        Debug.Log("CALLING ActivatePatrolPoint");
+        // Set nearest patrolPoint to active
+        ActivatePatrolPoint(closestReceptor);
+
         if (playerInitiated)
         {
             PlayerCellSnapper snapper =
@@ -261,5 +274,39 @@ public class ReceptorGroup : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void ActivatePatrolPoint(Receptor closestReceptor)
+    {
+        Debug.Log("ActivatePatrolPoint called");
+        Debug.Log("Patrol points count: " + patrolPoints.Length);
+        Debug.Log(
+            "Object name: " + gameObject.name +
+            ", Instance ID: " + GetInstanceID()
+        );
+
+        // Check if patrolPoints is empty
+        if (patrolPoints.Length == 0) return;
+
+        Transform nearestPatrolPoint = null;
+        float shortestDistance = Mathf.Infinity;
+
+        // Check each patrolPoint in patrolPoint array
+        for (int i = 0; i < patrolPoints.Length; i++)
+        {
+            float dist = Vector3.Distance(closestReceptor.transform.position, patrolPoints[i].position);
+
+
+            // Get the nearest patrolPoint
+            if (dist < shortestDistance)
+                {
+                    shortestDistance = dist;
+                    nearestPatrolPoint = patrolPoints[i];
+                    Debug.Log("Nearest patrol point: " + nearestPatrolPoint?.name);
+                }
+        }
+
+        // Set nearest Patrolpoint to active
+        nearestPatrolPoint.gameObject.SetActive(true);
     }
 }
