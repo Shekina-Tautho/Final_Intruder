@@ -50099,7 +50099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voiceOverAudioSource: {fileID: 523398639}
   firstVoiceOverClip: {fileID: 8300000, guid: 9911f54c18559cb4e9b3227f17a85811, type: 3}
-  secondVoiceOverClip: {fileID: 8300000, guid: 947ff6f3403f87b4cac52a3a9e7fbc40, type: 3}
+  secondVoiceOverClip: {fileID: 8300000, guid: b11f3b3aa96396d4b91866bf665d9953, type: 3}
   simulationUIController: {fileID: 456213943}
   startDelay: 1
   secondVoiceOverDelay: 3
