@@ -55761,6 +55761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 2649738140610089851, guid: 5db6f4e066338d94b83f38f117a163de, type: 3}
   virusCount: 10
+  additionalNPCCount: 0
   releasedVirusScale: {x: 1, y: 1, z: 1}
   spawnZone: {fileID: 0}
   additionalSpawnPoints: []
@@ -152389,7 +152390,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
-  virusCount: 100
+  virusCount: 50
+  additionalNPCCount: 10
   releasedVirusScale: {x: 0.25, y: 0.25, z: 0.25}
   spawnZone: {fileID: 471117931}
   additionalSpawnPoints:
@@ -199864,6 +199866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
   virusCount: 100
+  additionalNPCCount: 0
   releasedVirusScale: {x: 0.25, y: 0.25, z: 0.25}
   spawnZone: {fileID: 471117931}
   additionalSpawnPoints:

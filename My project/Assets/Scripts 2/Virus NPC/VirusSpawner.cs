@@ -8,6 +8,10 @@ public class VirusSpawner : MonoBehaviour
     public GameObject virusPrefab;
     public int virusCount = 20;
 
+    [Header("Additional NPC Settings")]
+    [Min(0)]
+    public int additionalNPCCount = 0;
+
     [Header("Released Virus Scale")]
     public Vector3 releasedVirusScale =
         new Vector3(0.25f, 0.25f, 0.25f);
@@ -89,11 +93,13 @@ public class VirusSpawner : MonoBehaviour
         spawnedVirusTransforms.Clear();
         spawnedStartPositions.Clear();
 
+        int totalVirusCount = virusCount + additionalNPCCount;
+
         Debug.Log(
             "Starting virus simulation. Release mode: " + releaseMode
         );
 
-        for (int i = 0; i < virusCount; i++)
+        for (int i = 0; i < totalVirusCount; i++)
         {
             SpawnVirus(i);
         }
@@ -101,7 +107,9 @@ public class VirusSpawner : MonoBehaviour
         hasSpawned = true;
 
         Debug.Log(
-            virusCount + " viruses spawned successfully!"
+            totalVirusCount + " viruses spawned successfully! " +
+            "(" + virusCount + " original + " +
+            additionalNPCCount + " additional NPCs)"
         );
     }
 
@@ -181,7 +189,7 @@ public class VirusSpawner : MonoBehaviour
             releaseMovementDistance,
             releaseMovementDuration,
             index,
-            virusCount
+            virusCount + additionalNPCCount
         );
 
         Debug.Log(
