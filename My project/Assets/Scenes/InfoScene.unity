@@ -322,6 +322,15 @@ MonoBehaviour:
     processTitle: Process Involved in the Simulation
     processText: "Stages 2\u20137: The virus encounters, attaches to, enters, and
       uses the epithelial cell to produce new virus particles. "
+  - modelObject: {fileID: 1135084695}
+    modelName: Sialic Acid Receptor
+    levelInfo: HOST-CELL STRUCTURES AND ORGANELLES
+    definitionTitle: Definition
+    definitionText: A sugar-containing structure found on the surface of host cells.
+      Influenza HA binds to sialic acid-containing structures to begin infection.
+    processTitle: Process Involved in the Simulation
+    processText: "Stage 3 \u2013 Attachment: These structures serve as binding sites
+      for the viral HA protein, allowing influenza to attach to the epithelial cell."
   modelNameText: {fileID: 2005241214}
   levelInfoText: {fileID: 1421623203}
   definitionTitleText: {fileID: 2089213659}
@@ -521,6 +530,106 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 279703062920603297, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
   m_PrefabInstance: {fileID: 1129401626}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1135084693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1967061083}
+    m_Modifications:
+    - target: {fileID: 8315116000863316897, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_Name
+      value: V1-Receptor-Animated
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315116000863316897, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.245119
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8315116000863316897, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1135084696}
+  m_SourcePrefab: {fileID: 100100000, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+--- !u!4 &1135084694 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8660115723738132763, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+  m_PrefabInstance: {fileID: 1135084693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1135084695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8315116000863316897, guid: 21e17a60ca641514a84b52bd9ed69d9d, type: 3}
+  m_PrefabInstance: {fileID: 1135084693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1135084696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135084695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0f1cd65965b134085e78e753bd260a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 50
+  rotationAxis: 2
 --- !u!1001 &1195221071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1289,6 +1398,7 @@ Transform:
   - {fileID: 1129401627}
   - {fileID: 1739630519}
   - {fileID: 1195221072}
+  - {fileID: 1135084694}
   m_Father: {fileID: 1487205831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2005241214 stripped
