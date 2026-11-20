@@ -119,6 +119,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &252612798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3157142576090118077, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+  m_PrefabInstance: {fileID: 1129401626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &252612800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252612798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0f1cd65965b134085e78e753bd260a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 25
+  rotationAxis: 1
 --- !u!114 &324520385 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3603092723412445726, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
@@ -273,6 +292,23 @@ MonoBehaviour:
     processText: "Stage 3 \u2013 Attachment: HA binds to sialic-acid-containing structures
       on the epithelial cell, allowing the virus to attach. It also plays a role
       in membrane fusion during Stage 4."
+  - modelObject: {fileID: 1129401628}
+    modelName: 'Neuraminidase (NA / N1) '
+    definitionTitle: Definition
+    definitionText: A surface protein that helps newly formed influenza viruses detach
+      from the host cell by removing sialic acid from the cell surface.
+    processTitle: Process Involved in the Simulation
+    processText: "Stage 6 \u2013 Production and Release: NA helps newly formed virus
+      particles separate from the host cell after budding."
+  - modelObject: {fileID: 1739630520}
+    modelName: Ribonucleoprotein (RNP / vRNP)
+    definitionTitle: Definition
+    definitionText: A complex made of viral RNA, nucleoproteins, and viral polymerase
+      proteins. It carries and helps process the virus's genetic material.
+    processTitle: Process Involved in the Simulation
+    processText: "Stages 4\u20136: RNPs are released during viral entry, transported
+      into the nucleus, replicated and transcribed, and later transported out for
+      packaging into new virus particles. "
   modelNameText: {fileID: 2005241214}
   definitionTitleText: {fileID: 2089213659}
   definitionText: {fileID: 324520385}
@@ -378,6 +414,93 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
   m_PrefabInstance: {fileID: 1619624837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1129401626
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1967061083}
+    m_Modifications:
+    - target: {fileID: 279703062920603297, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_Name
+      value: Neuraminidase
+      objectReference: {fileID: 0}
+    - target: {fileID: 279703062920603297, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2507413398810817101, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3157142576090118077, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 252612800}
+  m_SourcePrefab: {fileID: 100100000, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+--- !u!4 &1129401627 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2932850466955673233, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+  m_PrefabInstance: {fileID: 1129401626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1129401628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 279703062920603297, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
+  m_PrefabInstance: {fileID: 1129401626}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1316797771
 PrefabInstance:
@@ -655,6 +778,106 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 25
   rotationAxis: 1
+--- !u!1001 &1739630518
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1967061083}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 40.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.033981264
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.24511899
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.4388147
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.05579313
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6941918
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.56782615
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 56.859
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 86.858
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -50.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_Name
+      value: virions-v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1739630521}
+  m_SourcePrefab: {fileID: 100100000, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+--- !u!4 &1739630519 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+  m_PrefabInstance: {fileID: 1739630518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1739630520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f33e24eefe8d6849bca2dd82966c2e1, type: 3}
+  m_PrefabInstance: {fileID: 1739630518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1739630521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739630520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0f1cd65965b134085e78e753bd260a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 100
+  rotationAxis: 2
 --- !u!1 &1928294581
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +1030,8 @@ Transform:
   m_Children:
   - {fileID: 1619624838}
   - {fileID: 415533595}
+  - {fileID: 1129401627}
+  - {fileID: 1739630519}
   m_Father: {fileID: 1487205831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2005241214 stripped
