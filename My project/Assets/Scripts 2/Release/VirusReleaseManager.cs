@@ -1,5 +1,6 @@
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class VirusReleaseManager : MonoBehaviour
@@ -37,17 +38,23 @@ public class VirusReleaseManager : MonoBehaviour
     [Min(0.1f)]
     public float playerReleaseDuration = 4f;
 
-    [Header("Release Speed Profile")]
-    public float fastPhaseDuration = 2f;
-    public float fastSpeedMultiplier = 1.6f;
-    public float slowSpeedMultiplier = 0.55f;
+    [Header("NPC Release Settings")]
+    [Min(0)]
+    public int npcReleaseVirusCount = 1;
 
     private Vector3 releasePosition;
     private Vector3 epithelialCenter;
     private Vector3 releaseDirection;
 
+    private readonly List<Vector3> npcReleasePositions = new List<Vector3>();
+
     private bool isPrepared;
     private bool releaseStarted;
+
+    [Header("Release Speed Profile")]
+    public float fastPhaseDuration = 2f;
+    public float fastSpeedMultiplier = 1.6f;
+    public float slowSpeedMultiplier = 0.55f;
 
     private void Awake()
     {
@@ -110,7 +117,7 @@ public class VirusReleaseManager : MonoBehaviour
             return;
         }
 
-        // Find the epithelial cell closest to the saved absorbed-cell position.
+        // Find the epithelial cell closest to the saved player position.
         SkinnedMeshRenderer closestCell = null;
         float closestDistance = Mathf.Infinity;
 
@@ -183,7 +190,7 @@ public class VirusReleaseManager : MonoBehaviour
 
         playerRoot.position = releasePosition;
 
-        // Configure the separate release-virus spawner.
+        // Configure the original player release-virus spawner.
         virusSpawner.releaseSpawnCenter = playerRoot;
         virusSpawner.spawnZone = null;
         virusSpawner.additionalSpawnPoints = null;
@@ -196,6 +203,17 @@ public class VirusReleaseManager : MonoBehaviour
         // Keep player and release viruses synchronized.
         virusSpawner.releaseMovementDistance = playerReleaseDistance;
         virusSpawner.releaseMovementDuration = playerReleaseDuration;
+
+        // Read the positions saved by NPC absorptions.
+        npcReleasePositions.Clear();
+
+        foreach (Vector3 localPosition in VirusTransferData.npcAbsorbedCellLocalPositions)
+        {
+            Vector3 worldPosition =
+                epithelialCellsRoot.TransformPoint(localPosition);
+
+            npcReleasePositions.Add(worldPosition);
+        }
 
         isPrepared = true;
 
@@ -213,6 +231,7 @@ public class VirusReleaseManager : MonoBehaviour
         Debug.Log("Release direction: " + releaseDirection);
         Debug.Log("Release distance: " + playerReleaseDistance);
         Debug.Log("Release duration: " + playerReleaseDuration);
+        Debug.Log("NPC absorbed cells recorded: " + npcReleasePositions.Count);
         Debug.Log("==========================================");
     }
 
@@ -253,8 +272,11 @@ public class VirusReleaseManager : MonoBehaviour
             Debug.Log("PLAYER HEAD START: " + playerHead.position);
         }
 
-        // Spawn the new ReleaseVirus prefabs.
+        // Spawn the original player release-virus batch.
         virusSpawner.StartSpawning();
+
+        // Spawn additional NPC batches at their absorbed cell positions.
+        SpawnNPCReleaseBatches();
 
         Debug.Log(
             "Total tracked release NPCs: " +
@@ -275,6 +297,72 @@ public class VirusReleaseManager : MonoBehaviour
                 "VirusReleaseManager: Scene Fade is not assigned."
             );
         }
+    }
+
+    private void SpawnNPCReleaseBatches()
+    {
+        if (npcReleaseVirusCount <= 0)
+        {
+            Debug.Log("NPC release batch count is set to zero.");
+            return;
+        }
+
+        if (npcReleasePositions.Count == 0)
+        {
+            Debug.Log("No NPC-absorbed cells recorded. Skipping NPC batches.");
+            return;
+        }
+
+        int totalSpawnedBatches = 0;
+
+        for (int i = 0; i < npcReleasePositions.Count; i++)
+        {
+            Vector3 npcCellPosition = npcReleasePositions[i];
+
+            Vector3 npcDirection = epithelialCenter - npcCellPosition;
+
+            if (npcDirection.sqrMagnitude < 0.001f)
+            {
+                Debug.LogWarning(
+                    "NPC release " + (i + 1) +
+                    " skipped because its inward direction could not be calculated."
+                );
+                continue;
+            }
+
+            npcDirection.Normalize();
+
+            // Create a temporary transform to serve as this batch's spawn center.
+            GameObject temporaryCenter = new GameObject(
+                "NPCReleaseCenter_" + (i + 1)
+            );
+
+            temporaryCenter.transform.position = npcCellPosition;
+
+            virusSpawner.SpawnAdditionalReleaseBatch(
+                temporaryCenter.transform,
+                npcDirection,
+                npcReleaseVirusCount,
+                playerReleaseDistance,
+                playerReleaseDuration
+            );
+
+            Destroy(temporaryCenter);
+
+            totalSpawnedBatches++;
+
+            Debug.Log(
+                "NPC release batch " + (i + 1) +
+                " spawned at: " + npcCellPosition
+            );
+        }
+
+        // Clear saved NPC positions after scheduling their release batches.
+        VirusTransferData.npcAbsorbedCellLocalPositions.Clear();
+
+        Debug.Log(
+            "NPC release batches started: " + totalSpawnedBatches
+        );
     }
 
     private IEnumerator ReleasePlayer()
@@ -390,4 +478,84 @@ public class VirusReleaseManager : MonoBehaviour
                 control.enabled = enabledState;
         }
     }
+
+    public void SpawnNPCReleaseAt(Vector3 absorbedCellPosition)
+    {
+        if (virusSpawner == null || epithelialCellsRoot == null)
+        {
+            Debug.LogError(
+                "Cannot release NPC viruses. Check the Virus Spawner and Epithelial Cells Root."
+            );
+            return;
+        }
+
+        if (npcReleaseVirusCount <= 0)
+        {
+            Debug.Log("NPC release count is zero. No viruses spawned.");
+            return;
+        }
+
+        // Calculate the average center of the epithelial cells.
+        SkinnedMeshRenderer[] cells =
+            epithelialCellsRoot.GetComponentsInChildren<SkinnedMeshRenderer>();
+
+        Vector3 center = Vector3.zero;
+        int validCount = 0;
+
+        foreach (SkinnedMeshRenderer cell in cells)
+        {
+            if (cell == null)
+                continue;
+
+            center += cell.bounds.center;
+            validCount++;
+        }
+
+        if (validCount == 0)
+        {
+            Debug.LogWarning("No epithelial cells found for NPC release.");
+            return;
+        }
+
+        center /= validCount;
+
+        // Calculate the inward direction from the absorbed cell.
+        Vector3 direction = center - absorbedCellPosition;
+
+        if (direction.sqrMagnitude < 0.001f)
+        {
+            Debug.LogWarning("Could not calculate NPC release direction.");
+            return;
+        }
+
+        direction.Normalize();
+
+        ReleaseMovementProfile.Configure(
+            fastPhaseDuration,
+            fastSpeedMultiplier,
+            slowSpeedMultiplier
+        );
+
+        GameObject temporaryCenter = new GameObject(
+            "ImmediateNPCReleaseCenter"
+        );
+
+        temporaryCenter.transform.position = absorbedCellPosition;
+
+        virusSpawner.SpawnAdditionalReleaseBatch(
+            temporaryCenter.transform,
+            direction,
+            npcReleaseVirusCount,
+            playerReleaseDistance,
+            playerReleaseDuration
+        );
+
+        Destroy(temporaryCenter);
+
+        Debug.Log(
+            "Immediate NPC release: " + npcReleaseVirusCount +
+            " viruses spawned at " + absorbedCellPosition
+        );
+    }
+
 }

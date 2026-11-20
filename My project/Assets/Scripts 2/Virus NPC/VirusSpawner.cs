@@ -30,7 +30,7 @@ public class VirusSpawner : MonoBehaviour
     public Vector3 releaseDirection;
 
     [Header("Release Spawn Distribution")]
-    [Tooltip("Maximum distance of release viruses from the player.")]
+    [Tooltip("Maximum distance of release viruses from the release center.")]
     [Min(0f)]
     public float releaseSpawnRadius = 0.8f;
 
@@ -113,6 +113,83 @@ public class VirusSpawner : MonoBehaviour
         );
     }
 
+    // NEW: Spawn an additional release batch around an NPC-absorbed cell.
+    public void SpawnAdditionalReleaseBatch(
+        Transform spawnCenter,
+        Vector3 direction,
+        int count,
+        float movementDistance,
+        float movementDuration)
+    {
+        if (virusPrefab == null)
+        {
+            Debug.LogError(
+                "VirusSpawner: Virus Prefab is not assigned!"
+            );
+            return;
+        }
+
+        if (spawnCenter == null)
+        {
+            Debug.LogError(
+                "VirusSpawner: Additional release center is missing!"
+            );
+            return;
+        }
+
+        if (count <= 0)
+        {
+            Debug.LogWarning(
+                "VirusSpawner: Additional release count must be greater than zero."
+            );
+            return;
+        }
+
+        // Configure this individual release batch.
+        releaseMode = true;
+        releaseSpawnCenter = spawnCenter;
+        releaseDirection = direction.normalized;
+        releaseMovementDistance = movementDistance;
+        releaseMovementDuration = movementDuration;
+
+        Debug.Log(
+            "Starting additional release batch at: " +
+            spawnCenter.position
+        );
+
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 spawnPosition = GetRandomPosition(i);
+
+            GameObject spawnedVirus = Instantiate(
+                virusPrefab,
+                spawnPosition,
+                Quaternion.identity
+            );
+
+            spawnedVirus.transform.localScale =
+                releasedVirusScale;
+
+            // Preserve previously spawned virus tracking.
+            spawnedVirusTransforms.Add(spawnedVirus.transform);
+
+            spawnedStartPositions.Add(
+                spawnedVirus.transform.position
+            );
+
+            StartReleaseVirus(
+                spawnedVirus,
+                i,
+                count
+            );
+        }
+
+        Debug.Log(
+            count + " additional release viruses spawned at " +
+            spawnCenter.name
+        );
+    }
+
     private void SpawnVirus(int index)
     {
         Vector3 spawnPosition = GetRandomPosition(index);
@@ -143,7 +220,7 @@ public class VirusSpawner : MonoBehaviour
                 "[RELEASE VIRUS " + (index + 1) + "]" +
                 "\nSTART POSITION: " +
                 spawnedVirus.transform.position +
-                "\nDISTANCE FROM PLAYER: " +
+                "\nDISTANCE FROM RELEASE CENTER: " +
                 Vector3.Distance(
                     spawnedVirus.transform.position,
                     releaseSpawnCenter.position
@@ -166,9 +243,23 @@ public class VirusSpawner : MonoBehaviour
         );
     }
 
+    // ORIGINAL RELEASE METHOD.
     private void StartReleaseVirus(
         GameObject spawnedVirus,
         int index)
+    {
+        StartReleaseVirus(
+            spawnedVirus,
+            index,
+            virusCount + additionalNPCCount
+        );
+    }
+
+    // NEW: Allows additional batches to specify their own total count.
+    private void StartReleaseVirus(
+        GameObject spawnedVirus,
+        int index,
+        int totalCount)
     {
         ReleaseVirusMovement movement =
             spawnedVirus.GetComponent<ReleaseVirusMovement>();
@@ -189,7 +280,7 @@ public class VirusSpawner : MonoBehaviour
             releaseMovementDistance,
             releaseMovementDuration,
             index,
-            virusCount + additionalNPCCount
+            totalCount
         );
 
         Debug.Log(
@@ -201,7 +292,7 @@ public class VirusSpawner : MonoBehaviour
     private Vector3 GetRandomPosition(int index)
     {
         // RELEASE VIRUSES:
-        // Distribute them around the player in a loose formation.
+        // Distribute them around the release center in a loose formation.
         if (releaseMode && releaseSpawnCenter != null)
         {
             float goldenAngle = 137.5f;

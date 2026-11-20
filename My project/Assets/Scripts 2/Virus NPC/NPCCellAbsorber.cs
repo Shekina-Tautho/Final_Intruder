@@ -7,6 +7,18 @@ public class NPCCellAbsorber : MonoBehaviour
     [Header("Epithelial Cells")]
     public Transform epithelialCellsRoot;
 
+    [Header("Absorption Timing")]
+    public float animationWaitTime = 1f;
+    public float movementDuration = 2f;
+
+    [Header("Endocytosis Animation")]
+    [Range(0f, 100f)]
+    public float endocytosisTargetWeight = 100f;
+    public float endocytosisDuration = 2f;
+    public float endocytosisResetDuration = 2f;
+
+    public bool IsAbsorbing { get; private set; }
+
     void Start()
     {
         if (epithelialCellsRoot == null)
@@ -20,23 +32,11 @@ public class NPCCellAbsorber : MonoBehaviour
             else
             {
                 Debug.LogError(
-                    "NPCCellAbsorber: Could not find an object named 'epithelial'."
+                    "NPCCellAbsorber: Could not find an object named 'Epithelial'."
                 );
             }
         }
     }
-
-    [Header("Absorption Timing")]
-    public float animationWaitTime = 1f;
-    public float movementDuration = 2f;
-
-    [Header("Endocytosis Animation")]
-    [Range(0f, 100f)]
-    public float endocytosisTargetWeight = 100f;
-    public float endocytosisDuration = 2f;
-    public float endocytosisResetDuration = 2f;
-
-    public bool IsAbsorbing { get; private set; }
 
     public void AbsorbIntoCell(Receptor triggeredReceptor)
     {
@@ -89,7 +89,6 @@ public class NPCCellAbsorber : MonoBehaviour
     private IEnumerator AbsorptionSequence(
         SkinnedMeshRenderer targetCell)
     {
-        // Match the player's wait after receptor activation.
         yield return new WaitForSeconds(animationWaitTime);
 
         StartCoroutine(AnimateEndocytosis(targetCell));
@@ -127,10 +126,8 @@ public class NPCCellAbsorber : MonoBehaviour
         if (targetCell != null)
             transform.position = targetCell.bounds.center;
 
-        // Allow the endocytosis animation to finish.
         yield return new WaitForSeconds(endocytosisDuration);
 
-        // Smoothly reset the Endocytosis blend shape to 0.
         if (targetCell != null)
         {
             Mesh mesh = targetCell.sharedMesh;
@@ -184,7 +181,36 @@ public class NPCCellAbsorber : MonoBehaviour
             }
         }
 
+        if (targetCell == null)
+        {
+            Destroy(gameObject);
+            yield break;
+        }
+
+        // Save the epithelial cell that absorbed this NPC virus.
+        Vector3 absorbedPosition = targetCell.bounds.center;
+
+        VirusTransferData.RecordNPCAbsorbedCell(
+            epithelialCellsRoot,
+            absorbedPosition
+        );
+
         Debug.Log("NPC has been absorbed into the epithelial cell.");
+
+        // Immediately request a new virus batch at this cell.
+        VirusReleaseManager manager =
+            FindFirstObjectByType<VirusReleaseManager>();
+
+        if (manager != null)
+        {
+            manager.SpawnNPCReleaseAt(absorbedPosition);
+        }
+        else
+        {
+            Debug.Log(
+                "No VirusReleaseManager found. NPC absorption was recorded for later."
+            );
+        }
 
         Destroy(gameObject);
     }
@@ -192,6 +218,9 @@ public class NPCCellAbsorber : MonoBehaviour
     private IEnumerator AnimateEndocytosis(
         SkinnedMeshRenderer targetCell)
     {
+        if (targetCell == null)
+            yield break;
+
         Mesh mesh = targetCell.sharedMesh;
 
         if (mesh == null)

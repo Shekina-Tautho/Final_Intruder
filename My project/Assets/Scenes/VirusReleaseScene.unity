@@ -62306,9 +62306,10 @@ MonoBehaviour:
   virusSpawner: {fileID: 597037943}
   sceneFade: {fileID: 0}
   simulationUI: {fileID: 456213943}
-  releaseVirusCount: 10
+  releaseVirusCount: 5
   playerReleaseDistance: 50
   playerReleaseDuration: 10
+  npcReleaseVirusCount: 5
   fastPhaseDuration: 5
   fastSpeedMultiplier: 7
   slowSpeedMultiplier: 1
