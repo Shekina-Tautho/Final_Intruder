@@ -81,6 +81,7 @@ public class TutorialManager : MonoBehaviour
     private int currentStep = 0;
     private bool previousButtonState = false;
     private bool tutorialStarted = false;
+    private bool postTutorialDismissalEnabled = false;
 
     private readonly List<XRInputDevice> controllerDevices =
         new List<XRInputDevice>();
@@ -190,45 +191,68 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        if (!tutorialStarted)
-            return;
-
-        if (tutorialPanel == null ||
-            !tutorialPanel.activeInHierarchy)
-            return;
-
-        // Check VR controller buttons.
-        bool controllerPressed = IsAnyControllerButtonPressed();
-
-        // Detect a new controller button press.
-        bool controllerJustPressed =
-            controllerPressed && !previousButtonState;
-
-        // Check keyboard Enter and Numpad Enter.
-        bool keyboardPressed = false;
-
-        if (Keyboard.current != null)
+        // Handle tutorial input first.
+        if (tutorialStarted)
         {
-            keyboardPressed =
-                Keyboard.current.enterKey.wasPressedThisFrame ||
-                Keyboard.current.numpadEnterKey.wasPressedThisFrame;
-        }
+            if (tutorialPanel == null ||
+                !tutorialPanel.activeInHierarchy)
+                return;
 
-        // Advance tutorial using either input method.
-        if (controllerJustPressed || keyboardPressed)
-        {
-            if (audioSource != null && buttonClickSound != null)
+            bool controllerPressed = IsAnyControllerButtonPressed();
+
+            bool controllerJustPressed =
+                controllerPressed && !previousButtonState;
+
+            bool keyboardPressed = false;
+
+            if (Keyboard.current != null)
             {
-                audioSource.PlayOneShot(
-                    buttonClickSound,
-                    buttonClickVolume
-                );
+                keyboardPressed =
+                    Keyboard.current.enterKey.wasPressedThisFrame ||
+                    Keyboard.current.numpadEnterKey.wasPressedThisFrame;
             }
 
-            NextStep();
+            if (controllerJustPressed || keyboardPressed)
+            {
+                if (audioSource != null && buttonClickSound != null)
+                {
+                    audioSource.PlayOneShot(
+                        buttonClickSound,
+                        buttonClickVolume
+                    );
+                }
+
+                NextStep();
+            }
+
+            previousButtonState = controllerPressed;
+            return;
         }
 
-        previousButtonState = controllerPressed;
+        // Handle dismissal of the second post-tutorial panel.
+        if (postTutorialDismissalEnabled)
+        {
+            bool controllerPressed = IsAnyControllerButtonPressed();
+
+            bool controllerJustPressed =
+                controllerPressed && !previousButtonState;
+
+            bool keyboardPressed = false;
+
+            if (Keyboard.current != null)
+            {
+                keyboardPressed =
+                    Keyboard.current.enterKey.wasPressedThisFrame ||
+                    Keyboard.current.numpadEnterKey.wasPressedThisFrame;
+            }
+
+            if (controllerJustPressed || keyboardPressed)
+            {
+                DismissSecondPostTutorialPanel();
+            }
+
+            previousButtonState = controllerPressed;
+        }
     }
 
     private bool IsAnyControllerButtonPressed()
@@ -389,6 +413,8 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
+        postTutorialDismissalEnabled = false;
+
         Debug.Log("Tutorial completed.");
 
         // Start the post-tutorial voice-over sequence.
@@ -400,7 +426,6 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            // Show all panels immediately if there are no voice-overs.
             ShowPostTutorialPanels();
         }
 
@@ -451,7 +476,6 @@ public class TutorialManager : MonoBehaviour
 
         Debug.Log("All post-tutorial voice-overs completed.");
 
-        // Show all panels after the voice-overs finish.
         ShowPostTutorialPanels();
     }
 
@@ -470,7 +494,16 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
-        // Play the button-click sound when the panels appear.
+        // Reset input state so the button used during the tutorial
+        // does not immediately dismiss the second panel.
+        previousButtonState = IsAnyControllerButtonPressed();
+
+        // Enable dismissal only after both panels have appeared.
+        postTutorialDismissalEnabled =
+            postTutorialPanels != null &&
+            postTutorialPanels.Length > 1 &&
+            postTutorialPanels[1] != null;
+
         if (audioSource != null && buttonClickSound != null)
         {
             audioSource.PlayOneShot(
@@ -480,6 +513,34 @@ public class TutorialManager : MonoBehaviour
         }
 
         Debug.Log("Post-tutorial panels are now visible.");
+    }
+
+    private void DismissSecondPostTutorialPanel()
+    {
+        if (postTutorialPanels == null ||
+            postTutorialPanels.Length <= 1)
+        {
+            return;
+        }
+
+        GameObject secondPanel = postTutorialPanels[1];
+
+        if (secondPanel == null || !secondPanel.activeSelf)
+            return;
+
+        secondPanel.SetActive(false);
+
+        postTutorialDismissalEnabled = false;
+
+        if (audioSource != null && buttonClickSound != null)
+        {
+            audioSource.PlayOneShot(
+                buttonClickSound,
+                buttonClickVolume
+            );
+        }
+
+        Debug.Log("Second post-tutorial panel dismissed.");
     }
 
     private void StartGameplay()
