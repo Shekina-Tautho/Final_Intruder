@@ -64,6 +64,9 @@ public class TutorialManager : MonoBehaviour
     [Header("Additional Post-Tutorial Panels")]
     public GameObject[] postTutorialPanels;
 
+    [Header("Exploration Prompt")]
+    public GameObject explorationPrompt;
+
     [Header("Gameplay")]
     public VirusSpawner virusSpawner;
 
@@ -107,6 +110,10 @@ public class TutorialManager : MonoBehaviour
                     panel.SetActive(false);
             }
         }
+
+        // Hide exploration prompt at the beginning.
+        if (explorationPrompt != null)
+            explorationPrompt.SetActive(false);
     }
 
     private void Start()
@@ -401,6 +408,10 @@ public class TutorialManager : MonoBehaviour
 
         SetPlayerVisibility(true);
 
+        // Show exploration prompt immediately after the tutorial.
+        if (explorationPrompt != null)
+            explorationPrompt.SetActive(true);
+
         // Keep all panels hidden while the voice-overs play.
         simulationUI.SetActive(false);
 
@@ -481,6 +492,10 @@ public class TutorialManager : MonoBehaviour
 
     private void ShowPostTutorialPanels()
     {
+        // Hide exploration prompt when the additional panels appear.
+        if (explorationPrompt != null)
+            explorationPrompt.SetActive(false);
+
         if (simulationUI != null)
             simulationUI.SetActive(true);
 
