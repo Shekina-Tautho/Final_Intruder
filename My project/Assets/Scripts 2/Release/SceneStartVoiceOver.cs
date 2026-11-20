@@ -188,6 +188,16 @@ public class SceneStartVoiceOver : MonoBehaviour
 
         macrophageInfoPanel.SetActive(true);
 
+        // Play button click sound when the panel appears.
+        if (buttonAudioSource != null &&
+            buttonClickSound != null)
+        {
+            buttonAudioSource.PlayOneShot(
+                buttonClickSound,
+                buttonClickVolume
+            );
+        }
+
         // Prevent a previously held button from dismissing the panel.
         previousButtonState = IsAnyControllerButtonPressed();
 
