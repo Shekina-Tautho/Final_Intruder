@@ -61,8 +61,8 @@ public class TutorialManager : MonoBehaviour
     [Header("Existing Simulation UI")]
     public GameObject simulationUI;
 
-    [Header("Additional Post-Tutorial Panel")]
-    public GameObject postTutorialPanel;
+    [Header("Additional Post-Tutorial Panels")]
+    public GameObject[] postTutorialPanels;
 
     [Header("Gameplay")]
     public VirusSpawner virusSpawner;
@@ -97,10 +97,14 @@ public class TutorialManager : MonoBehaviour
             Debug.LogError("SimulationUI is not assigned!");
         }
 
-        // Hide the additional panel at the beginning.
-        if (postTutorialPanel != null)
+        // Hide all additional panels at the beginning.
+        if (postTutorialPanels != null)
         {
-            postTutorialPanel.SetActive(false);
+            foreach (GameObject panel in postTutorialPanels)
+            {
+                if (panel != null)
+                    panel.SetActive(false);
+            }
         }
     }
 
@@ -373,11 +377,17 @@ public class TutorialManager : MonoBehaviour
 
         SetPlayerVisibility(true);
 
-        // Keep both panels hidden while the voice-overs play.
+        // Keep all panels hidden while the voice-overs play.
         simulationUI.SetActive(false);
 
-        if (postTutorialPanel != null)
-            postTutorialPanel.SetActive(false);
+        if (postTutorialPanels != null)
+        {
+            foreach (GameObject panel in postTutorialPanels)
+            {
+                if (panel != null)
+                    panel.SetActive(false);
+            }
+        }
 
         Debug.Log("Tutorial completed.");
 
@@ -390,7 +400,7 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            // Show both panels immediately if there are no voice-overs.
+            // Show all panels immediately if there are no voice-overs.
             ShowPostTutorialPanels();
         }
 
@@ -399,7 +409,7 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator PlayPostTutorialVoiceOvers()
     {
-        // Wait one second after the tutorial finishes.
+        // Wait before the first clip.
         yield return new WaitForSeconds(voiceOverPause);
 
         for (int i = 0; i < postTutorialVoiceOverClips.Length; i++)
@@ -432,7 +442,7 @@ public class TutorialManager : MonoBehaviour
                 () => postTutorialVoiceOverSource.isPlaying
             );
 
-            // Wait one second before the next clip.
+            // Wait before the next clip.
             if (i < postTutorialVoiceOverClips.Length - 1)
             {
                 yield return new WaitForSeconds(voiceOverPause);
@@ -441,7 +451,7 @@ public class TutorialManager : MonoBehaviour
 
         Debug.Log("All post-tutorial voice-overs completed.");
 
-        // Show both panels after all clips finish.
+        // Show all panels after the voice-overs finish.
         ShowPostTutorialPanels();
     }
 
@@ -450,8 +460,15 @@ public class TutorialManager : MonoBehaviour
         if (simulationUI != null)
             simulationUI.SetActive(true);
 
-        if (postTutorialPanel != null)
-            postTutorialPanel.SetActive(true);
+        // Show all additional post-tutorial panels.
+        if (postTutorialPanels != null)
+        {
+            foreach (GameObject panel in postTutorialPanels)
+            {
+                if (panel != null)
+                    panel.SetActive(true);
+            }
+        }
 
         // Play the button-click sound when the panels appear.
         if (audioSource != null && buttonClickSound != null)
