@@ -48504,6 +48504,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &520477546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3948873764175467606, guid: 9410783f5160d92458730003799e5ef3, type: 3}
+  m_PrefabInstance: {fileID: 2032868805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &521636271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48749,6 +48754,10 @@ MonoBehaviour:
   firstVoiceOverClip: {fileID: 8300000, guid: 9911f54c18559cb4e9b3227f17a85811, type: 3}
   secondVoiceOverClip: {fileID: 8300000, guid: b11f3b3aa96396d4b91866bf665d9953, type: 3}
   simulationUIController: {fileID: 456213943}
+  macrophageInfoPanel: {fileID: 520477546}
+  buttonAudioSource: {fileID: 1891064504}
+  buttonClickSound: {fileID: 8300000, guid: 7ef808d92e242fb4ba920847f870e528, type: 3}
+  buttonClickVolume: 1
   startDelay: 1
   secondVoiceOverDelay: 3
   nextStageTransitionTime: 17
