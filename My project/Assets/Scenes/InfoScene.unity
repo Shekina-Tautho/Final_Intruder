@@ -119,6 +119,89 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &324520385 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3603092723412445726, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+  m_PrefabInstance: {fileID: 594079154738986920}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &548375181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3474058379783988953, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+  m_PrefabInstance: {fileID: 594079154738986920}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &576830564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 576830566}
+  - component: {fileID: 576830565}
+  m_Layer: 0
+  m_Name: ModelInfoManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &576830565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576830564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d2cc8a1c6cae84dadcee14a210cfda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  models:
+  - modelObject: {fileID: 971247731}
+    modelName: Influenza A Virus
+    definitionTitle: Definition
+    definitionText: 'A type of influenza virus that causes respiratory infection.
+      It contains genetic material made of RNA enclosed within a protein core and
+      a lipid envelope. '
+    processTitle: Process Involved in the Simulation
+    processText: "Stages 1\u20137: The virus is transmitted, attaches to a respiratory
+      epithelial cell, enters it, replicates, and produces new virus particles. "
+  modelNameText: {fileID: 2005241214}
+  definitionTitleText: {fileID: 2089213659}
+  definitionText: {fileID: 324520385}
+  processTitleText: {fileID: 548375181}
+  processText: {fileID: 1433128051}
+  thumbstickThreshold: 0.7
+  thumbstickDeadZone: 0.25
+--- !u!4 &576830566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576830564}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &810228517
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +416,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 5592981611799359946, guid: 0ef7e1216c99ac043b694a32bacdc57a, type: 3}
   m_PrefabInstance: {fileID: 1316797771}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1433128051 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 425698548829450562, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+  m_PrefabInstance: {fileID: 594079154738986920}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1487205830
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,13 +451,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487205830}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 1.5025158, z: 2.011331}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -300, y: 1.2578964, z: 5.6655407}
+  m_LocalScale: {x: 500, y: 500, z: 500}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1967061083}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 594079154738986921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1619624837
 PrefabInstance:
@@ -459,6 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 15
+  rotationAxis: 1
 --- !u!1 &1928294581
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +707,28 @@ Transform:
   - {fileID: 1619624838}
   m_Father: {fileID: 1487205831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2005241214 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3804603717115844854, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+  m_PrefabInstance: {fileID: 594079154738986920}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2089213659 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4688385668640323080, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+  m_PrefabInstance: {fileID: 594079154738986920}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &594079154738986920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -623,6 +740,23 @@ PrefabInstance:
     - target: {fileID: 152553102071251757, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
       propertyPath: m_Name
       value: InfoPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 425698548829450562, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_text
+      value: "Stages 1\u20137: The virus is transmitted, attaches to a respiratory
+        epithelial cell, enters it, replicates, and produces new virus particles. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 425698548829450562, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+    - target: {fileID: 425698548829450562, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+    - target: {fileID: 425698548829450562, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1057205302387118045, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
       propertyPath: m_Pivot.x
@@ -704,15 +838,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3474058379783988953, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+    - target: {fileID: 3474058379783988953, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+    - target: {fileID: 3474058379783988953, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603092723412445726, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_text
+      value: 'A type of influenza virus that causes respiratory infection. It contains
+        genetic material made of RNA enclosed within a protein core and a lipid envelope. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603092723412445726, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+    - target: {fileID: 3603092723412445726, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
+    - target: {fileID: 3603092723412445726, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7660720915609952601, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1316797774}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1057205302387118045, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1487205831}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+--- !u!224 &594079154738986921 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1057205302387118045, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+  m_PrefabInstance: {fileID: 594079154738986920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -721,4 +892,4 @@ SceneRoots:
   - {fileID: 1316797771}
   - {fileID: 810228520}
   - {fileID: 594079154738986920}
-  - {fileID: 1487205831}
+  - {fileID: 576830566}
