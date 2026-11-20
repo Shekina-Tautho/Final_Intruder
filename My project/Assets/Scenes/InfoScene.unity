@@ -130,6 +130,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &415533594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1967061083}
+    m_Modifications:
+    - target: {fileID: 279703062920603297, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_Name
+      value: Hemagglutinin
+      objectReference: {fileID: 0}
+    - target: {fileID: 279703062920603297, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.10000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.20000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2507413398810817101, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+--- !u!4 &415533595 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2932850466955673233, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+  m_PrefabInstance: {fileID: 415533594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &415533596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 279703062920603297, guid: 30a0c9eb49a93bf42ac532bd9596abcc, type: 3}
+  m_PrefabInstance: {fileID: 415533594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &548375181 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3474058379783988953, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
@@ -172,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   models:
   - modelObject: {fileID: 971247731}
-    modelName: Influenza A Virus
+    modelName: 'Influenza A Virus '
     definitionTitle: Definition
     definitionText: 'A type of influenza virus that causes respiratory infection.
       It contains genetic material made of RNA enclosed within a protein core and
@@ -180,6 +264,15 @@ MonoBehaviour:
     processTitle: Process Involved in the Simulation
     processText: "Stages 1\u20137: The virus is transmitted, attaches to a respiratory
       epithelial cell, enters it, replicates, and produces new virus particles. "
+  - modelObject: {fileID: 415533596}
+    modelName: 'Hemagglutinin  (HA / H1) '
+    definitionTitle: Definition
+    definitionText: A surface protein that allows the influenza virus to attach to
+      host cells by binding to sialic-acid-containing structures on their surface.
+    processTitle: Process Involved in the Simulation
+    processText: "Stage 3 \u2013 Attachment: HA binds to sialic-acid-containing structures
+      on the epithelial cell, allowing the virus to attach. It also plays a role
+      in membrane fusion during Stage 4."
   modelNameText: {fileID: 2005241214}
   definitionTitleText: {fileID: 2089213659}
   definitionText: {fileID: 324520385}
@@ -471,6 +564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VirusNPC
       objectReference: {fileID: 0}
+    - target: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2932850466955673233, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
@@ -523,6 +620,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3157142576090118077, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 645315806523595418, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
     - {fileID: 20043275278993518, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
@@ -552,7 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0f1cd65965b134085e78e753bd260a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 15
+  rotationSpeed: 25
   rotationAxis: 1
 --- !u!1 &1928294581
 GameObject:
@@ -705,6 +806,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1619624838}
+  - {fileID: 415533595}
   m_Father: {fileID: 1487205831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2005241214 stripped
@@ -745,6 +847,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "Stages 1\u20137: The virus is transmitted, attaches to a respiratory
         epithelial cell, enters it, replicates, and produces new virus particles. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 425698548829450562, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_margin.z
+      value: -409.50772
       objectReference: {fileID: 0}
     - target: {fileID: 425698548829450562, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
       propertyPath: m_fontAsset
@@ -856,6 +962,10 @@ PrefabInstance:
         genetic material made of RNA enclosed within a protein core and a lipid envelope. '
       objectReference: {fileID: 0}
     - target: {fileID: 3603092723412445726, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_margin.z
+      value: -431.1097
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603092723412445726, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
@@ -866,6 +976,10 @@ PrefabInstance:
     - target: {fileID: 3603092723412445726, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3804603717115844854, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
+      propertyPath: m_margin.z
+      value: -443.79987
       objectReference: {fileID: 0}
     - target: {fileID: 7660720915609952601, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
       propertyPath: m_Camera

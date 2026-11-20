@@ -14,7 +14,7 @@ public class ModelInfoNavigator : MonoBehaviour
     [System.Serializable]
     public class ModelInformation
     {
-        [Header("Model")]
+        [Header("Model GameObject")]
         public GameObject modelObject;
 
         [Header("Information")]
@@ -73,15 +73,6 @@ public class ModelInfoNavigator : MonoBehaviour
                 "ModelInfoNavigator: One or more UI references are missing!"
             );
             return;
-        }
-
-        // Hide all models initially.
-        foreach (ModelInformation model in models)
-        {
-            if (model != null && model.modelObject != null)
-            {
-                model.modelObject.SetActive(false);
-            }
         }
 
         // Display the first model.
@@ -213,7 +204,7 @@ public class ModelInfoNavigator : MonoBehaviour
 
     private void ShowCurrentModel()
     {
-        // Hide all models.
+        // Disable all models first.
         foreach (ModelInformation model in models)
         {
             if (model != null && model.modelObject != null)
@@ -227,15 +218,17 @@ public class ModelInfoNavigator : MonoBehaviour
         if (currentModel == null)
             return;
 
-        // Activate the selected model.
+        // Enable only the selected model.
         if (currentModel.modelObject != null)
         {
             currentModel.modelObject.SetActive(true);
+
+            Debug.Log("Enabled model: " + currentModel.modelName);
         }
         else
         {
             Debug.LogWarning(
-                "Model object is missing at index " + currentModelIndex
+                "Model GameObject is missing at index " + currentModelIndex
             );
         }
 
