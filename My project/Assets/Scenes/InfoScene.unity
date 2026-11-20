@@ -313,6 +313,15 @@ MonoBehaviour:
     processText: "Stages 4\u20136: RNPs are released during viral entry, transported
       into the nucleus, replicated and transcribed, and later transported out for
       packaging into new virus particles. "
+  - modelObject: {fileID: 1195221073}
+    modelName: 'Respiratory Epithelial Cell '
+    levelInfo: HOST-CELL STRUCTURES AND ORGANELLES
+    definitionTitle: Definition
+    definitionText: A cell that lines the respiratory tract and forms a protective
+      barrier against harmful particles and invading microorganisms.
+    processTitle: Process Involved in the Simulation
+    processText: "Stages 2\u20137: The virus encounters, attaches to, enters, and
+      uses the epithelial cell to produce new virus particles. "
   modelNameText: {fileID: 2005241214}
   levelInfoText: {fileID: 1421623203}
   definitionTitleText: {fileID: 2089213659}
@@ -512,6 +521,106 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 279703062920603297, guid: ff6488b4acf6d4c4b9da470766ce213b, type: 3}
   m_PrefabInstance: {fileID: 1129401626}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1195221071
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1967061083}
+    m_Modifications:
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.245119
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.000000520634
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000007575987
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.8660253
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.50000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 909301287627773079, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_Name
+      value: Animated_Epithelial.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 909301287627773079, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 909301287627773079, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1195221074}
+  m_SourcePrefab: {fileID: 100100000, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+--- !u!4 &1195221072 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 639108428902093241, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+  m_PrefabInstance: {fileID: 1195221071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1195221073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 909301287627773079, guid: 4ddade9834db9a449872ea1a5529cfa9, type: 3}
+  m_PrefabInstance: {fileID: 1195221071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1195221074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195221073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0f1cd65965b134085e78e753bd260a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 25
+  rotationAxis: 2
 --- !u!1001 &1316797771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1179,6 +1288,7 @@ Transform:
   - {fileID: 415533595}
   - {fileID: 1129401627}
   - {fileID: 1739630519}
+  - {fileID: 1195221072}
   m_Father: {fileID: 1487205831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2005241214 stripped
