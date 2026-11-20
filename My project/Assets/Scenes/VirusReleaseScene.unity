@@ -18142,7 +18142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa2eb1f9e4066b44a350418c71be0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleChance: 0.52
+  compatibleChance: 0.3
   interactionRadius: 5
   patrolPoints:
   - {fileID: 1673626056}
@@ -65165,7 +65165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa2eb1f9e4066b44a350418c71be0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleChance: 0.52
+  compatibleChance: 0.3
   interactionRadius: 5
   patrolPoints:
   - {fileID: 1673626056}
@@ -153079,7 +153079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa2eb1f9e4066b44a350418c71be0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compatibleChance: 0.52
+  compatibleChance: 0.3
   interactionRadius: 5
   patrolPoints:
   - {fileID: 0}

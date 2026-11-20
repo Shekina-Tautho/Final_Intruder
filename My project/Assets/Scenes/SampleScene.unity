@@ -18838,9 +18838,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 783070136}
     m_Modifications:
+    - target: {fileID: 695710841613767418, guid: 6f52ddec174814f4da7d46326ac4e2fe, type: 3}
+      propertyPath: compatibleChance
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3059362737549862335, guid: 6f52ddec174814f4da7d46326ac4e2fe, type: 3}
       propertyPath: m_Name
       value: Epithelial Cells
+      objectReference: {fileID: 0}
+    - target: {fileID: 3405916387592926971, guid: 6f52ddec174814f4da7d46326ac4e2fe, type: 3}
+      propertyPath: compatibleChance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3899966338505473036, guid: 6f52ddec174814f4da7d46326ac4e2fe, type: 3}
+      propertyPath: compatibleChance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099758204281590941, guid: 6f52ddec174814f4da7d46326ac4e2fe, type: 3}
+      propertyPath: compatibleChance
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4677606809697041178, guid: 6f52ddec174814f4da7d46326ac4e2fe, type: 3}
       propertyPath: m_LocalPosition.x
