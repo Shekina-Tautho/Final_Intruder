@@ -20,6 +20,8 @@ public class ModelInfoNavigator : MonoBehaviour
         [Header("Information")]
         public string modelName;
 
+        public string levelInfo;
+
         public string definitionTitle = "Definition";
 
         [TextArea(3, 6)]
@@ -36,6 +38,7 @@ public class ModelInfoNavigator : MonoBehaviour
 
     [Header("Information UI")]
     public TMP_Text modelNameText;
+    public TMP_Text levelInfoText;
     public TMP_Text definitionTitleText;
     public TMP_Text definitionText;
     public TMP_Text processTitleText;
@@ -64,6 +67,7 @@ public class ModelInfoNavigator : MonoBehaviour
         }
 
         if (modelNameText == null ||
+            levelInfoText == null ||
             definitionTitleText == null ||
             definitionText == null ||
             processTitleText == null ||
@@ -234,6 +238,8 @@ public class ModelInfoNavigator : MonoBehaviour
 
         // Update the information panel.
         modelNameText.text = currentModel.modelName;
+
+        levelInfoText.text = currentModel.levelInfo;
 
         definitionTitleText.text = currentModel.definitionTitle;
         definitionText.text = currentModel.definitionText;

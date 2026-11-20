@@ -276,6 +276,7 @@ MonoBehaviour:
   models:
   - modelObject: {fileID: 971247731}
     modelName: 'Influenza A Virus '
+    levelInfo: INFLUENZA VIRUS COMPONENTS
     definitionTitle: Definition
     definitionText: 'A type of influenza virus that causes respiratory infection.
       It contains genetic material made of RNA enclosed within a protein core and
@@ -285,6 +286,7 @@ MonoBehaviour:
       epithelial cell, enters it, replicates, and produces new virus particles. "
   - modelObject: {fileID: 415533596}
     modelName: 'Hemagglutinin  (HA / H1) '
+    levelInfo: INFLUENZA VIRUS COMPONENTS
     definitionTitle: Definition
     definitionText: A surface protein that allows the influenza virus to attach to
       host cells by binding to sialic-acid-containing structures on their surface.
@@ -294,6 +296,7 @@ MonoBehaviour:
       in membrane fusion during Stage 4."
   - modelObject: {fileID: 1129401628}
     modelName: 'Neuraminidase (NA / N1) '
+    levelInfo: INFLUENZA VIRUS COMPONENTS
     definitionTitle: Definition
     definitionText: A surface protein that helps newly formed influenza viruses detach
       from the host cell by removing sialic acid from the cell surface.
@@ -302,6 +305,7 @@ MonoBehaviour:
       particles separate from the host cell after budding."
   - modelObject: {fileID: 1739630520}
     modelName: Ribonucleoprotein (RNP / vRNP)
+    levelInfo: INFLUENZA VIRUS COMPONENTS
     definitionTitle: Definition
     definitionText: A complex made of viral RNA, nucleoproteins, and viral polymerase
       proteins. It carries and helps process the virus's genetic material.
@@ -310,6 +314,7 @@ MonoBehaviour:
       into the nucleus, replicated and transcribed, and later transported out for
       packaging into new virus particles. "
   modelNameText: {fileID: 2005241214}
+  levelInfoText: {fileID: 1421623203}
   definitionTitleText: {fileID: 2089213659}
   definitionText: {fileID: 324520385}
   processTitleText: {fileID: 548375181}
@@ -649,7 +654,7 @@ GameObject:
   - component: {fileID: 1421623204}
   - component: {fileID: 1421623203}
   m_Layer: 5
-  m_Name: DefinitionTitle (1)
+  m_Name: Component
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -694,7 +699,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NFLUENZA VIRUS COMPONENTS
+  m_text: INFLUENZA VIRUS COMPONENTS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
   m_sharedMaterial: {fileID: 2508190734836042331, guid: 6bac89a7ad373c14fb701b86cc2197f7, type: 2}
