@@ -45515,6 +45515,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6632009866525730987, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7026570558117291180, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -45546,6 +45550,10 @@ PrefabInstance:
     - target: {fileID: 7229333848188596504, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553553718603668336, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7553553718603668336, guid: 43331e58dea4c864faa5870cfb8ad42c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -50103,6 +50111,7 @@ MonoBehaviour:
   simulationUIController: {fileID: 456213943}
   startDelay: 1
   secondVoiceOverDelay: 3
+  nextStageTransitionTime: 17
 --- !u!82 &523398639
 AudioSource:
   m_ObjectHideFlags: 0
@@ -183166,7 +183175,8 @@ MonoBehaviour:
   postTutorialVoiceOverVolume: 1
   voiceOverPause: 1
   simulationUI: {fileID: 417767288}
-  postTutorialPanel: {fileID: 0}
+  postTutorialPanels: []
+  explorationPrompt: {fileID: 0}
   virusSpawner: {fileID: 2081573772}
   useVirusReleaseManager: 1
   virusReleaseManager: {fileID: 663784711}
