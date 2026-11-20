@@ -62319,6 +62319,7 @@ MonoBehaviour:
   playerReleaseDistance: 50
   playerReleaseDuration: 10
   npcReleaseVirusCount: 5
+  maxTotalNPCReleaseViruses: 30
   fastPhaseDuration: 5
   fastSpeedMultiplier: 7
   slowSpeedMultiplier: 1
@@ -152400,7 +152401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virusPrefab: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
-  virusCount: 50
+  virusCount: 40
   additionalNPCCount: 10
   releasedVirusScale: {x: 0.25, y: 0.25, z: 0.25}
   spawnZone: {fileID: 471117931}

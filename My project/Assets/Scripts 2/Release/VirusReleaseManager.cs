@@ -42,6 +42,11 @@ public class VirusReleaseManager : MonoBehaviour
     [Min(0)]
     public int npcReleaseVirusCount = 1;
 
+    [Min(0)]
+    public int maxTotalNPCReleaseViruses = 10;
+
+    private int totalNPCReleaseVirusesSpawned = 0;
+
     private Vector3 releasePosition;
     private Vector3 epithelialCenter;
     private Vector3 releaseDirection;
@@ -58,6 +63,8 @@ public class VirusReleaseManager : MonoBehaviour
 
     private void Awake()
     {
+        totalNPCReleaseVirusesSpawned = 0;
+
         SetPlayerControls(false);
 
         if (playerHead == null && Camera.main != null)
@@ -283,6 +290,12 @@ public class VirusReleaseManager : MonoBehaviour
             virusSpawner.spawnedVirusTransforms.Count
         );
 
+        Debug.Log(
+            "Total NPC release viruses spawned: " +
+            totalNPCReleaseVirusesSpawned + " / " +
+            maxTotalNPCReleaseViruses
+        );
+
         // Start player movement.
         StartCoroutine(ReleasePlayer());
 
@@ -313,10 +326,29 @@ public class VirusReleaseManager : MonoBehaviour
             return;
         }
 
+        if (virusSpawner.virusPrefab == null)
+        {
+            Debug.LogError(
+                "NPC release skipped: Virus Prefab is not assigned."
+            );
+            return;
+        }
+
         int totalSpawnedBatches = 0;
 
         for (int i = 0; i < npcReleasePositions.Count; i++)
         {
+            int remainingCapacity =
+                maxTotalNPCReleaseViruses - totalNPCReleaseVirusesSpawned;
+
+            if (remainingCapacity <= 0)
+            {
+                Debug.Log(
+                    "NPC release limit reached. Remaining batches skipped."
+                );
+                break;
+            }
+
             Vector3 npcCellPosition = npcReleasePositions[i];
 
             Vector3 npcDirection = epithelialCenter - npcCellPosition;
@@ -332,6 +364,11 @@ public class VirusReleaseManager : MonoBehaviour
 
             npcDirection.Normalize();
 
+            int countToSpawn = Mathf.Min(
+                npcReleaseVirusCount,
+                remainingCapacity
+            );
+
             // Create a temporary transform to serve as this batch's spawn center.
             GameObject temporaryCenter = new GameObject(
                 "NPCReleaseCenter_" + (i + 1)
@@ -342,18 +379,20 @@ public class VirusReleaseManager : MonoBehaviour
             virusSpawner.SpawnAdditionalReleaseBatch(
                 temporaryCenter.transform,
                 npcDirection,
-                npcReleaseVirusCount,
+                countToSpawn,
                 playerReleaseDistance,
                 playerReleaseDuration
             );
 
             Destroy(temporaryCenter);
 
+            totalNPCReleaseVirusesSpawned += countToSpawn;
             totalSpawnedBatches++;
 
             Debug.Log(
                 "NPC release batch " + (i + 1) +
-                " spawned at: " + npcCellPosition
+                " spawned " + countToSpawn +
+                " viruses at: " + npcCellPosition
             );
         }
 
@@ -362,6 +401,12 @@ public class VirusReleaseManager : MonoBehaviour
 
         Debug.Log(
             "NPC release batches started: " + totalSpawnedBatches
+        );
+
+        Debug.Log(
+            "NPC release total: " +
+            totalNPCReleaseVirusesSpawned + " / " +
+            maxTotalNPCReleaseViruses
         );
     }
 
@@ -495,6 +540,30 @@ public class VirusReleaseManager : MonoBehaviour
             return;
         }
 
+        if (virusSpawner.virusPrefab == null)
+        {
+            Debug.LogError(
+                "Cannot release NPC viruses. Virus Prefab is not assigned."
+            );
+            return;
+        }
+
+        int remainingCapacity =
+            maxTotalNPCReleaseViruses - totalNPCReleaseVirusesSpawned;
+
+        if (remainingCapacity <= 0)
+        {
+            Debug.Log(
+                "NPC release limit reached. No additional viruses spawned."
+            );
+            return;
+        }
+
+        int countToSpawn = Mathf.Min(
+            npcReleaseVirusCount,
+            remainingCapacity
+        );
+
         // Calculate the average center of the epithelial cells.
         SkinnedMeshRenderer[] cells =
             epithelialCellsRoot.GetComponentsInChildren<SkinnedMeshRenderer>();
@@ -545,17 +614,24 @@ public class VirusReleaseManager : MonoBehaviour
         virusSpawner.SpawnAdditionalReleaseBatch(
             temporaryCenter.transform,
             direction,
-            npcReleaseVirusCount,
+            countToSpawn,
             playerReleaseDistance,
             playerReleaseDuration
         );
 
         Destroy(temporaryCenter);
 
+        totalNPCReleaseVirusesSpawned += countToSpawn;
+
         Debug.Log(
-            "Immediate NPC release: " + npcReleaseVirusCount +
+            "Immediate NPC release: " + countToSpawn +
             " viruses spawned at " + absorbedCellPosition
         );
-    }
 
+        Debug.Log(
+            "NPC release total: " +
+            totalNPCReleaseVirusesSpawned + " / " +
+            maxTotalNPCReleaseViruses
+        );
+    }
 }
