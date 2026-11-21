@@ -331,7 +331,7 @@ MonoBehaviour:
     processTitle: Process Involved in the Simulation
     processText: "Stage 3 \u2013 Attachment: These structures serve as binding sites
       for the viral HA protein, allowing influenza to attach to the epithelial cell."
-  - modelObject: {fileID: 0}
+  - modelObject: {fileID: 1076747264}
     modelName: Plasma Membrane / Cell Membrane
     levelInfo: HOST-CELL STRUCTURES AND ORGANELLES
     definitionTitle: Definition
@@ -453,6 +453,106 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
   m_PrefabInstance: {fileID: 1619624837}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1076747262
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1967061083}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.245119
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_Name
+      value: membrane_unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1076747265}
+  m_SourcePrefab: {fileID: 100100000, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+--- !u!4 &1076747263 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+  m_PrefabInstance: {fileID: 1076747262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1076747264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0664405e249083b4fa37d8184facbe4a, type: 3}
+  m_PrefabInstance: {fileID: 1076747262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1076747265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076747264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0f1cd65965b134085e78e753bd260a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 25
+  rotationAxis: 1
 --- !u!1001 &1129401626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1409,6 +1509,7 @@ Transform:
   - {fileID: 1739630519}
   - {fileID: 1195221072}
   - {fileID: 1135084694}
+  - {fileID: 1076747263}
   m_Father: {fileID: 1487205831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2005241214 stripped
