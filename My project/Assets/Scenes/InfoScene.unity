@@ -382,6 +382,17 @@ MonoBehaviour:
     processText: "Stages 5\u20136: Viral proteins are produced by ribosomes. Some
       help form new RNPs, while others are transported to the cell membrane for incorporation
       into new virus particles."
+  - modelObject: {fileID: 819627024}
+    modelName: Endoplasmic Reticulum (ER)
+    levelInfo: HOST-CELL STRUCTURES AND ORGANELLES
+    definitionTitle: Definition
+    definitionText: A network of membranes involved in producing and processing proteins.
+      Influenza's membrane proteins are produced and inserted into the ER before
+      moving toward the cell membrane.
+    processTitle: Process Involved in the Simulation
+    processText: "Stage 6 \u2013 Production and Release: Newly produced viral surface
+      proteins enter the ER, where they undergo processing before being transported
+      to the Golgi apparatus. "
   modelNameText: {fileID: 2005241214}
   levelInfoText: {fileID: 1421623203}
   definitionTitleText: {fileID: 2089213659}
@@ -1135,6 +1146,80 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 5592981611799359946, guid: 0ef7e1216c99ac043b694a32bacdc57a, type: 3}
   m_PrefabInstance: {fileID: 1316797771}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1333714424
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1967061083}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.245119
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7933535
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.60876125
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+      propertyPath: m_Name
+      value: ribosomes
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+--- !u!4 &1333714425 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f6d780da7a0834499adbaf70f11b2d7, type: 3}
+  m_PrefabInstance: {fileID: 1333714424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1421623201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,6 +1867,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 100
   rotationAxis: 2
+--- !u!1001 &1793059695
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1967061083}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9238797
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.38268322
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_Name
+      value: Endoplasmic_Reticulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+--- !u!4 &1793059696 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3be5548c1fefd640a7562a8f4c53306, type: 3}
+  m_PrefabInstance: {fileID: 1793059695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1928294581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,6 +2094,8 @@ Transform:
   - {fileID: 1425877927}
   - {fileID: 1653411207}
   - {fileID: 819627025}
+  - {fileID: 1793059696}
+  - {fileID: 1333714425}
   m_Father: {fileID: 1487205831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2005241214 stripped
