@@ -331,6 +331,16 @@ MonoBehaviour:
     processTitle: Process Involved in the Simulation
     processText: "Stage 3 \u2013 Attachment: These structures serve as binding sites
       for the viral HA protein, allowing influenza to attach to the epithelial cell."
+  - modelObject: {fileID: 0}
+    modelName: Plasma Membrane / Cell Membrane
+    levelInfo: HOST-CELL STRUCTURES AND ORGANELLES
+    definitionTitle: Definition
+    definitionText: The outer boundary of a cell. It controls the movement of substances
+      into and out of the cell and participates in viral entry and release.
+    processTitle: Process Involved in the Simulation
+    processText: 'Stages 3, 4, and 6: The membrane provides the surface for viral
+      attachment, folds around the virus during endocytosis, and serves as the site
+      where newly assembled viruses bud and are released.'
   modelNameText: {fileID: 2005241214}
   levelInfoText: {fileID: 1421623203}
   definitionTitleText: {fileID: 2089213659}
