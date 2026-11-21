@@ -351,6 +351,16 @@ MonoBehaviour:
     processText: "Stage 5 \u2013 Viral Replication: Viral RNPs enter the nucleus,
       where viral RNA transcription and replication occur. Newly formed RNPs are
       subsequently transported out of the nucleus. "
+  - modelObject: {fileID: 1425877928}
+    modelName: Messenger RNA (mRNA)
+    levelInfo: HOST-CELL STRUCTURES AND ORGANELLES
+    definitionTitle: Definition
+    definitionText: A temporary RNA copy containing instructions for making proteins.
+      Influenza viral mRNA travels from the nucleus to the cytoplasm, where ribosomes
+      translate it.
+    processTitle: Process Involved in the Simulation
+    processText: "Stage 5 \u2013 Viral Replication: Viral mRNA is produced in the
+      nucleus and transported to ribosomes for protein synthesis. "
   modelNameText: {fileID: 2005241214}
   levelInfoText: {fileID: 1421623203}
   definitionTitleText: {fileID: 2089213659}
@@ -1217,6 +1227,106 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421623201}
   m_CullTransparentMesh: 1
+--- !u!1001 &1425877926
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1967061083}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.245119
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9238797
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.38268325
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_Name
+      value: Chromatin_Rope
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1425877929}
+  m_SourcePrefab: {fileID: 100100000, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+--- !u!4 &1425877927 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+  m_PrefabInstance: {fileID: 1425877926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1425877928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f7d7bf12c7dcf943b4db2c639723b17, type: 3}
+  m_PrefabInstance: {fileID: 1425877926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1425877929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425877928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0f1cd65965b134085e78e753bd260a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 40
+  rotationAxis: 0
 --- !u!114 &1433128051 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 425698548829450562, guid: d9926c7051610b4419226a1ba83f2807, type: 3}
@@ -1621,6 +1731,7 @@ Transform:
   - {fileID: 1135084694}
   - {fileID: 1076747263}
   - {fileID: 984095255}
+  - {fileID: 1425877927}
   m_Father: {fileID: 1487205831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2005241214 stripped
