@@ -403,6 +403,17 @@ MonoBehaviour:
     processText: "Stage 6 \u2013 Production and Release: HA and NA pass through the
       Golgi apparatus before being transported to the plasma membrane, where new
       virus particles assemble and bud. "
+  - modelObject: {fileID: 1818808705}
+    modelName: Macrophage
+    levelInfo: IMMUNE SYSTEM COMPONENTS
+    definitionTitle: Definition
+    definitionText: A type of immune cell that detects and takes up pathogens and
+      cellular debris. It also releases signaling molecules that help coordinate
+      immune responses.
+    processTitle: Process Involved in the Simulation
+    processText: "Stage 8 \u2013 Host Immune Response: Macrophages represent part
+      of the body's innate immune defense. They recognize and respond to invading
+      pathogens and help coordinate other immune responses. "
   modelNameText: {fileID: 2005241214}
   levelInfoText: {fileID: 1421623203}
   definitionTitleText: {fileID: 2089213659}
@@ -1852,7 +1863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1697584338
 Transform:
   m_ObjectHideFlags: 0
@@ -1983,6 +1994,106 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 100
   rotationAxis: 2
+--- !u!1001 &1818808703
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1967061083}
+    m_Modifications:
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.245119
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327895788249016814, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_Name
+      value: Macrophage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327895788249016814, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7327895788249016814, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1818808706}
+  m_SourcePrefab: {fileID: 100100000, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+--- !u!4 &1818808704 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4645014493758101475, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+  m_PrefabInstance: {fileID: 1818808703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1818808705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7327895788249016814, guid: bfd9cfe808482f74c85c4f5f63ae4111, type: 3}
+  m_PrefabInstance: {fileID: 1818808703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1818808706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818808705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0f1cd65965b134085e78e753bd260a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 25
+  rotationAxis: 1
 --- !u!1 &1928294581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,6 +2257,7 @@ Transform:
   - {fileID: 1673819304}
   - {fileID: 1586638177}
   - {fileID: 1697584338}
+  - {fileID: 1818808704}
   m_Father: {fileID: 1487205831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2005241214 stripped
