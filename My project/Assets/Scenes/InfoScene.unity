@@ -393,6 +393,16 @@ MonoBehaviour:
     processText: "Stage 6 \u2013 Production and Release: Newly produced viral surface
       proteins enter the ER, where they undergo processing before being transported
       to the Golgi apparatus. "
+  - modelObject: {fileID: 1697584337}
+    modelName: Golgi Apparatus
+    levelInfo: HOST-CELL STRUCTURES AND ORGANELLES
+    definitionTitle: Definition
+    definitionText: An organelle that modifies, sorts, and transports proteins. Influenza
+      surface proteins pass through the Golgi before reaching the host cell membrane.
+    processTitle: Process Involved in the Simulation
+    processText: "Stage 6 \u2013 Production and Release: HA and NA pass through the
+      Golgi apparatus before being transported to the plasma membrane, where new
+      virus particles assemble and bud. "
   modelNameText: {fileID: 2005241214}
   levelInfoText: {fileID: 1421623203}
   definitionTitleText: {fileID: 2089213659}
@@ -524,6 +534,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 15
   rotationAxis: 1
+--- !u!4 &918477038 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+  m_PrefabInstance: {fileID: 53789923229831597}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &971247731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 279703062920603297, guid: 572d31809833c0140bfd8f87f1997f9d, type: 3}
@@ -1660,7 +1675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5d3b3e60dd979924eaad27043775e1dc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1814,6 +1829,53 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673819303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0f1cd65965b134085e78e753bd260a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 25
+  rotationAxis: 1
+--- !u!1 &1697584337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1697584338}
+  - component: {fileID: 1697584339}
+  m_Layer: 0
+  m_Name: Golgi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1697584338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697584337}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.05, y: 0.1, z: -0.245119}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 918477038}
+  m_Father: {fileID: 1967061083}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1697584339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697584337}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d0f1cd65965b134085e78e753bd260a, type: 3}
@@ -2083,6 +2145,7 @@ Transform:
   - {fileID: 819627025}
   - {fileID: 1673819304}
   - {fileID: 1586638177}
+  - {fileID: 1697584338}
   m_Father: {fileID: 1487205831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2005241214 stripped
@@ -2107,6 +2170,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &53789923229831597
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1697584338}
+    m_Modifications:
+    - target: {fileID: 3807485074554649885, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_Name
+      value: golgi_apparatus (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.015000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.015000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.015000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071066
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.707107
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583880657966344103, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 781122060738840720, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20da7f4e02a454a47ae03d8571b5c71b, type: 3}
 --- !u!1001 &594079154738986920
 PrefabInstance:
   m_ObjectHideFlags: 0
