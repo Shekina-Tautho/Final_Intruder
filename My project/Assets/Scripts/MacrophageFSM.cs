@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class MacrophageFSM : MonoBehaviour
 {
     public PlayerStats playerStats;
+
 
     public enum State
     {
@@ -13,70 +16,97 @@ public class MacrophageFSM : MonoBehaviour
         ReturnToPatrol
     }
 
+
     public State currentState;
+
 
     [Header("References")]
     public Transform player;
+    public Transform currentTarget = null;
     public Transform[] patrolPoints;
+
 
     [Header("Combat")]
     public float damagePerSecond = 5f;
+
 
     [Header("Movement")]
     public float patrolSpeed = 2f;
     public float chaseSpeed = 4f;
     public float returnSpeed = 3f;
 
+
     [Header("Ranges")]
     public float detectionRange = 50f;
     public float attackRange = 10f;
+
 
     [Header("Patrol Zone (IMPORTANT FIX)")]
     public float patrolRadius = 200f;
     private Vector3 patrolCenter;
 
+
     [Header("Alert Settings")]
     public float alertDuration = 0.7f;
     public float shakeIntensity = 0.1f;
 
+
     [Header("Spatial Audio")]
     public AudioSource audioSource;
+
 
     public AudioClip alertClip;
     public AudioClip chaseLoopClip;
     public AudioClip attackClip;
 
+
     private bool chaseSoundPlaying = false;
     private bool alertSoundPlayed = false;
     private bool attackSoundPlaying = false;
 
+
     private float alertTimer;
+
 
     private int patrolIndex = 0;
     private int returnIndex = 0;
 
+
     private Vector3 originalPosition;
 
+
     public bool isDead = false;
+
+    private MacrophageAnimation macrophageAnimation;
+
 
     void Start()
     {
         currentState = State.Patrol;
         originalPosition = transform.position;
 
+
         patrolCenter = GetPatrolCenter();
+
 
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
         }
+
+        if (macrophageAnimation == null)
+        {
+            macrophageAnimation = GetComponent<MacrophageAnimation>();
+        }
     }
+
 
     void Update()
     {
         if (player == null) return;
 
         // ✅ NEW: global stop if player is dead
+        // You might be able to delete this; This code is unused
         if (playerStats != null && playerStats.isDead)
         {
             StopAttackSound();
@@ -84,7 +114,25 @@ public class MacrophageFSM : MonoBehaviour
             return;
         }
 
-        float distance = Vector3.Distance(transform.position, player.position);
+        // find target virus (nearest virus)
+        currentTarget = setTargetVirus();
+
+        Debug.Log(
+            currentTarget != null
+                ? "Target = " + currentTarget.name
+                : "No Target"
+        );
+
+        float distance = Mathf.Infinity;
+
+        // get distance between virus and macrophage
+        if (currentTarget != null)
+        {
+            distance = Vector3.Distance(
+                transform.position,
+                currentTarget.position
+            );
+        }
 
         switch (currentState)
         {
@@ -92,23 +140,31 @@ public class MacrophageFSM : MonoBehaviour
                 PatrolState(distance);
                 break;
 
+
             case State.Alert:
                 AlertState();
                 break;
+
 
             case State.Chase:
                 ChaseState(distance);
                 break;
 
+
             case State.Attack:
                 AttackState(distance);
                 break;
+
 
             case State.ReturnToPatrol:
                 ReturnToPatrolState();
                 break;
         }
+
+        // delete later
+        Debug.Log("Nearest NPC Virus: " + currentTarget);
     }
+
 
     // ---------------- PATROL ----------------
     void PatrolState(float distance)
@@ -116,11 +172,15 @@ public class MacrophageFSM : MonoBehaviour
         StopChaseSound();
         StopAttackSound();
 
+
         alertSoundPlayed = false;
+
 
         if (patrolPoints.Length == 0) return;
 
+
         Transform target = patrolPoints[patrolIndex];
+
 
         // Move towards active patrol points
         if (target.gameObject.activeSelf) {
@@ -131,10 +191,13 @@ public class MacrophageFSM : MonoBehaviour
         }
 
 
+
+
         if (Vector3.Distance(transform.position, target.position) < 0.8f)
         {
             patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
         }
+
 
         if (distance <= detectionRange)
         {
@@ -144,13 +207,16 @@ public class MacrophageFSM : MonoBehaviour
         }
     }
 
+
     // ---------------- ALERT ----------------
     void AlertState()
     {
         if (isDead) return;
 
+
         StopChaseSound();
         StopAttackSound();
+
 
         if (!alertSoundPlayed)
         {
@@ -159,13 +225,17 @@ public class MacrophageFSM : MonoBehaviour
                 audioSource.PlayOneShot(alertClip, 2f);
             }
 
+
             alertSoundPlayed = true;
         }
 
+
         alertTimer -= Time.deltaTime;
+
 
         Vector3 shakeOffset = Random.insideUnitSphere * shakeIntensity;
         transform.position = originalPosition + shakeOffset;
+
 
         if (alertTimer <= 0f)
         {
@@ -173,13 +243,16 @@ public class MacrophageFSM : MonoBehaviour
             currentState = State.Chase;
         }
 
-        
+
+       
     }
+
 
     // ---------------- CHASE ----------------
     void ChaseState(float distance)
     {
         StopAttackSound();
+
 
         // ✅ FIX: only start if not already playing
         if (!chaseSoundPlaying)
@@ -187,7 +260,9 @@ public class MacrophageFSM : MonoBehaviour
             StartChaseSound();
         }
 
+
         float distanceFromCenter = Vector3.Distance(transform.position, patrolCenter);
+
 
         if (distanceFromCenter > patrolRadius)
         {
@@ -196,6 +271,7 @@ public class MacrophageFSM : MonoBehaviour
             return;
         }
 
+
         if (distance > detectionRange)
         {
             returnIndex = GetNearestPatrolPointIndex();
@@ -203,7 +279,10 @@ public class MacrophageFSM : MonoBehaviour
             return;
         }
 
-        MoveTo(player.position, chaseSpeed);
+
+        // MoveTo(player.position, chaseSpeed);
+        MoveTo(currentTarget.position, chaseSpeed);
+
 
         if (distance <= attackRange)
         {
@@ -211,29 +290,65 @@ public class MacrophageFSM : MonoBehaviour
         }
     }
 
+
     // ---------------- ATTACK ----------------
     void AttackState(float distance)
     {
-        // ✅ NEW: stop everything if player is dead
-        if (playerStats != null && playerStats.isDead)
+
+        // if current target dies
+        if (currentTarget == null)
         {
             StopAttackSound();
+
+            // find next target
+            currentTarget = setTargetVirus();
+
+            if (currentTarget != null)
+            {
+                // if there's target within range, chase
+                currentState = State.Chase;
+            } else {
+                // if no target within range, return to patrol
+                currentState = State.ReturnToPatrol;
+            }
+
             currentState = State.ReturnToPatrol;
             return;
         }
 
+
         StopChaseSound();
+
 
         if (!attackSoundPlaying)
         {
             StartAttackSound();
         }
 
-        MoveTo(transform.position, 0f);
 
-        if (playerStats != null)
+        MoveTo(transform.position, 0f);
+        
+        if (currentTarget != null)
         {
-            playerStats.TakeDamage(damagePerSecond * Time.deltaTime);
+            if (currentTarget.CompareTag("Virus"))
+            {
+                if (macrophageAnimation != null)
+                {
+                    macrophageAnimation.PlayAttack();
+                }
+
+                Destroy(currentTarget.gameObject);
+                currentState = State.ReturnToPatrol;
+            } else if (currentTarget.CompareTag("Player"))
+            {
+                if (macrophageAnimation != null)
+                {
+                    macrophageAnimation.PlayAttack();
+                }
+
+                // when player dies, go to main menu (you may change this)
+                SceneManager.LoadScene("PathoMenu");
+            }
         }
 
         Debug.Log(gameObject.name + " is attacking!");
@@ -244,6 +359,7 @@ public class MacrophageFSM : MonoBehaviour
             currentState = State.Chase;
         }
 
+
         if (distance > detectionRange)
         {
             StopAttackSound();
@@ -252,18 +368,23 @@ public class MacrophageFSM : MonoBehaviour
         }
     }
 
+
     // ---------------- RETURN ----------------
     void ReturnToPatrolState()
     {
         StopChaseSound();
         StopAttackSound();
 
+
         alertSoundPlayed = false;
+
 
         if (patrolPoints.Length == 0) return;
 
+
         Transform target = patrolPoints[returnIndex];
         MoveTo(target.position, returnSpeed);
+
 
         if (Vector3.Distance(transform.position, target.position) < 0.8f)
         {
@@ -272,70 +393,87 @@ public class MacrophageFSM : MonoBehaviour
         }
     }
 
+
     // ---------------- AUDIO ----------------
     void StartChaseSound()
     {
         if (audioSource == null || chaseLoopClip == null) return;
 
+
         audioSource.clip = chaseLoopClip;
         audioSource.loop = true;
         audioSource.Play();
 
+
         chaseSoundPlaying = true;
     }
+
 
     void StopChaseSound()
     {
         if (!chaseSoundPlaying) return;
 
+
         if (audioSource != null)
         {
             audioSource.Stop();
         }
 
+
         chaseSoundPlaying = false;
     }
+
 
     void StartAttackSound()
     {
         if (audioSource == null || attackClip == null) return;
 
+
         audioSource.clip = attackClip;
         audioSource.loop = true;
         audioSource.Play();
 
+
         attackSoundPlaying = true;
     }
+
 
     void StopAttackSound()
     {
         if (!attackSoundPlaying) return;
+
 
         if (audioSource != null)
         {
             audioSource.Stop();
         }
 
+
         attackSoundPlaying = false;
     }
+
 
     // ---------------- UTIL ----------------
     Vector3 GetPatrolCenter()
     {
         Vector3 sum = Vector3.zero;
 
+
         for (int i = 0; i < patrolPoints.Length; i++)
         {
             sum += patrolPoints[i].position;
         }
 
+
         return sum / patrolPoints.Length;
     }
+
 
     int GetNearestPatrolPointIndex()
     {
         int nearestIndex = 0;
         float shortestDistance = Mathf.Infinity;
+
 
         for (int i = 0; i < patrolPoints.Length; i++)
         {
@@ -351,13 +489,16 @@ public class MacrophageFSM : MonoBehaviour
             }
         }
 
+
         return nearestIndex;
     }
+
 
     // ---------------- MOVEMENT ----------------
     void MoveTo(Vector3 target, float speed)
     {
         if (isDead) return; // 🔥 IMPORTANT LOCK
+
 
         transform.position = Vector3.MoveTowards(
             transform.position,
@@ -365,7 +506,9 @@ public class MacrophageFSM : MonoBehaviour
             speed * Time.deltaTime
         );
 
+
         Vector3 lookDir = target - transform.position;
+
 
         if (lookDir != Vector3.zero)
         {
@@ -375,5 +518,43 @@ public class MacrophageFSM : MonoBehaviour
                 5f * Time.deltaTime
             );
         }
+    }
+
+    Transform setTargetVirus()
+    {
+        Transform closestTarget = player;
+        float shortestDistance =
+            Vector3.Distance(transform.position,
+                            player.position);
+
+        Collider[] hitColliders = Physics.OverlapSphere(
+            transform.position,
+            detectionRange
+        );
+
+        // to check every game object within range
+        foreach (Collider hitCollider in hitColliders)
+        {
+            // to exclude game objects without virus tag
+            if (!hitCollider.CompareTag("Virus"))
+                continue;
+
+            // to get distance between npc virus and macrophage
+            float distance =
+                Vector3.Distance(
+                    transform.position,
+                    hitCollider.transform.position
+                );
+
+            // compare distance of npc virus and macrophage
+            if (distance < shortestDistance)
+            {
+                // if npc virus is closer, set as target
+                shortestDistance = distance;
+                closestTarget = hitCollider.transform;
+            }
+        }
+
+        return closestTarget;
     }
 }

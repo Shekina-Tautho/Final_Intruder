@@ -9,15 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2932850466955673233}
+  - component: {fileID: 8462011704505292849}
   - component: {fileID: 8716565580629678631}
-  - component: {fileID: 2507413398810817101}
   - component: {fileID: 5668311300264611272}
   - component: {fileID: 645315806523595418}
   - component: {fileID: 20043275278993518}
   - component: {fileID: 2785662229518346062}
   m_Layer: 0
   m_Name: VirusNPC
-  m_TagString: Untagged
+  m_TagString: Virus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,6 +38,23 @@ Transform:
   - {fileID: 2349679294481739015}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8462011704505292849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279703062920603297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ce49c1d23007447a1c88ba03d89544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowSpeed: 4
+  randomStrength: 3.5
+  directionChangeSpeed: 1
+  releaseBurstSpeed: 5
+  releaseBurstDuration: 1.5
 --- !u!135 &8716565580629678631
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -59,23 +76,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.3
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2507413398810817101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 279703062920603297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1ce49c1d23007447a1c88ba03d89544, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flowSpeed: 4
-  randomStrength: 3.5
-  directionChangeSpeed: 1
-  releaseBurstSpeed: 5
-  releaseBurstDuration: 1.5
 --- !u!54 &5668311300264611272
 Rigidbody:
   m_ObjectHideFlags: 0
