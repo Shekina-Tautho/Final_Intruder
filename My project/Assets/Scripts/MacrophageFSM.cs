@@ -347,7 +347,7 @@ public class MacrophageFSM : MonoBehaviour
                 }
 
                 // when player dies, go to main menu (you may change this)
-                SceneManager.LoadScene("PathoMenu");
+                SceneManager.LoadScene("InfoScene");
             }
         }
 
