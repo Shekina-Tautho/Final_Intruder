@@ -85,7 +85,7 @@ public class SceneStartVoiceOver : MonoBehaviour
             yield break;
         }
 
-        // Calculate when to change the simulation stage.
+        // Calculate when to play the second voice-over.
         float transitionLeadTime = Mathf.Min(1f, secondVoiceOverDelay);
 
         // Wait until 1 second before the second voice-over.
@@ -93,15 +93,8 @@ public class SceneStartVoiceOver : MonoBehaviour
             secondVoiceOverDelay - transitionLeadTime
         );
 
-        // Change the simulation panel to Stage 7 (Spread).
-        if (simulationUIController != null)
-        {
-            simulationUIController.SetStage(7);
-        }
-        else
-        {
-            Debug.LogWarning("Simulation UI Controller is missing!");
-        }
+        // Keep the simulation UI at Release.
+        // No Spread stage transition is needed.
 
         // Wait 1 second before playing the second recording.
         yield return new WaitForSeconds(transitionLeadTime);
@@ -111,19 +104,23 @@ public class SceneStartVoiceOver : MonoBehaviour
         {
             voiceOverAudioSource.PlayOneShot(secondVoiceOverClip);
 
-            Debug.Log("Second voice-over started.");
+            Debug.Log("Second voice-over started. Stage remains at Release.");
 
             // Wait until the configured stage transition time.
             yield return new WaitForSeconds(nextStageTransitionTime);
 
-            // Change to Stage 8.
+            // Activate the last stage directly.
             if (simulationUIController != null)
             {
                 simulationUIController.SetStage(8);
 
                 Debug.Log(
-                    "Stage 8 activated at the configured transition time."
+                    "Last stage activated at the configured transition time."
                 );
+            }
+            else
+            {
+                Debug.LogWarning("Simulation UI Controller is missing!");
             }
 
             // Wait for the remaining duration of the second voice-over.
