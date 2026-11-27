@@ -8,7 +8,7 @@ public class InfectionInputVR : MonoBehaviour
     public InputActionProperty infectAction;
 
     private Virus virus;
-    private bool enabledActionHere = false;
+        private bool enabledActionHere = false;
 
     private void Awake()
     {
@@ -39,7 +39,6 @@ public class InfectionInputVR : MonoBehaviour
             return;
         }
 
-        // Enable the action if it is not already enabled.
         if (!infectAction.action.enabled)
         {
             infectAction.action.Enable();
@@ -52,7 +51,6 @@ public class InfectionInputVR : MonoBehaviour
             Debug.Log("Infect Action is already enabled.");
         }
 
-        // Display the actual input bindings.
         Debug.Log(
             "Active Input Action: " +
             infectAction.action.name
@@ -79,9 +77,8 @@ public class InfectionInputVR : MonoBehaviour
         CheckVRInput();
     }
 
-    // ==========================================
+    
     // KEYBOARD INPUT: E
-    // ==========================================
 
     private void CheckKeyboardInput()
     {
@@ -98,9 +95,8 @@ public class InfectionInputVR : MonoBehaviour
         }
     }
 
-    // ==========================================
+
     // VR INPUT: RIGHT CONTROLLER A BUTTON
-    // ==========================================
 
     private void CheckVRInput()
     {
@@ -121,9 +117,7 @@ public class InfectionInputVR : MonoBehaviour
         }
     }
 
-    // ==========================================
-    // RECEPTOR ATTACHMENT
-    // ==========================================
+
 
     private void TryAttachToReceptor()
     {
@@ -150,7 +144,7 @@ public class InfectionInputVR : MonoBehaviour
 
         Debug.Log(
             "Checking " + receptorGroups.Length +
-            " receptor group(s)..."
+            " receptor group(s)"
         );
 
         foreach (ReceptorGroup group in receptorGroups)
@@ -176,13 +170,11 @@ public class InfectionInputVR : MonoBehaviour
         );
     }
 
-    // ==========================================
-    // CLEANUP
-    // ==========================================
+
 
     private void OnDisable()
     {
-        // Only disable the action if this script enabled it.
+
         if (enabledActionHere && infectAction.action != null)
         {
             infectAction.action.Disable();

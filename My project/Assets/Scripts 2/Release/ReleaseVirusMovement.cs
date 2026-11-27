@@ -222,7 +222,7 @@ public class ReleaseVirusMovement : MonoBehaviour
                     Mathf.Max(0.01f, driftTransitionDuration)
                 );
 
-                // SmoothStep prevents an abrupt velocity change.
+                //prevents an abrupt velocity change.
                 float smoothProgress = Mathf.SmoothStep(
                     0f,
                     1f,

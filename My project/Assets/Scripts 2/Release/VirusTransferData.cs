@@ -5,11 +5,10 @@ using UnityEngine;
 public static class VirusTransferData
 {
     // Existing player absorption data.
-    // Keep these unchanged for the existing player release system.
     public static Vector3 absorbedCellLocalPosition;
     public static bool hasAbsorbedCell = false;
 
-    // New: stores the positions of epithelial cells
+    // stores the positions of epithelial cells
     // that have absorbed NPC viruses.
     public static List<Vector3> npcAbsorbedCellLocalPositions =
         new List<Vector3>();

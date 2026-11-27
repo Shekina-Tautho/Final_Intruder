@@ -113,7 +113,7 @@ public class VirusSpawner : MonoBehaviour
         );
     }
 
-    // NEW: Spawn an additional release batch around an NPC-absorbed cell.
+    // Spawn an additional release batch around an NPC-absorbed cell.
     public void SpawnAdditionalReleaseBatch(
         Transform spawnCenter,
         Vector3 direction,
@@ -255,7 +255,7 @@ public class VirusSpawner : MonoBehaviour
         );
     }
 
-    // NEW: Allows additional batches to specify their own total count.
+    // Allows additional batches to specify their own total count.
     private void StartReleaseVirus(
         GameObject spawnedVirus,
         int index,

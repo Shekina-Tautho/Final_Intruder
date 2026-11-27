@@ -224,7 +224,6 @@ public class VirusReleaseManager : MonoBehaviour
 
         isPrepared = true;
 
-        Debug.Log("========== RELEASE PREPARATION ==========");
         Debug.Log("Matching epithelial cell: " + closestCell.name);
         Debug.Log("Saved cell position: " + savedWorldPosition);
         Debug.Log("Player starting position: " + playerRoot.position);
@@ -239,7 +238,6 @@ public class VirusReleaseManager : MonoBehaviour
         Debug.Log("Release distance: " + playerReleaseDistance);
         Debug.Log("Release duration: " + playerReleaseDuration);
         Debug.Log("NPC absorbed cells recorded: " + npcReleasePositions.Count);
-        Debug.Log("==========================================");
     }
 
     public void BeginRelease()
@@ -271,7 +269,6 @@ public class VirusReleaseManager : MonoBehaviour
             slowSpeedMultiplier
         );
 
-        Debug.Log("========== RELEASE START ==========");
         Debug.Log("PLAYER START: " + playerRoot.position);
 
         if (playerHead != null)
@@ -453,7 +450,6 @@ public class VirusReleaseManager : MonoBehaviour
 
         SetPlayerControls(true);
 
-        Debug.Log("========== RELEASE POSITION COMPARISON ==========");
         Debug.Log("PLAYER FINAL POSITION: " + playerRoot.position);
 
         if (playerHead != null)
@@ -508,7 +504,6 @@ public class VirusReleaseManager : MonoBehaviour
             }
         }
 
-        Debug.Log("==================================================");
         Debug.Log("Player release complete. Movement enabled.");
     }
 
